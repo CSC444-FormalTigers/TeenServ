@@ -49,3 +49,5 @@ end
 gem 'tzinfo-data'
 
 gem 'rails_12factor', group: :production
+
+gem 'coffee-script-source', '1.8.0'
