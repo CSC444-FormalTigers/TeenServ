@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924142916) do
+ActiveRecord::Schema.define(version: 20170924143023) do
+
+  create_table "changelogs", force: :cascade do |t|
+    t.datetime "timestamp"
+    t.text "change"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "endorsements", force: :cascade do |t|
     t.string "endorser"
