@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924142016) do
+ActiveRecord::Schema.define(version: 20170924142143) do
 
   create_table "endorsements", force: :cascade do |t|
     t.string "endorser"
     t.string "endorsee"
     t.string "skill"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer"
+    t.string "reviewee"
+    t.integer "service_id"
+    t.integer "rating"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
