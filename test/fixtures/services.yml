@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  username: MyString
+  title: MyString
+  description: MyText
+  date_posted: 
+  reocurring: false
+  work_date: 
+  response_deadline: 
+  hourly_pay: 1
+
+two:
+  id: 1
+  username: MyString
+  title: MyString
+  description: MyText
+  date_posted: 
+  reocurring: false
+  work_date: 
+  response_deadline: 
+  hourly_pay: 1
