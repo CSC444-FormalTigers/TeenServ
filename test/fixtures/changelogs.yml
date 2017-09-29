@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timestamp: 2017-09-24 10:30:23
+  change: MyText
+  username: MyString
+
+two:
+  timestamp: 2017-09-24 10:30:23
+  change: MyText
+  username: MyString
