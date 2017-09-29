@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924143023) do
+ActiveRecord::Schema.define(version: 20170929200156) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
     t.text "change"
     t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.text "username"
+    t.integer "rating"
+    t.decimal "account_balance"
+    t.text "bank_key"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +69,17 @@ ActiveRecord::Schema.define(version: 20170924143023) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teenagers", force: :cascade do |t|
+    t.text "username"
+    t.integer "rating"
+    t.decimal "account_balance"
+    t.text "bank_key"
+    t.text "description"
+    t.text "resume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "from_user"
     t.string "to_user"
@@ -74,6 +95,14 @@ ActiveRecord::Schema.define(version: 20170924143023) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "age"
+    t.text "gender"
+    t.text "cell_phone"
+    t.text "home_phone"
+    t.text "name"
+    t.text "address"
+    t.text "photo"
+    t.text "account_type"
   end
 
 end
