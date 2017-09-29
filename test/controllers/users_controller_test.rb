@@ -21,4 +21,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select "p", "Username:\n  PossibleUserName"
   end
 
+
+
 end
