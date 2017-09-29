@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyText
+  rating: 1
+  account_balance: 9.99
+  bank_key: MyText
+  description: MyText
+  resume: MyText
+
+two:
+  username: MyText
+  rating: 1
+  account_balance: 9.99
+  bank_key: MyText
+  description: MyText
+  resume: MyText

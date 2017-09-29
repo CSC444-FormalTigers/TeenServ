@@ -10,7 +10,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924030742) do
+ActiveRecord::Schema.define(version: 20170929200156) do
+
+  create_table "changelogs", force: :cascade do |t|
+    t.datetime "timestamp"
+    t.text "change"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.text "username"
+    t.integer "rating"
+    t.decimal "account_balance"
+    t.text "bank_key"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "endorsements", force: :cascade do |t|
+    t.string "endorser"
+    t.string "endorsee"
+    t.string "skill"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer"
+    t.string "reviewee"
+    t.integer "service_id"
+    t.integer "rating"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "username"
+    t.string "title"
+    t.text "description"
+    t.datetime "date_posted"
+    t.boolean "reocurring"
+    t.datetime "work_date"
+    t.datetime "response_deadline"
+    t.integer "hourly_pay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "username"
+    t.string "skill"
+    t.integer "proficiency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teenagers", force: :cascade do |t|
+    t.text "username"
+    t.integer "rating"
+    t.decimal "account_balance"
+    t.text "bank_key"
+    t.text "description"
+    t.text "resume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "from_user"
+    t.string "to_user"
+    t.integer "service_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -18,6 +95,14 @@ ActiveRecord::Schema.define(version: 20170924030742) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "age"
+    t.text "gender"
+    t.text "cell_phone"
+    t.text "home_phone"
+    t.text "name"
+    t.text "address"
+    t.text "photo"
+    t.text "account_type"
   end
 
 end
