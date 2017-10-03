@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002221038) do
+ActiveRecord::Schema.define(version: 20171003234639) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -38,17 +38,7 @@ ActiveRecord::Schema.define(version: 20171002221038) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.string "reviewer"
-    t.string "reviewee"
-    t.integer "service_id"
-    t.integer "rating"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "services", force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.string "username"
     t.string "title"
     t.text "description"
@@ -57,6 +47,16 @@ ActiveRecord::Schema.define(version: 20171002221038) do
     t.datetime "work_date"
     t.datetime "response_deadline"
     t.integer "hourly_pay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer"
+    t.string "reviewee"
+    t.integer "service_id"
+    t.integer "rating"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
