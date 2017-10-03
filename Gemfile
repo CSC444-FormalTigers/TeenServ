@@ -12,7 +12,7 @@ gem 'rails', '~> 5.1.4'
 gem 'sqlite3', group: :development
 gem 'pg', '0.18.1', group: :production
 # User bcrypt to authenticate users
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
