@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929200156) do
+ActiveRecord::Schema.define(version: 20171002221038) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170929200156) do
     t.text "address"
     t.text "photo"
     t.text "account_type"
+    t.string "password_digest"
   end
 
 end
