@@ -5,6 +5,11 @@
    License: none (public domain)
 */
 
+
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -79,14 +84,18 @@ header {
   position: relative;
 }
 header h1 {
-  line-height: 60px;
-  line-height: var(--header-height);
   display: inline;
   margin: 0;
   padding: 0;
   font-size: 2em;
   font-weight: 600;
   letter-spacing: .05em; 
+}
+header a#logo {
+  line-height: 60px;
+  line-height: var(--header-height);
+  text-decoration: none;
+  color: #333;
 }
 
 header #nav {
@@ -109,18 +118,63 @@ header #nav li a:hover {
   background: #efefef;
 }
 /**
+Notifications
+*/
+.flash {
+  text-align: center;
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  
+  -webkit-animation: seconds 1.0s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 5s;
+  animation: seconds 1.0s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+  position: relative;
+}
+.flash.danger {
+  background: #d63636;
+}
+
+.flash.notice {
+  background: #17b0e6;
+}
+/* CSS animation to hide notifications after 5 seconds */
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px; 
+  }
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px; 
+  }
+}
+/**
 Main content
 */
 #main_content {
-    padding: 50px;
-    line-height: 1.3em;
-    font-size: 1em;
+  padding: 50px;
+  line-height: 1.3em;
+  font-size: 1em;
 }
 #main_content h1 {
-	font-size: 1.5em;
-	text-transform: uppercase;
-	letter-spacing: .1em;
-	font-weight: 600;
-	margin-bottom: 20px;
-	text-align: center;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
 }
+
+

@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="container">
-      <h1>TeenServ</h1>
+      <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
       <ul id="nav">
         <% if logged_in? %>
           <li><%= link_to 'Logout', logout_path, method: :delete %></li>
@@ -21,6 +21,9 @@
       </ul>
     </div>
   </header>
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "flash #{key}" %>
+  <% end %>
   <section class="container" id="main_content">
     <%= yield %>
   </section>
