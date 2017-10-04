@@ -13,6 +13,11 @@
       <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
       <ul id="nav">
         <li>
+          <%= link_to controller: 'jobs' do %>
+            <%= fa_icon "briefcase"%>Jobs
+          <% end %>
+        </li>
+        <li>
           <%= link_to controller: 'users' do %>
             <%= fa_icon "group"%>Users
           <% end %>
