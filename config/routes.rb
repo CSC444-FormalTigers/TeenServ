@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   get 'welcome/index'
-  resources :users
   root 'welcome#index'
+
+  resources :users
+  resources :jobs
 
   get    'login',   to: 'sessions#new', as: 'login'
   post   'login',   to: 'sessions#create'
