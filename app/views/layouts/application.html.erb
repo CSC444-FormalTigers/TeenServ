@@ -5,19 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway' %>
 </head>
 <body>
-
-<header>
-  <% if logged_in? %>
-    <%= link_to 'Logout', logout_path, method: :delete %>
-  <% else %>
-    <%= link_to "Log In", login_path %>
-    <%= link_to 'Register', new_user_path %>
-  <% end %>
-</header>
-
-<%= yield %>
-
+  <header>
+    <div class="container">
+      <h1>TeenServ</h1>
+      <ul id="nav">
+        <% if logged_in? %>
+          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Log In", login_path %></li>
+          <li><%= link_to 'Register', new_user_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </header>
+  <section class="container" id="main_content">
+    <%= yield %>
+  </section>
 </body>
 </html>
