@@ -12,11 +12,28 @@
     <div class="container">
       <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
       <ul id="nav">
+        <li>
+          <%= link_to controller: 'users' do %>
+            <%= fa_icon "group"%>Users
+          <% end %>
+        </li>
         <% if logged_in? %>
-          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+          <li>
+            <%= link_to logout_path, method: :delete do %>
+              <%= fa_icon "sign-out"%>Logout
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to "Log In", login_path %></li>
-          <li><%= link_to 'Register', new_user_path %></li>
+          <li>
+            <%= link_to login_path  do%>
+              <%= fa_icon "sign-in"%>Login
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_path do %>
+              <%= fa_icon "user-plus"%>Register
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

@@ -13,6 +13,8 @@ gem 'sqlite3', group: :development
 gem 'pg', '0.18.1', group: :production
 # User bcrypt to authenticate users
 gem 'bcrypt'
+# Use  fontawesome icons fonts
+gem "font-awesome-rails"
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

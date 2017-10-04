@@ -10,6 +10,7 @@
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -103,7 +104,7 @@ header #nav {
   display:flex;
 }
 header #nav li {
-  width: 100px;
+  width: 120px;
 }
 header #nav li a {
   text-decoration: none;
@@ -113,6 +114,9 @@ header #nav li a {
   line-height: var(--header-height);
   text-align: center;
   transition: background ease .2s;
+}
+header #nav li i {
+	padding-right: 10px;
 }
 header #nav li a:hover {
   background: #efefef;
@@ -176,5 +180,6 @@ Main content
   margin-bottom: 20px;
   text-align: center;
 }
+
 
 
