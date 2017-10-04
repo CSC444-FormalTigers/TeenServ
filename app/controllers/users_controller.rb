@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.where(username: params[:id]).first
   end
 
   def create
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.where(username: params[:id]).first
 
     if @user.update(user_params)
       redirect_to @user
