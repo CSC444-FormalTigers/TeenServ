@@ -5,12 +5,6 @@
    License: none (public domain)
 */
 
-
-
-
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -179,6 +173,28 @@ Main content
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
+}
+/*
+table styles
+*/
+#main_content table {
+  width:100%;
+}
+#main_content th {
+  background: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #f6f6f6;
+  border-bottom: none;
+}
+#main_content tr:nth-child(even) {
+  background: #f6f6f6;
+}
+#main_content tr {
+  background: #f8f8f8;
+}
+#main_content td {
+  padding: 10px;
+  border: 1px solid #f6f6f6;
 }
 
 
