@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x64-mingw32)
+    bcrypt (3.1.11-x86-mingw32)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.1.0)
@@ -56,6 +58,8 @@ GEM
     ffi (1.9.18)
     ffi (1.9.18-x64-mingw32)
     ffi (1.9.18-x86-mingw32)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
@@ -86,6 +90,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     pg (0.18.1)
     pg (0.18.1-x64-mingw32)
+    pg (0.18.1-x86-mingw32)
     puma (3.10.0)
     rack (2.0.3)
     rack-test (0.7.0)
@@ -171,6 +176,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   pg (= 0.18.1)
