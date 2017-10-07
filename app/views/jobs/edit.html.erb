@@ -1,0 +1,54 @@
+<h1>Edit Job</h1>
+
+<%= form_with(model: @job) do |form| %>
+
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@job.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @job.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :title, 'New Title' %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description, 'New Description' %><br>
+    <%= form.text_field :description %>
+  </p>
+
+  <p>
+    <%= form.label :reocurring, 'New Reocurring (true, false)' %><br>
+    <%= form.check_box :reocurring %>
+  </p>
+
+  <p>
+    <%= form.label :work_date, 'New Work Date' %><br>
+    <%= form.datetime_local_field :work_date %>
+  </p>
+
+  <p>
+    <%= form.label :response_deadline, 'New Response Deadling' %><br>
+    <%= form.datetime_local_field :response_deadline %>
+  </p>
+
+  <p>
+    <%= form.label :hourly_pay, 'New Wage' %><br>
+    <%= form.number_field :hourly_pay %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', jobs_path %>

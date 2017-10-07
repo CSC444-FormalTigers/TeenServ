@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003234639) do
+ActiveRecord::Schema.define(version: 20171007182625) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20171003234639) do
     t.string "username"
     t.string "title"
     t.text "description"
-    t.datetime "date_posted"
     t.boolean "reocurring"
     t.datetime "work_date"
     t.datetime "response_deadline"

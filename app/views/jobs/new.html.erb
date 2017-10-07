@@ -1,0 +1,59 @@
+<h1>New job posting</h1>
+
+<%= form_with scope: :job, url: jobs_path, local: true do |form| %>
+
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@job.errors.count, "error") %> prohibited
+        this job from being created:
+      </h2>
+      <ul>
+        <% @job.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :username %><br>
+    <%= form.text_field :username %>
+  </p>
+
+  <p>
+    <%= form.label :title, 'New Title' %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description, 'New Description' %><br>
+    <%= form.text_field :description %>
+  </p>
+
+  <p>
+    <%= form.label :reocurring, 'Reocurring?' %><br>
+    <%= form.check_box :reocurring %>
+  </p>
+
+  <p>
+    <%= form.label :work_date, 'New Work Date' %><br>
+    <%= form.datetime_local_field :work_date %>
+  </p>
+
+  <p>
+    <%= form.label :response_deadline, 'New Response Deadling' %><br>
+    <%= form.datetime_local_field :response_deadline %>
+  </p>
+
+  <p>
+    <%= form.label :hourly_pay, 'New Hourly Wage' %><br>
+    <%= form.number_field :hourly_pay %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', jobs_path %>

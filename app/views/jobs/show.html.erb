@@ -1,17 +1,37 @@
 <p>
   <strong>Username:</strong>
-  <%= @user.username %>
-</p>
- 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
+  <%= @job.username %>
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+  <strong>Title:</strong>
+  <%= @job.title %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Back', users_path %>
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>Reocurring:</strong>
+  <%= @job.reocurring %>
+</p>
+
+<p>
+  <strong>Work Date:</strong>
+  <%= @job.work_date %>
+</p>
+
+<p>
+  <strong>Response Deadline:</strong>
+  <%= @job.response_deadline %>
+</p>
+
+<p>
+  <strong>Hourly Pay:</strong>
+  <%= @job.hourly_pay %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job) %>
+<%= link_to 'Back', jobs_path %>

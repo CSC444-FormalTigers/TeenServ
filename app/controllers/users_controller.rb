@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = find_user_with_username 
+    @user = find_user_with_username
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = find_user_with_username 
+    @user = find_user_with_username
   end
 
   def create
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username,
-        :password, 
+        :password,
 	:password_confirmation,
 	:email,
 	:name)
