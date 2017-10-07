@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(username: params[:id]).first
+    @user = find_user_with_username 
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.where(username: params[:id]).first
+    @user = find_user_with_username 
   end
 
   def create
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.where(username: params[:id]).first
+    @user = find_user_with_username
 
     if @user.update(user_params)
       redirect_to @user
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.where(username: params[:id]).first
+    @user = find_user_with_username
     @user.destroy
 
     redirect_to users_path
@@ -54,4 +54,10 @@ class UsersController < ApplicationController
 	:email,
 	:name)
     end
+
+    def find_user_with_username
+      # really confusing, but params[:id] contains the username.
+      User.where(username: params[:id]).first
+    end
+
 end
