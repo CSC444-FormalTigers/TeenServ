@@ -5,7 +5,6 @@ one:
   username: MyString
   title: MyString
   description: MyText
-  date_posted: 
   reocurring: false
   work_date: 
   response_deadline: 
@@ -16,7 +15,6 @@ two:
   username: MyString
   title: MyString
   description: MyText
-  date_posted: 
   reocurring: false
   work_date: 
   response_deadline: 
