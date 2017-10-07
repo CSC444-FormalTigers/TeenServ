@@ -31,4 +31,11 @@ class UserTest < ActiveSupport::TestCase
     user.password = "somepassword"
     assert_not user.save, "Saved a user with empty email"
   end
+
+  test "user should be able to authenticate" do
+    user = User.new(password: "password")
+    assert_not(user.authenticate("incorrect_password"))
+    assert(user.authenticate("password"))
+  end
+
 end
