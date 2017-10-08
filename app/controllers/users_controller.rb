@@ -52,7 +52,9 @@ class UsersController < ApplicationController
         :password,
 	:password_confirmation,
 	:email,
-	:name)
+	:name,
+	:age,
+	:gender)
     end
 
     def find_user_with_username

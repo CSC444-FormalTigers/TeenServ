@@ -36,6 +36,17 @@
     <%= form.text_field :name %>
   </p>
 
+
+  <p>
+    <%= form.label :age, 'Age' %><br>
+    <%= form.number_field :age %>
+  </p>
+
+  <p>
+    <%= form.label :gender, 'Gender' %><br>
+    <%= form.select(:gender, options_for_select(['male', 'female', 'other'])) %>
+  </p>
+
   <p>
     <%= form.submit %>
   </p>
