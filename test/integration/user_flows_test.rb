@@ -18,7 +18,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_select "p", "Username:\n  PossibleUserName"
   end
 
 end
