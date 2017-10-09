@@ -17,6 +17,9 @@ class User < ApplicationRecord
     :allow_blank => true,
     numericality: { only_integer: true, greater_than: 0, less_than: 200 }
     
+  validates :gender,
+    :allow_blank => true,
+    :format => {:with => /((fe)?male|other)/i}
 
   def to_param
     username

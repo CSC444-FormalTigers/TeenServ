@@ -54,7 +54,11 @@ class UsersController < ApplicationController
 	:email,
 	:name,
 	:age,
-	:gender)
+	:gender,
+	:cell_phone,
+	:home_phone,
+	:address,
+	:photo)
     end
 
     def find_user_with_username
