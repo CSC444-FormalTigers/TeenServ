@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :admins
   get 'sessions/new'
   get 'welcome/index'
   root 'welcome#index'

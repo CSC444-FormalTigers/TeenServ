@@ -56,5 +56,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'coffee-script-source', '1.8.0'
 
 gem 'validates_email_format_of'
-
-gem 'devise', '4.3.0'
