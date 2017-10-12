@@ -13,12 +13,12 @@
       <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
       <ul id="nav">
         <li>
-          <%= link_to controller: 'jobs' do %>
+          <%= link_to jobs_path do %>
             <%= fa_icon "briefcase"%>Jobs
           <% end %>
         </li>
         <li>
-          <%= link_to controller: 'users' do %>
+          <%= link_to users_path do %>
             <%= fa_icon "group"%>Users
           <% end %>
         </li>
@@ -35,7 +35,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_path do %>
+            <%= link_to new_user_registration_path do %>
               <%= fa_icon "user-plus"%>Register
             <% end %>
           </li>
