@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 
   test "should not save empty user" do
     user = User.new
@@ -30,12 +27,6 @@ class UserTest < ActiveSupport::TestCase
     user.username = "somename"
     user.password = "somepassword"
     assert_not user.save, "Saved a user with empty email"
-  end
-
-  test "user should be able to authenticate" do
-    user = User.new(password: "password")
-    assert_not(user.authenticate("incorrect_password"))
-    assert(user.authenticate("password"))
   end
 
 end

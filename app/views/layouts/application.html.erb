@@ -13,29 +13,29 @@
       <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
       <ul id="nav">
         <li>
-          <%= link_to controller: 'jobs' do %>
+          <%= link_to jobs_path do %>
             <%= fa_icon "briefcase"%>Jobs
           <% end %>
         </li>
         <li>
-          <%= link_to controller: 'users' do %>
+          <%= link_to users_path do %>
             <%= fa_icon "group"%>Users
           <% end %>
         </li>
-        <% if logged_in? %>
+        <% if signed_in? %>
           <li>
-            <%= link_to logout_path, method: :delete do %>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
               <%= fa_icon "sign-out"%>Logout
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to login_path  do%>
+            <%= link_to new_user_session_path do%>
               <%= fa_icon "sign-in"%>Login
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_path do %>
+            <%= link_to new_user_registration_path do %>
               <%= fa_icon "user-plus"%>Register
             <% end %>
           </li>
