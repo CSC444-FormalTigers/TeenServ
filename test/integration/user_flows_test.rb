@@ -26,7 +26,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
         email: "Possible@Email.com"}}
     end
 
-    assert_redirected_to user_path(User.last)
+    assert_redirected_to root_path
     assert_equal 'PossibleUserName', User.last.username
   end
 
@@ -39,6 +39,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get edit_user_url(@user)
     assert_response :success
   end
+
+  # TODO: Implement this test
 
   #test "can update user" do
   #  patch user_url(@user),
