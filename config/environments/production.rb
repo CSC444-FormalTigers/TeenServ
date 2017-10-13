@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::DEBUG
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -79,5 +81,7 @@ Rails.application.configure do
 
   #Default url
   config.action_mailer.default_url_options = { host: 'teen-serv.herokuapp.com' }
+  
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
 end
