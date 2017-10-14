@@ -5,8 +5,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 
+  #Include devise test helpers
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @user = users(:one)
+    sign_in @user
   end
 
   teardown do
@@ -19,6 +23,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "can create a user" do
+    sign_out :user
     assert_difference('User.count') do
       post users_url, params: {user: {
         username: "PossibleUserName",
@@ -28,6 +33,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_path
     assert_equal 'PossibleUserName', User.last.username
+    sign_in users(:one)
   end
 
   test "can show a user" do
