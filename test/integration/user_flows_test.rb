@@ -37,6 +37,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
           password: "PossiblePassword",
           email: "Possible@Email.com"}}
       end
+      assert_redirected_to root_path
   end
 
   test "can create a user" do

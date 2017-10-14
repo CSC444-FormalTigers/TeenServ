@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def create
     if user_signed_in
-      render 'new'
+      redirect_to root_path
     end
 
     @user = User.new(user_params)
