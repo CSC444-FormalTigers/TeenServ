@@ -20,6 +20,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    if user_signed_in
+      render 'new'
+    end
+
     @user = User.new(user_params)
 
     if @user.save

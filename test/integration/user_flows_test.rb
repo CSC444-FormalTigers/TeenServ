@@ -15,11 +15,28 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   teardown do
     Rails.cache.clear
+    sign_out :user
   end
 
   test "can get index of users" do
     get "/users"
     assert_response :success
+  end
+
+  test "can't get users when not logged in" do
+      sign_out :user
+      get "/users"
+      assert_redirected_to "/users/sign_in"
+      sign_in @user
+  end
+
+  test "can't create a user while signed in" do
+      assert_no_difference('User.count') do
+        post users_url, params: {user: {
+          username: "PossibleUserName",
+          password: "PossiblePassword",
+          email: "Possible@Email.com"}}
+      end
   end
 
   test "can create a user" do
@@ -36,9 +53,23 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
   end
 
+  test "can't show user when not signed in" do
+      sign_out :user
+      get user_url(@user)
+      assert_redirected_to "/users/sign_in"
+      sign_in @user
+  end
+
   test "can show a user" do
     get user_url(@user)
     assert_response :success
+  end
+
+  test "can't edit page of user when not signed in" do
+      sign_out :user
+      get edit_user_url(@user)
+      assert_redirected_to "/users/sign_in"
+      sign_in @user
   end
 
   test "can go to edit page of user" do
@@ -65,6 +96,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to users_path
+  end
+
+  test "can't delete a user when not signed in" do
+    sign_out :user
+    assert_no_difference('User.count',-1) do
+        delete user_url(@user)
+    end
+
+    assert_redirected_to "/users/sign_in"
+    sign_in @user
   end
 
 end
