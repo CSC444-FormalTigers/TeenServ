@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TeenServ</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway' %>
+</head>
+<body>
+<footer>
+	<span><%= link_to "About TeenServ", "/misc/about" %></span>
+	<span><%= link_to "Terms of Service", "/misc/terms" %></span>
+	<span><%= link_to "Privacy Policy", "/misc/policy" %></span>
+	<span><%= link_to "Contact Us", "/misc/contact" %></span>
+	<span><%= link_to "FAQ", "/misc/faq" %></span>
+</footer>
+</body>
+</html>
