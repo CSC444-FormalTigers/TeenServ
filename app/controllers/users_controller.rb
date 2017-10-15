@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     @user = find_user_with_username
 
     if @user.update(user_params)
+      sign_in(@user, :bypass => true)
       redirect_to @user
     else
       render 'edit'
