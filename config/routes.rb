@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'misc/about'
+  get 'misc/policy'
+  get 'misc/terms'
+  get 'misc/contact'
+  get 'misc/faq'
+
   devise_for :users
   devise_for :admins
 

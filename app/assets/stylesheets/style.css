@@ -115,6 +115,30 @@ header #nav li i {
 header #nav li a:hover {
   background: #efefef;
 }
+/*
+Footer style
+*/
+footer{
+	background: #fff;
+	padding-left: 15px;
+	color: #fff232323;
+	position: absolute;
+	text-align:center;
+	list-style: none;
+	border-top: 2px solid #efefef;
+	bottom:0;
+	left:0;
+	right:0;
+}
+footer a{
+	padding: 10px 20px 10px 0;
+	text-decoration: none;
+	display: inline-block;
+	color: #333;
+}
+footer a:hover{
+	text-decoration: underline;
+}
 /**
 Notifications
 */
