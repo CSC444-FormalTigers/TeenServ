@@ -46,7 +46,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
       post users_url, params: {user: {
         username: "PossibleUserName",
         password: "PossiblePassword",
-        email: "Possible@Email.com"}}
+        #email: "Possible@Email.com"}}
+        email: "Possible@Email.com",
+        account_type: "client"}}
     end
 
     assert_redirected_to root_path

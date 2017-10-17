@@ -24,6 +24,10 @@ class User < ApplicationRecord
     :allow_blank => true,
     :format => {:with => /((fe)?male|other)/i}
 
+  validates :account_type,
+    presence: true,
+    :format => {:with => /client|teenager/i}
+
   def to_param
     username
   end

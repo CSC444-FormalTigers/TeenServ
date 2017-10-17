@@ -62,7 +62,8 @@ class UsersController < ApplicationController
 	:cell_phone,
 	:home_phone,
 	:address,
-	:photo)
+	:photo,
+	:account_type)
     end
 
     def find_user_with_username

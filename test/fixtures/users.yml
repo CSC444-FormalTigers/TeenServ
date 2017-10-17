@@ -4,8 +4,10 @@ one:
   username: test1
   password: test1
   email: test@email.com
+  account_type: client
 
 two:
   username: test2
   password: test2
   email: test2@email.com
+  account_type: teenager

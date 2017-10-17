@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
        :email,
        :password,
        :password_confirmation,
-       :name])
+       :name,
+	   :account_type])
   end
 
 end

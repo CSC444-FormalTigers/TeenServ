@@ -31,6 +31,11 @@
     <%= f.text_field :name, autocomplete: "off" %>
   </div>
 
+  <div class="field"
+    <%= f.label :account_type, 'Account Type' %><br>
+    <%= f.select(:account_type, options_for_select({'Client' => 'client', 'Teenager' => 'teenager'})) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
