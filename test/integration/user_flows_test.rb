@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class UserFlowsTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
-
   #Include devise test helpers
   include Devise::Test::IntegrationHelpers
 
@@ -24,20 +20,20 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "can't get users when not logged in" do
-      sign_out :user
-      get "/users"
-      assert_redirected_to "/users/sign_in"
-      sign_in @user
+    sign_out :user
+    get "/users"
+    assert_redirected_to "/users/sign_in"
+    sign_in @user
   end
 
   test "can't create a user while signed in" do
-      assert_no_difference('User.count') do
-        post users_url, params: {user: {
-          username: "PossibleUserName",
-          password: "PossiblePassword",
-          email: "Possible@Email.com"}}
-      end
-      assert_redirected_to root_path
+    assert_no_difference('User.count') do
+      post users_url, params: {user: {
+        username: "PossibleUserName",
+        password: "PossiblePassword",
+        email: "Possible@Email.com"}}
+    end
+    assert_redirected_to root_path
   end
 
   test "can create a user" do
@@ -46,8 +42,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
       post users_url, params: {user: {
         username: "PossibleUserName",
         password: "PossiblePassword",
-        #email: "Possible@Email.com"}}
-        email: "Possible@Email.com",
+        email: "possible@email.com",
         account_type: "client"}}
     end
 
@@ -57,10 +52,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "can't show user when not signed in" do
-      sign_out :user
-      get user_url(@user)
-      assert_redirected_to "/users/sign_in"
-      sign_in @user
+    sign_out :user
+    get user_url(@user)
+    assert_redirected_to "/users/sign_in"
+    sign_in @user
   end
 
   test "can show a user" do
@@ -69,10 +64,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "can't edit page of user when not signed in" do
-      sign_out :user
-      get edit_user_url(@user)
-      assert_redirected_to "/users/sign_in"
-      sign_in @user
+    sign_out :user
+    get edit_user_url(@user)
+    assert_redirected_to "/users/sign_in"
+    sign_in @user
   end
 
   test "can go to edit page of user" do
@@ -80,18 +75,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # TODO: Implement this test
+  test "can update user" do
+    patch user_url(@user),
+      params: { user: {
+        password: "TestPassword",
+        password_confirmation: "TestPassword",
+        email: "possible@email.com"} }
+    assert_redirected_to user_path(@user)
 
-  #test "can update user" do
-  #  patch user_url(@user),
-  #    params: { user: {
-  #      password: "TestPassword",
-  #      password_confirmation: "TestPassword",
-  #      email: "Possible@Email.com"} }
-  #  assert_redirected_to user_path(@user)
-
-  #  assert_equal "Possible@Email.com", @user.reload.email
-  #end
+    assert_equal "possible@email.com", @user.reload.email
+  end
 
   test "can delete a user" do
     assert_difference('User.count', -1) do
