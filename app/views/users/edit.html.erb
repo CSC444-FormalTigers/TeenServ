@@ -63,6 +63,11 @@
   </p>
 
   <p>
+    <%= form.label :account_type, 'Account Type' %><br>
+    <%= form.select(:account_type, options_for_select({'Client' => 'client', 'Teenager' => 'teenager'})) %>
+  </p>
+  
+  <p>
     <%= form.submit %>
   </p>
 <% end %>
