@@ -6,6 +6,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:one)
+    @other_user = users(:two)
     sign_in @user
   end
 
@@ -102,6 +103,35 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to "/users/sign_in"
     sign_in @user
+  end
+
+
+
+  test "non admin users can see other user pages" do
+    get user_url(@other_user)
+    assert_response :success
+  end
+
+  test "non admin users cannot access edit page of other users" do
+    get edit_user_url(@other_user)
+    assert_redirected_to root_path
+  end
+
+  test "non admin users cannot update other users" do
+    patch user_url(@other_user),
+      params: { user: {
+        password: "TestPassword",
+        password_confirmation: "TestPassword",
+        email: "possible@email.com"} }
+    assert_redirected_to root_path
+
+  end
+
+  test "non admin users cannot delete other users" do
+    assert_difference('User.count', 0) do
+      delete user_url(@other_user)
+    end
+    assert_redirected_to root_path
   end
 
 end

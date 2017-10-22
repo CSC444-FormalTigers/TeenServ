@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :redirect_if_not_this_user_or_admin, only: [:edit, 
+    :update,
+    :destroy]
+
   def index
     # attributes_to_display should contain names of the columns in
     # the Users model.
@@ -72,6 +76,13 @@ class UsersController < ApplicationController
     def find_user_with_username
       # really confusing, but params[:id] contains the username.
       User.where(username: params[:id]).first
+    end
+
+    def redirect_if_not_this_user_or_admin 
+      @user = find_user_with_username
+      if !(@user == current_user) and !(current_user.admin)
+        redirect_to root_path
+      end
     end
 
 end
