@@ -12,6 +12,7 @@
     <div class="container">
       <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
       <ul id="nav">
+
         <li>
           <%= link_to jobs_path do %>
             <%= fa_icon "briefcase"%>Jobs
@@ -22,12 +23,20 @@
             <%= fa_icon "group"%>Users
           <% end %>
         </li>
+
         <% if signed_in? %>
+	  <li>
+	    <%= link_to user_path(current_user) do %>
+	      <%= fa_icon "user" %>Profile
+	    <% end %>
+	  </li>
+
           <li>
             <%= link_to destroy_user_session_path, :method => :delete do %>
               <%= fa_icon "sign-out"%>Logout
             <% end %>
           </li>
+
         <% else %>
           <li>
             <%= link_to new_user_session_path do%>
@@ -40,12 +49,15 @@
             <% end %>
           </li>
         <% end %>
+
       </ul>
     </div>
   </header>
+
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, class: "flash #{key}" %>
   <% end %>
+
   <section class="container" id="main_content">
     <%= yield %>
   </section>
