@@ -51,6 +51,20 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def become_admin
+    @user = current_user
+    @user.update_attribute :admin, true
+
+    redirect_to @user
+  end
+
+  def remove_admin
+    @user = current_user
+    @user.update_attribute :admin, false
+
+    redirect_to @user
+  end
+
   private
     def user_params
       params.require(:user).permit(:username,
