@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   def index
+    # attributes_to_display should contain names of the columns in
+    # the Users model.
+    @attributes_to_display = ['username', 
+      'email', 
+      'account_type']
+
     @user = User.all
   end
 

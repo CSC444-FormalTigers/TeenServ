@@ -3,18 +3,14 @@
 <table>
 
   <tr>
-    <% for col_names in User.column_names
-      .select { |name| !name.to_s.match("password_digest") }
-    %>
+    <% for col_names in @attributes_to_display %>
       <th><%= col_names.humanize %></th>
     <% end %>
   </tr>
 
   <% @user.each do |user| %>
     <tr>
-      <% for attribute in user.attributes.keys 
-        .select { |name| !name.to_s.match("password_digest") }
-      %>
+      <% for attribute in @attributes_to_display %>
         <td><%= user.attributes[attribute].to_s%></td>
       <% end %>
 
