@@ -7,30 +7,12 @@ class UsersController < ApplicationController
     @user = find_user_with_username
   end
 
-  def new
-    @user = User.new
-  end
-
   def to_param
     username
   end
 
   def edit
     @user = find_user_with_username
-  end
-
-  def create
-    if user_signed_in
-      redirect_to root_path
-    end
-
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to @user
-    else
-      render 'new'
-    end
   end
 
   def update
