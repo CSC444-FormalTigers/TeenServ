@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'misc/faq'
 
   devise_for :users
-  devise_for :admins
 
   get 'welcome/index'
   root 'welcome#index'
