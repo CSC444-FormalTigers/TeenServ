@@ -1,5 +1,5 @@
 <h1>Edit User</h1>
- 
+
 <%= form_with model: @user, local: true do |form| %>
 
   <% if @user.errors.any? %>
@@ -15,12 +15,12 @@
       </ul>
     </div>
   <% end %>
- 
+
   <p>
     <%= form.label :password %><br>
     <%= form.password_field :password %>
   </p>
- 
+
   <p>
     <%= form.label :password_confirmation %><br>
     <%= form.password_field :password_confirmation %>
@@ -66,11 +66,12 @@
     <%= form.label :account_type, 'Account Type' %><br>
     <%= form.select(:account_type, options_for_select({'Client' => 'client', 'Teenager' => 'teenager'})) %>
   </p>
-  
+
   <p>
     <%= form.submit %>
   </p>
 <% end %>
 
- 
+<%= link_to 'Become Admin', become_admin_user_path %>
+<%= link_to 'Remove Admin', remove_admin_user_path %>
 <%= link_to 'Back', users_path %>

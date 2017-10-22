@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-  resources :users, except: [:new, :create]
+  resources :users, except: [:new, :create] do
+    member do
+      get 'become_admin'
+      get 'remove_admin'
+    end
+  end
+
   resources :jobs
 
   # The priority is based upon order of creation: first created -> highest priority.

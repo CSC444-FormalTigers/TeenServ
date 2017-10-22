@@ -16,44 +16,44 @@
     </div>
   <% end %>
 
-  <p>
+  <div class="field">
     <%= form.label :username %><br>
     <%= form.text_field :username,:readonly => true, value: current_user.username %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.label :title, 'New Title' %><br>
     <%= form.text_field :title %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.label :description, 'New Description' %><br>
     <%= form.text_field :description %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.label :reocurring, 'Reocurring?' %><br>
     <%= form.check_box :reocurring %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.label :work_date, 'New Work Date' %><br>
     <%= form.datetime_local_field :work_date, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.label :response_deadline, 'New Response Deadling' %><br>
     <%= form.datetime_local_field :response_deadline, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.label :hourly_pay, 'New Hourly Wage' %><br>
     <%= form.number_field :hourly_pay, placeholder: "$13" %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= form.submit %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Back', jobs_path %>
