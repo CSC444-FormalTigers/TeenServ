@@ -14,7 +14,8 @@
         <td><%= user.attributes[attribute].to_s%></td>
       <% end %>
       <td><%= link_to 'Show', user_path(user) %></td>
-      <% if current_user.admin? %>
+
+      <% if current_user.admin? or current_user == user %>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user_path(user),
                 method: :delete,
