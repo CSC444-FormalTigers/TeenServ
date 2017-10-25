@@ -71,7 +71,8 @@
     <%= form.submit %>
   </p>
 <% end %>
-
-<%= link_to 'Become Admin', become_admin_user_path %> <br>
-<%= link_to 'Remove Admin', remove_admin_user_path %> <br>
+<% if current_user.admin? %>
+  <%= link_to 'Grant Admin', grant_admin_user_path %> <br>
+  <%= link_to 'Remove Admin', remove_admin_user_path %> <br>
+<% end %>
 <%= link_to 'Back', users_path %> <br>

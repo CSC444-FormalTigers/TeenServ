@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
-  before_action :redirect_if_not_this_user_or_admin, only: [:edit, 
+  before_action :redirect_if_not_this_user_or_admin, only: [:edit,
     :update,
     :destroy]
+  before_action :redirect_if_not_admin, only: [
+    :grant_admin,
+    :remove_admin
+  ]
 
   def index
     # attributes_to_display should contain names of the columns in
     # the Users model.
-    @attributes_to_display = ['username', 
-      'email', 
+    @attributes_to_display = ['username',
+      'email',
       'account_type']
 
     @user = User.all
@@ -43,15 +47,15 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def become_admin
-    @user = current_user
+  def grant_admin
+    @user = find_user_with_username
     @user.update_attribute :admin, true
 
     redirect_to @user
   end
 
   def remove_admin
-    @user = current_user
+    @user = find_user_with_username
     @user.update_attribute :admin, false
 
     redirect_to @user
@@ -78,11 +82,16 @@ class UsersController < ApplicationController
       User.where(username: params[:id]).first
     end
 
-    def redirect_if_not_this_user_or_admin 
+    def redirect_if_not_this_user_or_admin
       @user = find_user_with_username
       if !(@user == current_user) and !(current_user.admin)
         redirect_to root_path
       end
     end
 
+    def redirect_if_not_admin
+      if !(current_user.admin?)
+        redirect_to root_path
+      end
+    end
 end
