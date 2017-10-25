@@ -7,6 +7,11 @@
 
 
 
+
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -192,6 +197,7 @@ Main content
   padding: 50px;
   line-height: 1.3em;
   font-size: 1em;
+	position: relative;
 }
 #main_content h1,
 #main_content h2,
@@ -274,4 +280,95 @@ form input[type="submit"] {
 }
 form input[type="submit"]:hover {
     background: #25c0f7;
+}
+/*
+Features
+*/
+div#eyecatch {
+    color: #fff;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+#features:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+#features {
+  margin: 50px 0;
+  display: flex;
+  justify-content: space-between;
+}
+#features:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 350px;
+  width: 100%;
+  background: #60c9f2; /* Old browsers */
+  background: -moz-linear-gradient(left, #60c9f2 0%, #ff9be9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #60c9f2 0%,#ff9be9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #60c9f2 0%,#ff9be9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60c9f2', endColorstr='#ff9be9',GradientType=1 ); /* IE6-9 */
+  z-index: -1;
+}
+#features a {
+	border: 2px solid #efefef;
+    flex: 1; /*grow*/
+    max-width: 25%;
+    border-radius: 10px;
+    padding: 0 2%;
+    text-decoration: none;
+    color: #fff;
+}
+.feature:first-child {
+  margin-left: 5%;
+}
+.feature h4 {
+  text-align: center;
+  margin-top: 30px;
+}
+.feature p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/*
+sections
+*/
+#sections {}
+.section {
+	padding: 5%;
+}
+.section:nth-child(odd) {
+    background: #efefef;
+}
+.section .clip {
+	float: left;
+    width: 30%;
+    height: 200px;
+    overflow: hidden;
+    margin: 0;
+    margin-right: 5%;
+}
+.section:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+.section img {
+    height: 100%;
+}
+.section:nth-child(even) .clip {
+    float: right;
+    margin: 0;
+    margin-left: 5%;
+}
+.section p {
+
+}
+#sections .section h4 {
+	text-align: left;
+	margin-bottom: 15px;
 }
