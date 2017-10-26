@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :username, 
     presence: true, 
+    :format => {:with => /\A[0-9\w_]{6,20}\z/,
+      message: "only allows letters or numbers and underscore 6-20 characters long."},
     uniqueness: true
 
   validates :password, 
@@ -31,5 +33,5 @@ class User < ApplicationRecord
   def to_param
     username
   end
-  
+
 end
