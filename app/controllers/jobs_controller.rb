@@ -59,8 +59,12 @@ class JobsController < ApplicationController
   private
     def job_params
       params.require(:job).permit(:username,
-      :title, :description, :reocurring, :work_date,
-      :response_deadline, :hourly_pay)
+      :title, 
+      :description, 
+      :reocurring, 
+      :work_date,
+      :response_deadline, 
+      :hourly_pay)
     end
 
     def find_job_with_id

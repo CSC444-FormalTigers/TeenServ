@@ -1,6 +1,4 @@
-<% for attribute in @user.attributes.keys
-  .select {|key| !key.to_s.match("password_digest")} %>
-
+<% for attribute in @user.attributes.keys %>
   <p>
     <strong><%= attribute %>: </strong>
     <%= @user.attributes[attribute].to_s %>
