@@ -32,6 +32,7 @@
   <strong>Hourly Pay:</strong>
   <%= @job.hourly_pay %>
 </p>
-
-<%= link_to 'Edit', edit_job_path(@job) %>
+<% if current_user.username == @job.username or current_user.admin? %>
+  <%= link_to 'Edit', edit_job_path(@job) %>
+<% end %>
 <%= link_to 'Back', jobs_path %>

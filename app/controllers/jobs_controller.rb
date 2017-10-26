@@ -7,6 +7,12 @@ class JobsController < ApplicationController
     :destroy
   ]
 
+  before_action :redirect_if_not_owner_or_admin, only: [
+    :update,
+    :edit,
+    :destroy
+  ]
+
   def index
     @job = Job.all
   end
@@ -59,5 +65,13 @@ class JobsController < ApplicationController
 
     def find_job_with_id
       @job = Job.where(:id => params[:id]).first
+    end
+
+    def redirect_if_not_owner_or_admin
+      @job = find_job_with_id
+      @user = current_user
+      if !(@job.username == @user.username) and !(@user.admin)
+        redirect_to root_path
+      end
     end
 end
