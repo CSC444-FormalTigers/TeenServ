@@ -81,17 +81,4 @@ class UsersController < ApplicationController
       # really confusing, but params[:id] contains the username.
       User.where(username: params[:id]).first
     end
-
-    def redirect_if_not_this_user_or_admin
-      @user = find_user_with_username
-      if !(@user == current_user) and !(current_user.admin)
-        redirect_to root_path
-      end
-    end
-
-    def redirect_if_not_admin
-      if !(current_user.admin?)
-        redirect_to root_path
-      end
-    end
 end

@@ -1,6 +1,8 @@
 <h1> Listing all jobs </h1>
-<%= link_to new_job_path do %>
-  <%= fa_icon "plus"%>Post Job
+<% if current_user.account_type == "client" %>
+  <%= link_to new_job_path do %>
+    <%= fa_icon "plus"%>Post Job
+  <% end %>
 <% end %>
 <table>
   <tr>

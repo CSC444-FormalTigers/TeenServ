@@ -1,4 +1,12 @@
 class JobsController < ApplicationController
+  before_action :redirect_if_not_client, only: [
+    :create,
+    :new,
+    :update,
+    :edit,
+    :destroy
+  ]
+
   def index
     @job = Job.all
   end
