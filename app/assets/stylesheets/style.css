@@ -37,8 +37,12 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html{
+	height:100%;
+}
 body {
-	position: relative;
+	min-height:100%;
+	position:relative;
 	line-height: 1;
 }
 ol, ul {
@@ -126,25 +130,24 @@ header #nav li a:hover {
 /*
 Footer style
 */
-footer{
+.footer{
 	background: #fff;
 	padding-left: 15px;
 	color: #fff232323;
 	position: absolute;
 	text-align:center;
-	list-style: none;
 	border-top: 2px solid #efefef;
-	bottom:0;
-	left:0;
-	right:0;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
 }
-footer a{
+.footer a{
 	padding: 10px 20px 10px 0;
 	text-decoration: none;
 	display: inline-block;
 	color: #333;
 }
-footer a:hover{
+.footer a:hover{
 	text-decoration: underline;
 }
 /**
