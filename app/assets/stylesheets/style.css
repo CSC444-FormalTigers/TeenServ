@@ -12,6 +12,9 @@
 
 
 
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -75,11 +78,22 @@ body {
   margin: 0 auto;
 }
 /*
-Define a_tag to be always underlined and blue
+Remove underline front links and replace with border-bottom
 */
-a{
-	text-decoration: underline;
-	color: blue;
+a {
+	text-decoration: none;
+	display: inline-block;
+	border-bottom: 1px solid #17b0e6;
+	padding: 0 2px;
+	color: #17b0e6;
+	color: var(--blue);
+	transition: color ease .2s, border ease .2s;
+}
+a:hover {
+	color: #25c0f7;
+	color: var(--highlight-blue);
+	border-bottom: 1px solid #17b0e6;
+	border-bottom: 1px solid var(--highlight-blue);
 }
 /**
 Header style
@@ -87,11 +101,13 @@ Header style
 :root {
   /* Only good on modern browsers, fallback with real px value in late production. */
   --header-height: 60px;
+  --blue: #17b0e6;
+  --highlight-blue: #25c0f7;
 }
 header {
   background: #fff;
   padding-left: 15px;
-  color: #fff232323;
+  color: #232323;
   border-bottom: 2px solid #efefef;
   height: 60px; /* fallback */
   height: var(--header-height);
@@ -104,6 +120,13 @@ header h1 {
   font-size: 2em;
   font-weight: 600;
   letter-spacing: .05em;
+}
+header a {
+	border: 0;
+	padding: 0;
+}
+header a:hover {
+	border: 0;
 }
 header a#logo {
   line-height: 60px;
@@ -133,6 +156,7 @@ header #nav li i {
 }
 header #nav li a:hover {
   background: #efefef;
+	border: 0;
 }
 /*
 Footer style
@@ -140,7 +164,7 @@ Footer style
 .footer{
 	background: #fff;
 	padding-left: 15px;
-	color: #fff232323;
+	color: #232323;
 	position: absolute;
 	text-align:center;
 	border-top: 2px solid #efefef;
@@ -153,6 +177,7 @@ Footer style
 	text-decoration: none;
 	display: inline-block;
 	color: #333;
+	border-bottom: 0;
 }
 .footer a:hover{
 	text-decoration: underline;
@@ -382,4 +407,31 @@ sections
 	text-align: left;
 	margin-bottom: 15px;
 }
+/*
+User page styles
+*/
+#photo_container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #efefef;
+    overflow: hidden;
+}
+#photo_container img {
+    width: 100%;
+}
 
+/*
+Admin Styles
+*/
+.model_data_block {
+    background: #60c9f2;
+    color: #000;
+    padding: 20px;
+    border-radius: 0px;
+    margin-top: 150px;
+}
+.edit_link {
+    float: right;
+    font-size: 1.1em;
+}

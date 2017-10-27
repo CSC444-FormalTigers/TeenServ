@@ -1,10 +1,21 @@
-<% for attribute in @user.attributes.keys %>
-  <p>
-    <strong><%= attribute %>: </strong>
-    <%= @user.attributes[attribute].to_s %>
-  </p>
-<% end %>
-<% if current_user.admin? or current_user == @user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> <br>
-<% end %>
-<%= link_to 'Back', users_path %><br>
+<%-# Show to all user types -%>
+<h2><%= @user.username %></h2>
+<div id="photo_container">
+  <%=  if FileTest.exist?("#{::Rails.root}/app/assets/images/#{@user.username}.png")
+    image_tag("#{@user.username}.png")
+  else
+    image_tag("default_user_image.png")
+  end %>
+</div>
+  <% if current_user.admin? or current_user == @user %>
+    <%-# Private View -%>
+    <span class="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></span>
+    <div class="model_data_block">
+      <% for attribute in @user.attributes.keys %>
+        <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %>,
+      <% end %>
+    </div>
+  <% else %>
+    <%-# Public View -%>
+
+  <% end %>
