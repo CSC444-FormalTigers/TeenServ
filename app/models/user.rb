@@ -32,7 +32,7 @@ class User < ApplicationRecord
 	
 	validates_acceptance_of :terms_of_service,
 	allow_nil: false,
-	on: create
+	on: :create
 	
 	attr_accessor :terms_of_service
 
