@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
        :password,
        :password_confirmation,
        :name,
-	   :account_type])
+	   :account_type,
+	   :terms_of_service])
   end
 
   def redirect_if_not_admin

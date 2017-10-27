@@ -27,6 +27,11 @@ class User < ApplicationRecord
   validates :account_type,
     presence: true,
     :format => {:with => /client|teenager/i}
+	
+	validates_acceptance_of :terms_of_service,
+	allow_nil: false
+	
+	attr_accessor :terms_of_service
 
   def to_param
     username

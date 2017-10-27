@@ -74,6 +74,13 @@ body {
   max-width: 1250px;
   margin: 0 auto;
 }
+/*
+Define a_tag to be always underlined and blue
+*/
+a{
+	text-decoration: underline;
+	color: blue;
+}
 /**
 Header style
 */
@@ -375,3 +382,4 @@ sections
 	text-align: left;
 	margin-bottom: 15px;
 }
+
