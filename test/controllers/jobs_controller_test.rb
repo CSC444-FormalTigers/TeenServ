@@ -51,7 +51,8 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
       post jobs_url, params: {job: {
         username: "PossibleUserName",
         title: "Some Title",
-        description: "Some Description"}}
+        description: "Some Description",
+		hourly_pay: "10"}}
     end
 
     assert_redirected_to job_url(Job.last)

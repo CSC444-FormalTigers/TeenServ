@@ -44,7 +44,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
         username: "PossibleUserName",
         password: "PossiblePassword",
         email: "possible@email.com",
-        account_type: "client"}}
+        account_type: "client",
+		terms_of_service: "1"}}
     end
 
     assert_redirected_to root_path

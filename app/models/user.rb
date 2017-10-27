@@ -31,7 +31,8 @@ class User < ApplicationRecord
     :format => {:with => /client|teenager/i}
 	
 	validates_acceptance_of :terms_of_service,
-	allow_nil: false
+	allow_nil: false,
+	on: create
 	
 	attr_accessor :terms_of_service
 
