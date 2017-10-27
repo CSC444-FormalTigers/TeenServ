@@ -13,6 +13,7 @@ class UserTest < ActiveSupport::TestCase
     user.password = "something"
     user.email = "something@thing.com"
     user.account_type = "client"
+    user.terms_of_service = "1"
     assert user.save, "Did not save a valid user"
     user.destroy
   end
