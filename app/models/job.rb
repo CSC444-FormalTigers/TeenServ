@@ -1,4 +1,5 @@
 class Job < ApplicationRecord
+  has_many :job_applications
 
   validates :title, 
     presence: true

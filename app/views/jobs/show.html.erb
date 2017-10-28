@@ -1,38 +1,64 @@
-<p>
-  <strong>Username:</strong>
+<div>
+  Job Poster Username:
   <%= @job.username %>
-</p>
+</div>
 
-<p>
-  <strong>Title:</strong>
+<div>
+  Title:
   <%= @job.title %>
-</p>
+</div>
 
-<p>
-  <strong>Description:</strong>
+<div>
+  Description:
   <%= @job.description %>
-</p>
+</div>
 
-<p>
-  <strong>Reocurring:</strong>
+<div>
+  Reocurring:
   <%= @job.reocurring %>
-</p>
+</div>
 
-<p>
-  <strong>Work Date:</strong>
+<div>
+  Work Date:
   <%= @job.work_date %>
-</p>
+</div>
 
-<p>
-  <strong>Response Deadline:</strong>
+<div>
+  Response Deadline:
   <%= @job.response_deadline %>
-</p>
+</div>
 
-<p>
-  <strong>Hourly Pay:</strong>
+<div>
+  Hourly Pay:
   <%= @job.hourly_pay %>
-</p>
+</div>
+
+
+<h2>Applicants to this Job</h2>
+<% @job.job_applications.each do |app| %>
+  <p>
+    Applicant Username:
+    <%= app.applicant_username %>
+  </p>
+<% end %>
+<br>
+
+<h2>Apply for this job? </h2>
+<%= form_with(model: [ @job, @job.job_applications.build ], local: true) do |form| %>
+  
+  <div class="field">
+    <%= form.label :applicant_username  %><br>
+    <%= form.text_field :applicant_username, :readonly => true, value: current_user.username%>
+  </div>
+  <div class="field">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+
 <% if current_user.username == @job.username or current_user.admin? %>
   <%= link_to 'Edit', edit_job_path(@job) %>
 <% end %>
+
 <%= link_to 'Back', jobs_path %>
