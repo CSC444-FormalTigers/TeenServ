@@ -30,11 +30,11 @@ class User < ApplicationRecord
     presence: true,
     :format => {:with => /client|teenager/i}
 	
-	validates_acceptance_of :terms_of_service,
-	allow_nil: false,
-	on: :create
+  validates_acceptance_of :terms_of_service,
+    allow_nil: false,
+    on: :create
 	
-	attr_accessor :terms_of_service
+  attr_accessor :terms_of_service
 
   def to_param
     username
