@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  applicant_username: MyString
+  job: one
+
+two:
+  applicant_username: MyString
+  job: two
