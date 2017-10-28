@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: testname1
+  username: test1
   password: test1
   email: test@email.com
   account_type: client
+  admin: false
 
 two:
-  username: testname2
+  username: test2
   password: test2
   email: test2@email.com
   account_type: teenager
+  admin: false
+
+admin:
+  username: admin
+  password: admin
+  email: admin@admin.com
+  account_type: client
+  admin: true
