@@ -11,8 +11,6 @@ gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 gem 'pg', '0.18.1', group: :production
-# User bcrypt to authenticate users
-gem 'bcrypt'
 # Use  fontawesome icons fonts
 gem "font-awesome-rails"
 # Use Puma as the app server
@@ -36,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -58,3 +57,5 @@ gem 'coffee-script-source', '1.8.0'
 gem 'validates_email_format_of'
 
 gem 'devise', '4.3.0'
+
+gem 'carrierwave', '1.2.1'

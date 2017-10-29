@@ -31,7 +31,6 @@ class UsersController < ApplicationController
 
   def update
     @user = find_user_with_username
-
     if @user.update(user_params)
       bypass_sign_in @user
       redirect_to @user
@@ -74,7 +73,8 @@ class UsersController < ApplicationController
 	:home_phone,
 	:address,
 	:photo,
-	:account_type)
+	:account_type,
+  :avatar)
     end
 
     def find_user_with_username
