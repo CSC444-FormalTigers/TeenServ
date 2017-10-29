@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028195333) do
+ActiveRecord::Schema.define(version: 20171029022212) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20171028195333) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.boolean "admin", default: false
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
