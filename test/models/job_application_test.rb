@@ -10,4 +10,15 @@ class JobApplicationTest < ActiveSupport::TestCase
             applicant_username: "someUsername"})
     assert job_application.save
   end
+
+  test "deleting a job deletes its applications" do
+    job = jobs(:one)
+    job_application = job_applications(:one)
+    job_application.job = job
+    job_application.save
+
+    assert job.destroy
+    assert_raise(ActiveRecord::RecordNotFound) { job_application.reload }
+  end
+
 end
