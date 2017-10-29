@@ -2,12 +2,12 @@
 
 one:
   id: 1
-  username: MyString
+  username: test2
   title: MyString
   description: MyText
   reocurring: false
-  work_date: 
-  response_deadline: 
+  work_date:
+  response_deadline:
   hourly_pay: 1
 
 two:
@@ -16,6 +16,6 @@ two:
   title: MyString
   description: MyText
   reocurring: false
-  work_date: 
-  response_deadline: 
+  work_date:
+  response_deadline:
   hourly_pay: 1

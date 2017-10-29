@@ -80,6 +80,18 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_equal "possible@email.com", @user.reload.email
   end
 
+  test "can update user without password" do
+    patch user_url(@user),
+      params: { user: {
+        password: "",
+        password_confirmation: "",
+        email: "possible@email.com"
+        }}
+    assert_redirected_to user_path(@user)
+
+    assert_equal "possible@email.com", @user.reload.email
+  end
+
   test "can delete a user" do
     assert_difference('User.count', -1) do
       delete user_url(@user)
