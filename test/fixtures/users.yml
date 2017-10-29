@@ -6,6 +6,7 @@ one:
   email: test@email.com
   account_type: client
   admin: false
+  encrypted_password: test1
 
 two:
   username: test2

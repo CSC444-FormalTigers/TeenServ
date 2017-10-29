@@ -12,9 +12,6 @@ class User < ApplicationRecord
       message: "only allows letters or numbers and underscore 4-20 characters long."},
     uniqueness: true
 
-  validates :password,
-    presence: true
-
   validates :email,
     presence: true,
     :email_format => { :message => 'format is invalid.' },
