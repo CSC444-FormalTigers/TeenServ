@@ -16,5 +16,8 @@
 !/log/.keep
 /tmp
 
+# Ignore swap files made by vim.
+*.swp
+
 #Ignore uploaded files. Development environment and production should have different files uploaded.
 /public/uploads/*

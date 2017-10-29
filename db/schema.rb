@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20171029022212) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "job_applications", force: :cascade do |t|
+    t.string "applicant_username"
+    t.integer "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_applications_on_job_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "username"
     t.string "title"
