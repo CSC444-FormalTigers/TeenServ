@@ -16,3 +16,5 @@
 !/log/.keep
 /tmp
 
+#Ignore uploaded files. Development environment and production should have different files uploaded.
+/public/uploads/*
