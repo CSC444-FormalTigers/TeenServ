@@ -12,7 +12,7 @@ two:
   username: test2
   password: test2
   email: test2@email.com
-  account_type: teenager
+  account_type: client
   admin: false
 
 admin:
