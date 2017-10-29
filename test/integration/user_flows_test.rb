@@ -1,19 +1,10 @@
 require 'test_helper'
 
 class UserFlowsTest < ActionDispatch::IntegrationTest
-  #Include devise test helpers
-  include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:one)
     @other_user = users(:two)
     @admin = users(:admin)
-    sign_in @user
-  end
-
-  teardown do
-    Rails.cache.clear
-    sign_out :user
   end
 
   test "can get index of users" do

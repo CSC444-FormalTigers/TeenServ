@@ -1,21 +1,10 @@
 require 'test_helper'
 
 class JobsControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:one)
-    sign_in @user
-
     @job = jobs(:one)
   end
-
-
-  teardown do
-    Rails.cache.clear
-    sign_out @user
-  end
-
 
   test "can get index of jobs" do
     get jobs_url
