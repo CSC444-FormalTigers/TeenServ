@@ -37,9 +37,15 @@
 <h2>Applicants to this Job</h2>
 <% @job.job_applications.each do |app| %>
   <p>
-    Applicant Username:
+    Applicant username:
     <%= app.applicant_username %>
+
+    <%= link_to 'DELETE', 
+      job_job_application_path(@job, app), 
+      method: :delete,
+      data: {confirm: 'Are you sure?'} %>
   </p>
+
 <% end %>
 <br>
 
