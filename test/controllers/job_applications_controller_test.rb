@@ -7,6 +7,11 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @job = jobs(:one)
+
+    @job_application = job_applications(:one)
+    @job_application.job = @job
+    assert @job_application.save
+
   end
 
 
@@ -15,8 +20,13 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
       post job_job_applications_url(@job), params: {job_application: {
 	      applicant_username: @job.username}}
     end
+    assert_redirected_to job_url(@job)
   end
 
-  #test "can be deleted"
-  #end
+  test "can be deleted" do 
+    assert_difference('JobApplication.count', -1) do
+      delete job_job_application_url(@job, @job_application)
+    end
+    assert_redirected_to job_url(@job)
+  end
 end
