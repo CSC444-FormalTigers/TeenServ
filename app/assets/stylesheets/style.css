@@ -182,6 +182,12 @@ Footer style
 .footer a:hover{
 	text-decoration: underline;
 }
+.messages{
+	max-height: 400px;
+	overflow-y: auto;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
 /**
 Notifications
 */
