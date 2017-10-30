@@ -10,9 +10,15 @@
     <%-# Private View -%>
     <span class="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></span>
     <div class="model_data_block">
-      <% for attribute in @user.attributes.keys %>
-        <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %>,
-      <% end %>
+	  <% if current_user.admin? %>
+        <% for attribute in @user.attributes.keys %>
+  	      <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
+        <% end %>
+	  <% else %>
+	    <% for attribute in @attributes_to_display %>
+          <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
+        <% end %>
+	  <% end %>
     </div>
   <% else %>
     <%-# Public View -%>

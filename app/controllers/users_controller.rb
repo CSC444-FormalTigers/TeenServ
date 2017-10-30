@@ -18,6 +18,17 @@ class UsersController < ApplicationController
   end
 
   def show
+    # attributes_to_display should contain names of the columns in
+    # the Users model.
+    @attributes_to_display = ['username',
+      'email',
+	  'age',
+	  'gender',
+	  'cell_phone',
+	  'home_phone',
+	  'name',
+	  'address',
+      'account_type']
     @user = find_user_with_username
   end
 
