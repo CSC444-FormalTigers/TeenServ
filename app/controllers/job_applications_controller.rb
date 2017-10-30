@@ -2,7 +2,12 @@ class JobApplicationsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.create(job_application_params)
-    redirect_to job_path(@job)
+    if(@job_application.save)
+      redirect_to job_path(@job)
+    else
+      redirect_to job_path(@job), notice: "You have already applied to this job"
+	end
+      
   end
 
   def destroy
