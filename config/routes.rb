@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'misc/terms'
   get 'misc/contact'
   get 'misc/faq'
+  
+  resources :conversations
+  resources :messages
 
   devise_for :users
 

@@ -25,18 +25,23 @@
         </li>
 
         <% if signed_in? %>
-	  <li>
-	    <%= link_to user_path(current_user) do %>
-	      <%= fa_icon "user" %>Profile
-	    <% end %>
-	  </li>
+			<li>
+				<%= link_to user_path(current_user) do %>
+				<%= fa_icon "user" %>Profile
+				<% end %>
+			</li>
 
-          <li>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-              <%= fa_icon "sign-out"%>Logout
-            <% end %>
-          </li>
-
+			<li>
+				<%= link_to conversations_path do %>
+					<%= fa_icon "comments-o"%>Message
+				<%end%>
+			</li>
+			<li>
+				<%= link_to destroy_user_session_path, :method => :delete do %>
+					<%= fa_icon "sign-out"%>Logout
+				<% end %>
+			</li>
+		  
         <% else %>
           <li>
             <%= link_to new_user_session_path do%>
