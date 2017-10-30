@@ -1,0 +1,5 @@
+<%=  if FileTest.exist?("#{user.avatar.current_path}")
+  image_tag("#{user.avatar.url}")
+else
+  image_tag("default_user_image.png")
+end %>
