@@ -462,17 +462,11 @@ user block style
     color: #555;
     padding-left: 5px;
 }
-.user_container button {
-    background: none;
-    border: 0;
+.user_container div {
     float: right;
-    margin: 0;
-    padding: 0;
 }
-.user_container button:first-child {
-    margin: 0;
-}
-.user_container button a {
+.user_container div a {
+	  text-align: center;
     line-height: 50px;
     width: 75px;
     margin-right: 10px;
