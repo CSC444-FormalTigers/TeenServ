@@ -20,8 +20,6 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'JobApplication.count' do
       post job_job_applications_url(@job), params: {job_application: {
 	      user_id: @user.id}}
-#      post job_job_applications_url(@job), params: {job_application: {
-#	      applicant_username: @job.username}}
     end
     assert_redirected_to job_url(@job)
   end

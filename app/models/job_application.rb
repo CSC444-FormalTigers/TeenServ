@@ -1,9 +1,6 @@
 class JobApplication < ApplicationRecord
   belongs_to :job
   belongs_to :user
-
-  #validates :applicant_username,
-  #  uniqueness: { scope: :job_id}
   
   validates :job_id,
     uniqueness: { scope: :user_id },
