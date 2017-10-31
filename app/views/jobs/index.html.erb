@@ -4,6 +4,12 @@
     <%= fa_icon "plus"%>Post Job
   <% end %>
 <% end %>
+
+<%= form_tag(jobs_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <table>
   <tr>
     <th>Username</th>
@@ -20,24 +26,24 @@
     <th></th>
   </tr>
 
-  <% @job.each do |job| %>
-    <tr>
-      <td><%= job.username %></td>
-      <td><%= job.title %></td>
-      <td><%= job.description %></td>
-      <td><%= job.reocurring %></td>
-      <td><%= job.work_date %></td>
-      <td><%= job.response_deadline %></td>
-      <td><%= job.hourly_pay %></td>
-      <td><%= job.created_at %></td>
-      <td><%= job.updated_at %></td>
-      <td><%= link_to 'Show', job_path(job) %></td>
-      <% if current_user.username == job.username or current_user.admin? %>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job_path(job),
-                method: :delete,
-  	      data: { confirm: 'Are you sure?' }%></td>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.username %></td>
+          <td><%= job.title %></td>
+          <td><%= job.description %></td>
+          <td><%= job.reocurring %></td>
+          <td><%= job.work_date %></td>
+          <td><%= job.response_deadline %></td>
+          <td><%= job.hourly_pay %></td>
+          <td><%= job.created_at %></td>
+          <td><%= job.updated_at %></td>
+          <td><%= link_to 'Show', job_path(job) %></td>
+          <% if current_user.username == job.username or current_user.admin? %>
+            <td><%= link_to 'Edit', edit_job_path(job) %></td>
+            <td><%= link_to 'Destroy', job_path(job),
+                    method: :delete,
+      	      data: { confirm: 'Are you sure?' }%></td>
+          <% end %>
+        </tr>
       <% end %>
-    </tr>
-  <% end %>
 </table>
