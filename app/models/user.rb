@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  has_many :job_applications, dependent: :destroy
+
   validates :username,
     presence: true,
     :format => {:with => /\A[0-9\w_]{4,20}\z/,

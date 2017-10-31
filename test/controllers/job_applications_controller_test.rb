@@ -7,6 +7,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @job = jobs(:one)
+    @user = users(:two)
 
     @job_application = job_applications(:one)
     @job_application.job = @job
@@ -18,7 +19,9 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
   test "can be created" do
     assert_difference 'JobApplication.count' do
       post job_job_applications_url(@job), params: {job_application: {
-	      applicant_username: @job.username}}
+	      user_id: @user.id}}
+#      post job_job_applications_url(@job), params: {job_application: {
+#	      applicant_username: @job.username}}
     end
     assert_redirected_to job_url(@job)
   end

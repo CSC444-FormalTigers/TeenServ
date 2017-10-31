@@ -38,7 +38,7 @@
 <% @job.job_applications.each do |app| %>
   <p>
     Applicant username:
-    <%= app.applicant_username %>
+    <%= app.user.name %>
 
     <%= link_to 'DELETE', 
       job_job_application_path(@job, app), 
@@ -50,14 +50,11 @@
 <br>
 
 <h2>Apply for this job? </h2>
-<%= form_with(model: [ @job, @job.job_applications.build ], local: true) do |form| %>
+<%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
   
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <div class="field">
-    <%= form.label :applicant_username  %><br>
-    <%= form.text_field :applicant_username, :readonly => true, value: current_user.username%>
-  </div>
-  <div class="field">
-    <%= form.submit %>
+	  <%= form.submit %>
   </div>
 <% end %>
 

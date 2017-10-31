@@ -13,8 +13,9 @@ class UsersController < ApplicationController
     @attributes_to_display = ['username',
       'email',
       'account_type']
-
-    @user = User.all
+      
+        #Sort users hash by username
+	@user = User.all.sort_by { |user| user["username"] }
   end
 
   def show
