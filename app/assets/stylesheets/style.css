@@ -82,7 +82,6 @@ Remove underline front links and replace with border-bottom
 */
 a {
 	text-decoration: none;
-	display: inline-block;
 	border-bottom: 1px solid #17b0e6;
 	padding: 0 2px;
 	color: #17b0e6;
@@ -433,6 +432,7 @@ user block style
     width: 100%;
     overflow: hidden;
     padding: 10px;
+		margin-bottom: 10px;
 }
 .user_container:nth-child(even) {
     background: #f7f7f7;
@@ -447,9 +447,10 @@ user block style
     border: 0;
 }
 .user_container .user_photo img {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     float: left;
+		border: 2px solid #efefef;
 }
 .user_container .username {
     font-size: 1.5em;
@@ -473,10 +474,11 @@ user block style
 }
 .user_container button a {
     line-height: 50px;
-    width: 50px;
+    width: 75px;
     margin-right: 10px;
     color: #fff;
     background: var(--blue);
+		display: inline-block;
 }
 .user_container .edit a {
     margin: 0;

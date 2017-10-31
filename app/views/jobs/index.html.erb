@@ -4,6 +4,12 @@
     <%= fa_icon "plus"%>Post Job
   <% end %>
 <% end %>
+
+<%= form_tag(jobs_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <table>
   <tr>
     <th>Username</th>
@@ -20,7 +26,7 @@
     <th></th>
   </tr>
 
-  <% @job.each do |job| %>
+  <% @jobs.each do |job| %>
     <tr>
       <td><%= job.username %></td>
       <td><%= job.title %></td>
