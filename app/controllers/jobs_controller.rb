@@ -14,7 +14,8 @@ class JobsController < ApplicationController
   ]
 
   def index
-    @job = Job.all
+    #@job = Job.all
+    @jobs = Job.search(params[:search])
   end
 
   def create
