@@ -49,15 +49,22 @@
 <% end %>
 <br>
 
-<h2>Apply for this job? </h2>
-<%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
-  
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <div class="field">
-	  <%= form.submit %>
-  </div>
-<% end %>
+<% app = current_user.job_applications.where(:job_id == @job.id).last %>
 
+<% if app.blank? %>
+
+  <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
+      
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit %>
+  <% end %>
+
+<% else %>
+  <%= button_to 'Cancel Job Application', 
+    job_job_application_path(@job, app), 
+    method: :delete,
+    data: {confirm: 'Are you sure?'} %>
+<% end %>
 
 
 <% if current_user.username == @job.username or current_user.admin? %>
