@@ -61,4 +61,5 @@ gem 'devise', '4.3.0'
 gem 'carrierwave', '1.2.1'
 
 gem 'mailboxer'
-gem 'fog', '1.42.0'
+
+gem 'fog-aws', '1.4.1'
