@@ -21,3 +21,6 @@
 
 #Ignore uploaded files. Development environment and production should have different files uploaded.
 /public/uploads/*
+
+# Ignore application configuration
+/config/application.yml
