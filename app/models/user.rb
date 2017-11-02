@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  mount_uploader :resume, ResumeUploader
+
   has_many :job_applications, dependent: :destroy
 
   validates :username,
@@ -36,17 +38,17 @@ class User < ApplicationRecord
     on: :create
 
   attr_accessor :terms_of_service
-  
+
   acts_as_messageable
 
   def to_param
     username
   end
-  
+
   def name
 	username
   end
-  
+
   def mailboxer_email(object)
   #currently not implemented
 	return nil
