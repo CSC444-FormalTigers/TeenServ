@@ -3,9 +3,10 @@ CarrierWave.configure do |config|
   config.fog_provider = 'fog/aws'
   config.fog_credentials = {                          # required
     :provider               => 'AWS',
-    :aws_access_key_id      => 'AKIAJ7WIXBXGS2V33LVQ',            # required
-    :aws_secret_access_key  => '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',     # required
-    :region                 => 'eu-east-2'                        # optional, defaults to 'us-east-1'
+    :aws_access_key_id      => 'AKIAIYKNV7R6BHL42CQA ',            # required
+    :aws_secret_access_key  => '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',     # required
+    :region                 => 'us-east-2',                        # optional, defaults to 'us-east-1'
+    :host                   => 's3-us-east-2.amazonaws.com'
   }
   config.fog_directory  = 'teenserv'               # required
 
