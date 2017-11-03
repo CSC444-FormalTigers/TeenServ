@@ -15,6 +15,22 @@ two:
   account_type: client
   admin: false
 
+user_with_avatar:
+  username: avatar
+  password: avatar
+  email: avatar@avatar.com
+  account_type: client
+  admin: false
+  avatar: testdownload.jpg
+
+user_with_disposable_avatar:
+  username: avatar2
+  password: avatar2
+  email: avatar2@avatar.com
+  account_type: client
+  admin: false
+  avatar: testdownload.jpg
+
 admin:
   username: admin
   password: admin

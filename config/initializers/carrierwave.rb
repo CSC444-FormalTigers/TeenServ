@@ -1,7 +1,7 @@
 CarrierWave.configure do |config|
 
-  # Use local storage if in development or test
-  if Rails.env.development? || Rails.env.test?
+  # Use local storage if in development
+  if Rails.env.development?
     CarrierWave.configure do |config|
       config.storage = :file
     end

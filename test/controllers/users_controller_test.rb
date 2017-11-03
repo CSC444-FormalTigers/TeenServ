@@ -4,6 +4,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @other_user = users(:two)
+    @user_with_avatar = users(:user_with_avatar)
+    @user_with_disposable_avatar = users(:user_with_disposable_avatar)
     @admin = users(:admin)
   end
 
@@ -90,6 +92,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_path(@user)
 
     assert_equal "possible@email.com", @user.reload.email
+  end
+
+  test "can update user with an avatar" do
+    patch user_url(@user),
+     params: { user: {
+        avatar: fixture_file_upload(Rails.root.join('test','fixtures','files','testupload.jpg'))
+      }}
+    assert_redirected_to user_path(@user)
+
+    assert File.exists?($carrierwave_root.join('uploads','user','avatar','980190962','testupload.jpg')),
+      "Uploaded file testupload.jpg was not found in " +
+      "#{$carrierwave_root.join('uploads','user','avatar','980190962','testupload.jpg')}"
+  end
+
+  test "can get avatar from user" do
+    assert File.exists?(@user_with_avatar.avatar.file.path)
+  end
+
+  test "can delete avatar from user" do
+    sign_out :user
+    sign_in @user_with_disposable_avatar
+    delete user_url(@user_with_disposable_avatar)
+    assert !File.exists?("#{$carrierwave_root.join('uploads','user','avatar','1040963319','testdownload.jpg')}")
   end
 
   test "can delete a user" do
