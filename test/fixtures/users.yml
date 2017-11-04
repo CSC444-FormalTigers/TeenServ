@@ -22,6 +22,7 @@ user_with_avatar:
   account_type: client
   admin: false
   avatar: testdownload.jpg
+  resume: test.pdf
 
 user_with_disposable_avatar:
   username: avatar2
@@ -30,6 +31,7 @@ user_with_disposable_avatar:
   account_type: client
   admin: false
   avatar: testdownload.jpg
+  resume: test.pdf
 
 admin:
   username: admin

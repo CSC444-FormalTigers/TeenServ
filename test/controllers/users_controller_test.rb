@@ -4,8 +4,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @other_user = users(:two)
-    @user_with_avatar = users(:user_with_avatar)
-    @user_with_disposable_avatar = users(:user_with_disposable_avatar)
+    @user_with_files = users(:user_with_avatar)
+    @user_with_disposable_files = users(:user_with_disposable_avatar)
     @admin = users(:admin)
   end
 
@@ -106,15 +106,50 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       "#{$carrierwave_root.join('uploads','user','avatar','980190962','testupload.jpg')}"
   end
 
-  test "can get avatar from user" do
-    assert File.exists?(@user_with_avatar.avatar.file.path)
+  test "can't update user avatar with non image" do
+    patch user_url(@user),
+      params: {user: {
+        avatar: fixture_file_upload('files/test.pdf','.pdf')
+        }}
+    assert_response :success
+    assert !File.exists?($carrierwave_root.join('uploads','user','avatar','980190962','test.pdf'))
   end
 
-  test "can delete avatar from user" do
+  test "can get avatar from user" do
+    assert File.exists?(@user_with_files.avatar.file.path)
+  end
+
+  test "can update user with a resume" do
+    patch user_url(@user),
+     params: { user: {
+        resume: fixture_file_upload('files/test.pdf','.pdf')
+      }}
+    assert_redirected_to user_path(@user)
+
+    assert File.exists?($carrierwave_root.join('uploads','user','resume','980190962','test.pdf')),
+      "Uploaded file testupload.jpg was not found in " +
+      "#{$carrierwave_root.join('uploads','user','resume','980190962','test.pdf')}"
+  end
+
+  test "can't update user resume with non pdf" do
+    patch user_url(@user),
+      params: {user: {
+        resume: fixture_file_upload('files/testupload.jpg','image/jpg')
+        }}
+    assert_response :success
+    assert !File.exists?($carrierwave_root.join('uploads','user','resume','980190962','testupload.jpg'))
+  end
+
+  test "can get resume from user" do
+    assert File.exists?(@user_with_files.resume.file.path)
+  end
+
+  test "can delete files from user" do
     sign_out :user
-    sign_in @user_with_disposable_avatar
-    delete user_url(@user_with_disposable_avatar)
-    assert !File.exists?("#{$carrierwave_root.join('uploads','user','avatar','1040963319','testdownload.jpg')}")
+    sign_in @user_with_disposable_files
+    delete user_url(@user_with_disposable_files)
+    assert !File.exists?("#{$carrierwave_root.join('uploads','user','resume','1040963319','testdownload.jpg')}")
+    assert !File.exists?("#{$carrierwave_root.join('uploads','user','resume','1040963319','test.pdf')}")
   end
 
   test "can delete a user" do
