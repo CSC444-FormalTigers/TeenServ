@@ -97,7 +97,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "can update user with an avatar" do
     patch user_url(@user),
      params: { user: {
-        avatar: fixture_file_upload(Rails.root.join('test','fixtures','files','testupload.jpg'))
+        avatar: fixture_file_upload('files/testupload.jpg','image/jpg')
       }}
     assert_redirected_to user_path(@user)
 
