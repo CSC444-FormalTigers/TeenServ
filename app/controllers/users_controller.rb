@@ -74,6 +74,16 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def resume
+    @user = find_user_with_username
+    if Rails.env.production?
+      pdf = open(@user.resume.url)
+      send_data pdf.read, filename: "#{@user.resume.file.identifier}", type: "application/pdf", disposition: 'inline'
+    else
+      send_file @user.resume.current_path, filename: "#{@user.resume.file.identifier}", type: "application/pdf", disposition: 'inline'
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:username,

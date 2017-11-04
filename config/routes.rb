@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'misc/terms'
   get 'misc/contact'
   get 'misc/faq'
-  
+
   resources :conversations
   resources :messages
 
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     member do
       get 'grant_admin'
       get 'remove_admin'
+      get 'resume'
     end
   end
 

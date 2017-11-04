@@ -3,7 +3,7 @@
 <div id="photo_container">
   <%=
     user = @user
-    render partial: 'user_image', locals: {user: user} 
+    render partial: 'user_image', locals: {user: user}
   %>
 </div>
   <% if current_user.admin? or current_user == @user %>
@@ -19,6 +19,7 @@
           <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
         <% end %>
 	  <% end %>
+    <%= link_to 'Show Resume', resume_user_path + '.pdf' %><br>
     </div>
   <% else %>
     <%-# Public View -%>
