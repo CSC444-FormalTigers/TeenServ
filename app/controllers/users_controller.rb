@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @attributes_to_display = ['username',
       'email',
       'account_type']
-      
+
         #Sort users hash by username
 	@user = User.all.sort_by { |user| user["username"] }
   end
@@ -78,17 +78,18 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username,
         :password,
-	:password_confirmation,
-	:email,
-	:name,
-	:age,
-	:gender,
-	:cell_phone,
-	:home_phone,
-	:address,
-	:photo,
-	:account_type,
-  :avatar)
+      	:password_confirmation,
+      	:email,
+      	:name,
+      	:age,
+      	:gender,
+      	:cell_phone,
+      	:home_phone,
+      	:address,
+      	:photo,
+      	:account_type,
+        :avatar,
+        :resume)
     end
 
     def find_user_with_username

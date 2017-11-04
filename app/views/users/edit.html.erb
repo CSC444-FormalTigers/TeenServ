@@ -28,7 +28,7 @@
 
   <p>
     <%= form.label :avatar %> <br>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, accept: 'image/*' %>
   </p>
 
   <p>
@@ -69,8 +69,15 @@
 
   <p>
     <%= form.label :account_type, 'Account Type' %><br>
-    <%= form.select(:account_type, options_for_select({'Client' => 'client', 'Teenager' => 'teenager'})) %>
+    <%= form.select(:account_type, options_for_select({'Client' => 'client', 'Teenager' => 'teenager'}, "#{@user.account_type}")) %>
   </p>
+
+  <% if @user.account_type == 'teenager' %>
+    <p>
+      <%= form.label :resume, 'Resume' %><br>
+      <%= form.file_field :resume, accept: '.pdf' %>
+    </p>
+  <% end %>
 
   <p>
     <%= form.submit %>
