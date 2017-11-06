@@ -33,42 +33,43 @@
   <%= @job.hourly_pay %>
 </div>
 
+<% if current_user.username == @job.username or current_user.admin? %>
+  <%= link_to 'Edit this job', edit_job_path(@job) %>
 
-<h2>Applicants to this Job</h2>
-<% @job.job_applications.each do |app| %>
-  <p>
-    Applicant username:
-    <%= app.user.name %>
+  <h2>Applicants to this Job</h2>
+  <% @job.job_applications.each do |app| %>
+    <li>
+      Applicant username:
+      <%= app.user.name %>
+  
+      <%= link_to 'Reject this applicant', 
+        job_job_application_path(@job, app), 
+        method: :delete,
+        data: {confirm: 'Are you sure?'} %>
+    </li>
+  
+  <% end %>
+  <br>
 
-    <%= link_to 'DELETE', 
+<% else %>
+
+  <% app = current_user.job_applications.where(:job_id == @job.id).last %>
+  <% if app.blank? %>
+  
+    <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
+        
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.submit %>
+    <% end %>
+  
+  <% else %>
+    <%= button_to 'Cancel Job Application', 
       job_job_application_path(@job, app), 
       method: :delete,
       data: {confirm: 'Are you sure?'} %>
-  </p>
-
-<% end %>
-<br>
-
-<% app = current_user.job_applications.where(:job_id == @job.id).last %>
-
-<% if app.blank? %>
-
-  <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
-      
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.submit %>
   <% end %>
 
-<% else %>
-  <%= button_to 'Cancel Job Application', 
-    job_job_application_path(@job, app), 
-    method: :delete,
-    data: {confirm: 'Are you sure?'} %>
-<% end %>
 
-
-<% if current_user.username == @job.username or current_user.admin? %>
-  <%= link_to 'Edit', edit_job_path(@job) %>
 <% end %>
 
 <%= link_to 'Back', jobs_path %>
