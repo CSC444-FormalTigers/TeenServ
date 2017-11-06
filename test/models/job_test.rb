@@ -35,5 +35,16 @@ class JobTest < ActiveSupport::TestCase
     assert @job.save
     
   end
+
+  test "deleting a user deletes its jobs" do
+    user = users(:one)
+    job = jobs(:one)
+    job.user = user
+    job.save
+
+    assert user.destroy
+    assert_raise(ActiveRecord::RecordNotFound) { job.reload }
+
+  end
   
 end

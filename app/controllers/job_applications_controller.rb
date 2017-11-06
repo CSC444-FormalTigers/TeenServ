@@ -16,7 +16,7 @@ class JobApplicationsController < ApplicationController
     @job_application = @job.job_applications.find(params[:id])
     @job_application.destroy
 
-    redirect_to job_path(@job)
+    redirect_to job_path(@job), notice: 'Deleted a job application'
   end
 
   private

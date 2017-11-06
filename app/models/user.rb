@@ -9,6 +9,7 @@ class User < ApplicationRecord
   mount_uploader :resume, ResumeUploader
 
   has_many :job_applications, dependent: :destroy
+  has_many :jobs, dependent: :destroy
 
   validates :username,
     presence: true,

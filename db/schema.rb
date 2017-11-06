@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102181341) do
+ActiveRecord::Schema.define(version: 20171106230800) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20171102181341) do
     t.integer "hourly_pay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
