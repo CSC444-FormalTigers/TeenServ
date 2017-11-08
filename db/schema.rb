@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106230800) do
+ActiveRecord::Schema.define(version: 20171108035608) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171106230800) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "is_accepted", default: false
     t.index ["job_id"], name: "index_job_applications_on_job_id"
     t.index ["user_id"], name: "index_job_applications_on_user_id"
   end
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20171106230800) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "is_accepting_applicants", default: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
