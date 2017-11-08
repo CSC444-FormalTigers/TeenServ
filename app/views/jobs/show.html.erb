@@ -39,9 +39,15 @@
   <h2>Applicants to this Job</h2>
   <% @job.job_applications.each do |app| %>
     <li>
-      Applicant username:
-      <%= app.user.name %>
-  
+      Applicant username:  
+      <%= link_to app.user.name, 
+          user_path(app.user) %>
+
+      <% unless app.user.resume.blank? %>
+          <%= link_to 'Show Resume', 
+	       resume_user_path(app.user) + '.pdf' %>
+      <% end %>
+
       <%= link_to 'Reject this applicant', 
         job_job_application_path(@job, app), 
         method: :delete,
