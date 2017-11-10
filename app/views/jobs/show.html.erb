@@ -39,7 +39,6 @@
   <h2>Applicants to this Job</h2>
   <% @job.job_applications.each do |app| %>
     <li>
-      Applicant username:  
       <%= link_to app.user.name, 
           user_path(app.user) %>
 
@@ -47,6 +46,11 @@
           <%= link_to 'Show Resume', 
 	       resume_user_path(app.user) + '.pdf' %>
       <% end %>
+
+      <%= link_to 'Accept this applicant', 
+        accept_applicant_job_path(@job), 
+        method: :patch, 
+        data: {confirm: 'Are you sure?'} %>
 
       <%= link_to 'Reject this applicant', 
         job_job_application_path(@job, app), 

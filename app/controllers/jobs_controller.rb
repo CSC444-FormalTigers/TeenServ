@@ -57,6 +57,11 @@ class JobsController < ApplicationController
   end
 
 
+  def accept_applicant
+    @job = find_job_with_id
+
+    redirect_to job_path(@job), notice: 'Accepted applicant!'
+  end
 
 
   private
