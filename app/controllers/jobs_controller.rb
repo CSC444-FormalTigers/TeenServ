@@ -57,8 +57,16 @@ class JobsController < ApplicationController
   end
 
 
+  # For now, only allow one applicant to be accepted for a job.
   def accept_applicant
     @job = find_job_with_id
+    
+    applicant_id = params[:job_application_id]
+    
+    query = @job.job_applications.where(:is_accepted => true)
+    query.last.update_attribute(:is_accepted, false) if !query.empty? 
+
+    @job.job_applications.where(:id => applicant_id).last.update_attribute(:is_accepted, true)
 
     redirect_to job_path(@job), notice: 'Accepted applicant!'
   end
