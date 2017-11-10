@@ -30,7 +30,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
       post jobs_url, params: {job: {
         username: "PossibleUserName",
         title: "Some Title",
-        description: "Some Description"}}
+        description: "Some Description",}}
     end
     assert_redirected_to new_user_session_url
 
@@ -44,7 +44,8 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
         username: "PossibleUserName",
         title: "Some Title",
         description: "Some Description",
-		hourly_pay: "10"}}
+		hourly_pay: "10",
+    payment_method: "Credit"}}
     end
 
     assert_redirected_to job_url(Job.last)

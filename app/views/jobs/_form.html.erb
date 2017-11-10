@@ -50,6 +50,12 @@
   </div>
 
   <div class="field">
+    <%= form.label :payment_method, 'New Payment Method' %><br>
+    <%= form.text_field :payment_method %>
+  </div>
+
+
+  <div class="field">
     <%= form.submit %>
   </div>
 <% end %>

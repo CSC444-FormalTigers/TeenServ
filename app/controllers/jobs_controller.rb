@@ -80,7 +80,8 @@ class JobsController < ApplicationController
         :reocurring, 
         :work_date,
         :response_deadline, 
-        :hourly_pay)
+        :hourly_pay,
+        :payment_method)
     end
 
     def find_job_with_id

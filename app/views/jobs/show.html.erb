@@ -33,6 +33,11 @@
   <%= @job.hourly_pay %>
 </div>
 
+<div>
+  Payment Meythod:
+  <%= @job.payment_method %>
+</div>
+
 <% if current_user.username == @job.username or current_user.admin? %>
   <%= link_to 'Edit this job', edit_job_path(@job) %>
 

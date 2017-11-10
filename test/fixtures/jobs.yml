@@ -9,6 +9,7 @@ one:
   work_date:
   response_deadline:
   hourly_pay: 1
+  payment_method: Credit
 
 two:
   id: 2
@@ -19,3 +20,4 @@ two:
   work_date:
   response_deadline:
   hourly_pay: 1
+  payment_method: Credit
