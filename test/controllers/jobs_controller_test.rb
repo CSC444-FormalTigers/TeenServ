@@ -7,6 +7,10 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     @admin_user = users(:admin)
 
     @job = jobs(:one)
+
+    @job_application = job_applications(:one)
+    @job_application.job = @job
+    assert @job_application.save
   end
 
   test "can get index of jobs" do
@@ -110,5 +114,13 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
+
+  test "can accept job application" do
+    patch accept_applicant_job_url(@job, :job_application_id => @job_application.id)
+    assert_redirected_to job_path(@job)
+
+    @job_application.reload
+    assert(@job_application.is_accepted)
+  end
 
 end
