@@ -1,101 +1,103 @@
-<div>
-  Job Poster Username:
-  <%= @job.username %>
-</div>
+<div class="padded-container">
+  <div>
+    Job Poster Username:
+    <%= @job.username %>
+  </div>
 
-<div>
-  Title:
-  <%= @job.title %>
-</div>
+  <div>
+    Title:
+    <%= @job.title %>
+  </div>
 
-<div>
-  Description:
-  <%= @job.description %>
-</div>
+  <div>
+    Description:
+    <%= @job.description %>
+  </div>
 
-<div>
-  Reocurring:
-  <%= @job.reocurring %>
-</div>
+  <div>
+    Reocurring:
+    <%= @job.reocurring %>
+  </div>
 
-<div>
-  Work Date:
-  <%= @job.work_date %>
-</div>
+  <div>
+    Work Date:
+    <%= @job.work_date %>
+  </div>
 
-<div>
-  Response Deadline:
-  <%= @job.response_deadline %>
-</div>
+  <div>
+    Response Deadline:
+    <%= @job.response_deadline %>
+  </div>
 
-<div>
-  Hourly Pay:
-  <%= @job.hourly_pay %>
-</div>
+  <div>
+    Hourly Pay:
+    <%= @job.hourly_pay %>
+  </div>
 
-<div>
-  Payment Meythod:
-  <%= @job.payment_method %>
-</div>
+  <div>
+    Payment Meythod:
+    <%= @job.payment_method %>
+  </div>
 
-<% if current_user.username == @job.username or current_user.admin? %>
+  <% if current_user.username == @job.username or current_user.admin? %>
   <%= link_to 'Edit this job', edit_job_path(@job) %>
 
-  <h2>Applicants to this Job</h2>
+  <h2 class="page_title">Applicants to this Job</h2>
   <% @job.job_applications.each do |app| %>
-    <li>
-      <%= link_to app.user.name, 
-          user_path(app.user) %>
+  <li>
+    <%= link_to app.user.name,
+    user_path(app.user) %>
 
-      <% unless app.user.resume.blank? %>
-          <%= link_to 'Show Resume', 
-	       resume_user_path(app.user) + '.pdf' %>
-      <% end %>
+    <% unless app.user.resume.blank? %>
+    <%= link_to 'Show Resume',
+    resume_user_path(app.user) + '.pdf' %>
+    <% end %>
 
-      <% if !app.is_accepted %>
+    <% if !app.is_accepted %>
 
-        <%= link_to 'Accept this applicant', 
-          accept_applicant_job_path(@job, :job_application_id => app.id), 
-          method: :patch %>
+    <%= link_to 'Accept this applicant',
+    accept_applicant_job_path(@job, :job_application_id => app.id),
+    method: :patch %>
 
-      <% else %>
+    <% else %>
 
-        is accepted.
+    is accepted.
 
-        <%= link_to 'Unaccept this applicant', 
-          unaccept_applicant_job_path(@job, :job_application_id => app.id), 
-          method: :patch %>
+    <%= link_to 'Unaccept this applicant',
+    unaccept_applicant_job_path(@job, :job_application_id => app.id),
+    method: :patch %>
 
-      <% end %>
+    <% end %>
 
-      <%= link_to 'Delete this applicant', 
-        job_job_application_path(@job, app), 
-        method: :delete,
-        data: {confirm: 'Are you sure?'} %>
-    </li>
-  
+    <%= link_to 'Delete this applicant',
+    job_job_application_path(@job, app),
+    method: :delete,
+    data: {confirm: 'Are you sure?'} %>
+  </li>
+
   <% end %>
   <br>
 
-<% else %>
+  <% else %>
 
   <% app = current_user.job_applications.where(:job_id == @job.id).last %>
   <% if app.blank? %>
-  
-    <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
-        
-      <%= form.hidden_field :user_id, value: current_user.id %>
-      <%= form.submit %>
-    <% end %>
-  
+
+  <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.submit %>
+  <% end %>
+
   <% else %>
-    <%= button_to 'Cancel Job Application', 
-      job_job_application_path(@job, app), 
-      method: :delete,
-      data: {confirm: 'Are you sure?'} %>
+  <%= button_to 'Cancel Job Application',
+  job_job_application_path(@job, app),
+  method: :delete,
+  data: {confirm: 'Are you sure?'} %>
   <% end %>
 
 
-<% end %>
+  <% end %>
 
-<%= link_to 'Back', jobs_path %>
+  <%= link_to 'Back', jobs_path %>
+</div>

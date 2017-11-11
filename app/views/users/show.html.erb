@@ -1,5 +1,6 @@
+<div class="padded-container">
 <%-# Show to all user types -%>
-<h2><%= @user.username %></h2>
+<h2 class="page_title"><%= @user.username %></h2>
 <div id="photo_container">
   <%=
     user = @user
@@ -25,3 +26,4 @@
     <%-# Public View -%>
 
   <% end %>
+</div>

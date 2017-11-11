@@ -1,5 +1,7 @@
-<h1> Listing all users </h1>
+<div class="padded-container">
+<h1 class="page_title"> Listing all users </h1>
 
 <% @user.each do |user| %>
   <%= render partial: 'user', locals: {user: user} %>
 <% end %>
+</div>
