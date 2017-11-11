@@ -123,4 +123,14 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert(@job_application.is_accepted)
   end
 
+  test "can unaccept job application" do
+    @job_application.is_accepted = true
+    assert @job_application.save
+
+    patch unaccept_applicant_job_url(@job, :job_application_id => @job_application.id)
+    assert_redirected_to job_path(@job)
+
+    @job_application.reload
+    assert(!@job_application.is_accepted)
+  end
 end

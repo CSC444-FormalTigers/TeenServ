@@ -72,6 +72,20 @@ class JobsController < ApplicationController
     end
   end
 
+  def unaccept_applicant
+    @job = find_job_with_id
+    
+    applicant_id = params[:job_application_id]
+
+    query = @job.job_applications.where(:id => applicant_id)
+    
+    if !query.empty?
+      query.last.update_attribute(:is_accepted, false)
+      redirect_to job_path(@job), notice: 'Unaccepted applicant!'
+    else
+      redirect_back root_url
+    end
+  end
 
   private
     def job_params

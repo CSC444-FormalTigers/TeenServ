@@ -60,11 +60,15 @@
 
       <% else %>
 
-        is accepted. 
+        is accepted.
+
+        <%= link_to 'Unaccept this applicant', 
+          unaccept_applicant_job_path(@job, :job_application_id => app.id), 
+          method: :patch %>
 
       <% end %>
 
-      <%= link_to 'Reject this applicant', 
+      <%= link_to 'Delete this applicant', 
         job_job_application_path(@job, app), 
         method: :delete,
         data: {confirm: 'Are you sure?'} %>

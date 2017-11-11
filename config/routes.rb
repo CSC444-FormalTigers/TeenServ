@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
     member do
       patch 'accept_applicant'
+      patch 'unaccept_applicant'
     end 
   end
 
