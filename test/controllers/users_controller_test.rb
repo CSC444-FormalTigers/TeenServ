@@ -151,10 +151,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_url(@user)
   end
 
-  test "can't get resume if user doesn't have one" do
-
-  end
-
   test "can delete files from user" do
     sign_out :user
     sign_in @user_with_disposable_files
