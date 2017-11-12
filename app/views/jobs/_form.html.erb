@@ -35,6 +35,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :is_accepting_applicants, "Is Accepting Applicants? (If this is not checked, nobody can apply for this job)" %><br>
+    <%= form.check_box :is_accepting_applicants %>
+  </div>
+
+  <div class="field">
     <%= form.label :work_date, 'New Work Date' %><br>
     <%= form.datetime_local_field :work_date, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
   </div>
@@ -59,5 +64,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<%= link_to 'Back', jobs_path %>

@@ -96,7 +96,8 @@ class JobsController < ApplicationController
         :work_date,
         :response_deadline, 
         :hourly_pay,
-        :payment_method)
+        :payment_method,
+        :is_accepting_applicants)
     end
 
     def find_job_with_id

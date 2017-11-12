@@ -1,13 +1,18 @@
 class JobApplicationsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
-    @job_application = @job.job_applications.create(job_application_params)
-    if(@job_application.save)
-      @notice_string = "Successfully applied for this job"
+    
+    if @job.is_accepting_applicants
+      @job_application = @job.job_applications.create(job_application_params)
+      if(@job_application.save)
+        redirect_to job_path(@job), notice: "Successfully applied for this job"
+      else
+        render job_path(@job), notice: "You have already applied to this job"
+      end
+
     else
-      @notice_string = "You have already applied to this job"
+      redirect_to job_path(@job), notice: "Job is not accepting more applicants."
     end
-    redirect_to job_path(@job), notice: @notice_string
       
   end
 

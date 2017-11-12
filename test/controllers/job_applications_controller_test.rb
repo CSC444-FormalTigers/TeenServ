@@ -30,4 +30,14 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to job_url(@job)
   end
+
+  test "can not be created if job does not accept" do
+    @job.is_accepting_applicants = false
+    @job.save
+    assert_no_difference 'JobApplication.count' do
+      post job_job_applications_url(@job), params: {job_application: {
+	      user_id: @user.id}}
+    end
+    assert_redirected_to job_url(@job)
+  end
 end

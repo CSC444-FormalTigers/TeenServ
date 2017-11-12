@@ -39,65 +39,68 @@
     <%= @job.payment_method %>
   </div>
 
+  <div>
+    Is This Job Accepting Applicants?
+    <%= @job.is_accepting_applicants %>
+  </div>
+
   <% if current_user.username == @job.username or current_user.admin? %>
-  <%= link_to 'Edit this job', edit_job_path(@job) %>
+    <%= link_to 'Edit this job', edit_job_path(@job) %>
 
-  <h2 class="page_title">Applicants to this Job</h2>
-  <% @job.job_applications.each do |app| %>
-  <li>
-    <%= link_to app.user.name,
-    user_path(app.user) %>
+    <h2 class="page_title">Applicants to this Job</h2>
+    <% @job.job_applications.each do |app| %>
+    <li>
+      <%= link_to app.user.name,
+        user_path(app.user) %>
 
-    <% unless app.user.resume.blank? %>
-    <%= link_to 'Show Resume',
-    resume_user_path(app.user) + '.pdf' %>
+      <% unless app.user.resume.blank? %>
+        <%= link_to 'Show Resume',
+        resume_user_path(app.user) + '.pdf' %>
+      <% end %>
+
+      <% if !app.is_accepted %>
+
+      <%= link_to 'Accept this applicant',
+        accept_applicant_job_path(@job, :job_application_id => app.id),
+        method: :patch %>
+
+      <% else %>
+
+      is accepted.
+
+      <%= link_to 'Unaccept this applicant',
+        unaccept_applicant_job_path(@job, :job_application_id => app.id),
+        method: :patch %>
+
+      <% end %>
+
+      <%= link_to 'Delete this applicant',
+        job_job_application_path(@job, app),
+        method: :delete,
+        data: {confirm: 'Are you sure?'} %>
+    </li>
+
     <% end %>
-
-    <% if !app.is_accepted %>
-
-    <%= link_to 'Accept this applicant',
-    accept_applicant_job_path(@job, :job_application_id => app.id),
-    method: :patch %>
-
-    <% else %>
-
-    is accepted.
-
-    <%= link_to 'Unaccept this applicant',
-    unaccept_applicant_job_path(@job, :job_application_id => app.id),
-    method: :patch %>
-
-    <% end %>
-
-    <%= link_to 'Delete this applicant',
-    job_job_application_path(@job, app),
-    method: :delete,
-    data: {confirm: 'Are you sure?'} %>
-  </li>
-
-  <% end %>
-  <br>
-
+  
   <% else %>
 
-  <% app = current_user.job_applications.where(:job_id == @job.id).last %>
+    <% app = current_user.job_applications.where(:job_id == @job.id).last %>
+
   <% if app.blank? %>
 
-  <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
+    <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
 
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.submit %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.submit %>
+    <% end %>
+
+    <% else %>
+      <%= button_to 'Cancel Job Application',
+      job_job_application_path(@job, app),
+      method: :delete,
+      data: {confirm: 'Are you sure?'} %>
+    <% end %>
+
+
   <% end %>
-
-  <% else %>
-  <%= button_to 'Cancel Job Application',
-  job_job_application_path(@job, app),
-  method: :delete,
-  data: {confirm: 'Are you sure?'} %>
-  <% end %>
-
-
-  <% end %>
-
-  <%= link_to 'Back', jobs_path %>
 </div>
