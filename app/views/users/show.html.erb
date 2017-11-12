@@ -7,6 +7,9 @@
     render partial: 'user_image', locals: {user: user}
   %>
 </div>
+  <% if !@user.resume.file.nil? %>
+    <span class="resume_link"><%= link_to 'Show Resume', resume_user_path + '.pdf' %></span><br>
+  <% end %>
   <% if current_user.admin? or current_user == @user %>
     <%-# Private View -%>
     <span class="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></span>
@@ -20,7 +23,6 @@
           <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
         <% end %>
 	  <% end %>
-    <%= link_to 'Show Resume', resume_user_path + '.pdf' %><br>
     </div>
   <% else %>
     <%-# Public View -%>
