@@ -6,27 +6,6 @@ License: none (public domain)
 */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -93,6 +72,7 @@ body {
 }
 .padded-container {
 	padding: 50px;
+	position: relative;
 }
 /*
 Remove underline front links and replace with border-bottom
@@ -282,7 +262,7 @@ Main content
 	margin-bottom: 20px;
 }
 #main_content .page_title {
-
+	padding-top: 10px;;
 }
 /*
 table styles
@@ -348,6 +328,27 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
 	background: #25c0f7;
 }
+/**
+* Search Form
+*/
+#main_content .search {
+	max-width: 800px;
+	padding: 0;
+	margin: 50px auto;
+}
+.search input[type="text"] {
+	width: 80%;
+	float: left;
+	padding: 6px;
+	border-radous: 5px 0 0 5px;
+}
+.search input[type="submit"] {
+	width: 20%;
+	border-radius: 0 5px 5px 0px;
+	margin: 0;
+	padding: 6px 0;
+	border-left: none;
+}
 /*
 Features
 */
@@ -375,7 +376,7 @@ div#eyecatch {
 	color: #000;
 }
 #features a:hover {
-    border: 5px solid #eaeaea;
+	border: 5px solid #eaeaea;
 	background: #ededed;
 }
 .feature:first-child {
@@ -510,4 +511,29 @@ Admin Styles
 .edit_link {
 	float: right;
 	font-size: 1.1em;
+}
+/**
+* Add Button Style
+*/
+.add_button {
+	transition: background ease .2s,
+	border ease .2s;
+	float: right;
+	position: absolute;
+	top: 20px; left: 20px;
+	display: inline-block;
+	border-bottom: none;
+	background: #22b0e6;
+	border: 1px solid #1fa2d4;
+	border-radius: 2px;
+	color: #fff;
+	padding: 15px 20px;
+}
+.add_button .fa {
+	padding-right: 20px;
+}
+.add_button:hover {
+	color: #fff;
+	background: #25c0f7;
+	border: 1px solid #22b0e6;
 }

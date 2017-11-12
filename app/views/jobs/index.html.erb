@@ -1,12 +1,12 @@
 <div class="padded-container">
   <h1 class="page_title"> Listing all jobs </h1>
   <% if current_user.account_type == "client" %>
-  <%= link_to new_job_path do %>
+  <%= link_to new_job_path, class: "add_button" do %>
   <%= fa_icon "plus"%>Post Job
   <% end %>
   <% end %>
 
-  <%= form_tag(jobs_path, method: :get) do %>
+  <%= form_tag(jobs_path, method: :get, :class => "search") do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag 'Search', name: nil %>
   <% end %>
