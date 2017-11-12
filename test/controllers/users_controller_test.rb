@@ -141,7 +141,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "can get resume from user" do
-    assert File.exists?(@user_with_files.resume.file.path)
+    get(resume_user_url(@user_with_files) + ".pdf")
+    assert_response :success
+    assert_equal "application/pdf", response.content_type
+  end
+
+  test "can't get resume if user doesnt have one" do
+    get(resume_user_url(@user) + ".pdf")
+    assert_redirected_to user_url(@user)
+  end
+
+  test "can't get resume if user doesn't have one" do
+
   end
 
   test "can delete files from user" do

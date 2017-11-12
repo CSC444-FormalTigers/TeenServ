@@ -76,7 +76,9 @@ class UsersController < ApplicationController
 
   def resume
     @user = find_user_with_username
-    if Rails.env.production?
+    if @user.resume.file.nil?
+      redirect_to @user
+    elsif Rails.env.production?
       pdf = open(@user.resume.url)
       send_data pdf.read, filename: "#{@user.resume.file.filename}", type: "application/pdf", disposition: 'inline'
     else
