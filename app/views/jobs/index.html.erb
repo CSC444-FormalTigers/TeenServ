@@ -11,7 +11,7 @@
   <%= submit_tag 'Search', name: nil %>
   <% end %>
 
-  <table>
+  <!--<table>
     <tr>
       <th>Username</th>
       <th>Title</th>
@@ -26,10 +26,11 @@
       <th></th>
       <th></th>
       <th></th>
-    </tr>
+    </tr>-->
 
     <% @jobs.each do |job| %>
-    <tr>
+    <%= render partial: 'job', locals: {job: job} %>
+    <!--<tr>
       <td><%= job.username %></td>
       <td><%= job.title %></td>
       <td><%= job.description %></td>
@@ -47,7 +48,7 @@
       method: :delete,
       data: { confirm: 'Are you sure?' }%></td>
       <% end %>
-    </tr>
+    </tr>-->
     <% end %>
-  </table>
+  <!--</table>-->
 </div>

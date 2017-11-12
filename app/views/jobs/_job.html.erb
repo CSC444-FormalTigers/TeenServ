@@ -1,0 +1,19 @@
+<div class="job_container">
+  <%= link_to job_path(job) do %>
+    <span class="username"><%= job.username %></span>
+  <% end %>
+  <% if current_user.admin? or current_user.username == job.username %>
+    <div class="edit">
+      <%= link_to edit_job_path(job) do %>
+        <%= fa_icon "pencil" %>
+      <% end %>
+    </div>
+    <div class="delete">
+      <%= link_to job_path(job),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } do %>
+        <%= fa_icon "minus" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

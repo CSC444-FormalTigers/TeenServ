@@ -6,6 +6,7 @@ License: none (public domain)
 */
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -339,14 +340,14 @@ form input[type="submit"]:hover {
 .search input[type="text"] {
 	width: 80%;
 	float: left;
-	padding: 6px;
+	padding: 10px;
 	border-radous: 5px 0 0 5px;
 }
 .search input[type="submit"] {
 	width: 20%;
 	border-radius: 0 5px 5px 0px;
 	margin: 0;
-	padding: 6px 0;
+	padding: 10px 0;
 	border-left: none;
 }
 /*
@@ -495,6 +496,52 @@ user block style
 	margin: 0;
 }
 .user_container .delete a {
+	background: #e61818;
+}
+/*
+job block style
+*/
+.job_container {
+	box-sizing: border-box;
+	width: 100%;
+	overflow: hidden;
+	padding: 10px;
+	margin: 0;
+}
+.job_container:nth-child(even) {
+	background: #f7f7f7;
+}
+.job_container:nth-child(odd) {
+	background: #efefef;
+}
+.job_container a {
+	border: 0;
+}
+.job_container a:hover {
+	border: 0;
+}
+.job_container .username {
+	font-size: 1.5em;
+	color: #333;
+	padding-left: 10px;
+	line-height: 48px;
+}
+.job_container div {
+	float: right;
+}
+.job_container div a {
+	text-align: center;
+	line-height: 50px;
+	width: 75px;
+	margin-right: 10px;
+	color: #fff;
+	background: var(--blue);
+	display: inline-block;
+}
+.job_container .edit a {
+	margin: 0;
+}
+.job_container .delete a {
 	background: #e61818;
 }
 /*
