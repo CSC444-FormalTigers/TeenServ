@@ -42,10 +42,6 @@ class User < ApplicationRecord
 
   acts_as_messageable
 
-  def name
-	username
-  end
-
   def mailboxer_email(object)
   #currently not implemented
 	return nil
