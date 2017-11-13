@@ -101,7 +101,7 @@ class JobsController < ApplicationController
     end
 
     def find_job_with_id
-      @job = Job.where(:id => params[:id]).first
+      Job.where(:id => params[:id]).first
     end
 
     def redirect_if_not_owner_or_admin

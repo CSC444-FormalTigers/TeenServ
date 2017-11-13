@@ -42,10 +42,6 @@ class User < ApplicationRecord
 
   acts_as_messageable
 
-  def to_param
-    username
-  end
-
   def name
 	username
   end
