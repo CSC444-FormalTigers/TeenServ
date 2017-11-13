@@ -30,19 +30,15 @@ class UsersController < ApplicationController
 	  'name',
 	  'address',
       'account_type']
-    @user = find_user_with_username
-  end
-
-  def to_param
-    username
+    @user = find_user_with_id
   end
 
   def edit
-    @user = find_user_with_username
+    @user = find_user_with_id
   end
 
   def update
-    @user = find_user_with_username
+    @user = find_user_with_id
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     if @user.update(user_params)
@@ -54,28 +50,28 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = find_user_with_username
+    @user = find_user_with_id
     @user.destroy
 
     redirect_to users_path
   end
 
   def grant_admin
-    @user = find_user_with_username
+    @user = find_user_with_id
     @user.update_attribute :admin, true
 
     redirect_to @user
   end
 
   def remove_admin
-    @user = find_user_with_username
+    @user = find_user_with_id
     @user.update_attribute :admin, false
 
     redirect_to @user
   end
 
   def resume
-    @user = find_user_with_username
+    @user = find_user_with_id
     if @user.resume.file.nil?
       redirect_to @user
     elsif Rails.env.production?
@@ -104,13 +100,13 @@ class UsersController < ApplicationController
         :resume)
     end
 
-    def find_user_with_username
+    def find_user_with_id
       # really confusing, but params[:id] contains the username.
-      User.where(username: params[:id]).first
+      User.where(id: params[:id]).first
     end
 
     def redirect_if_not_this_user_or_admin
-      @user = find_user_with_username
+      @user = find_user_with_id
       if !(@user == current_user) and !(current_user.admin)
         redirect_to root_path
       end
