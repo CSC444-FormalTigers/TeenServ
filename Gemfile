@@ -64,3 +64,9 @@ gem 'mailboxer'
 
 gem 'fog-aws', '1.4.1'
 gem 'figaro', '1.1.1'
+
+group :development, :test do
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+  end
+end
