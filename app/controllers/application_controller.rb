@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_if_not_client
-    if !(current_user.account_type == "client")
+  def redirect_if_not_employer
+    if !(current_user.account_type == "employer")
       redirect_to root_path
     end
   end

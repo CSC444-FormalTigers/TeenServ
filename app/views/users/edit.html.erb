@@ -70,7 +70,7 @@
 
   <p>
     <%= form.label :account_type, 'Account Type' %><br>
-    <%= form.select(:account_type, options_for_select({'Client' => 'client', 'Teenager' => 'teenager'}, "#{@user.account_type}")) %>
+    <%= form.select(:account_type, options_for_select({'Employer' => 'employer', 'Teenager' => 'teenager'}, "#{@user.account_type}")) %>
   </p>
 
   <% if @user.account_type == 'teenager' %>

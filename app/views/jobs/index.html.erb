@@ -1,6 +1,6 @@
 <div class="padded-container">
   <h1 class="page_title"> Listing all jobs </h1>
-  <% if current_user.account_type == "client" %>
+  <% if current_user.account_type == "employer" %>
   <%= link_to new_job_path, class: "add_button" do %>
   <%= fa_icon "plus"%>Post Job
   <% end %>

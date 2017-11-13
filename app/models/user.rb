@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   validates :account_type,
     presence: true,
-    :format => {:with => /client|teenager/i}
+    :format => {:with => /employer|teenager/i}
 
   validates_acceptance_of :terms_of_service,
     allow_nil: false,

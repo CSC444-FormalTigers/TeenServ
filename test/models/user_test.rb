@@ -12,7 +12,7 @@ class UserTest < ActiveSupport::TestCase
     user.username = "somename"
     user.password = "something"
     user.email = "something@thing.com"
-    user.account_type = "client"
+    user.account_type = "employer"
     user.terms_of_service = "1"
     assert user.save, "Did not save a valid user"
     user.destroy
@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     user.password = "something"
     user.email = "something@thing.com"
-    user.account_type = "client"
+    user.account_type = "employer"
     assert_not user.save, "Saved a user with empty username"
   end
 
@@ -30,19 +30,19 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     user.username = "somename"
     user.email = "something@thing.com"
-    user.account_type = "client"
+    user.account_type = "employer"
     assert_not user.save, "Saved a user with empty password"
   end
 
-  
+
   test "should not save user when email empty" do
     user = User.new
     user.username = "somename"
     user.password = "somepassword"
-    user.account_type = "client"
+    user.account_type = "employer"
     assert_not user.save, "Saved a user with empty email"
   end
-  
+
   test "should not save user when account type is empty" do
     user = User.new
     user.username = "somename"

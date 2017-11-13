@@ -4,7 +4,7 @@ one:
   username: test1
   password: test1
   email: test@email.com
-  account_type: client
+  account_type: employer
   admin: false
   encrypted_password: test1
 
@@ -12,14 +12,14 @@ two:
   username: test2
   password: test2
   email: test2@email.com
-  account_type: client
+  account_type: employer
   admin: false
 
 user_with_avatar:
   username: avatar
   password: avatar
   email: avatar@avatar.com
-  account_type: client
+  account_type: employer
   admin: false
   avatar: testdownload.jpg
   resume: test.pdf
@@ -28,7 +28,7 @@ user_with_disposable_avatar:
   username: avatar2
   password: avatar2
   email: avatar2@avatar.com
-  account_type: client
+  account_type: employer
   admin: false
   avatar: testdownload.jpg
   resume: test.pdf
@@ -37,5 +37,5 @@ admin:
   username: admin
   password: admin
   email: admin@admin.com
-  account_type: client
+  account_type: employer
   admin: true

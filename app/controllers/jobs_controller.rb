@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :redirect_if_not_client, only: [
+  before_action :redirect_if_not_employer, only: [
     :create,
     :new,
     :update,
@@ -59,11 +59,11 @@ class JobsController < ApplicationController
 
   def accept_applicant
     @job = find_job_with_id
-    
+
     applicant_id = params[:job_application_id]
 
     query = @job.job_applications.where(:id => applicant_id)
-    
+
     if !query.empty?
       query.last.update_attribute(:is_accepted, true)
       redirect_to job_path(@job), notice: 'Accepted applicant!'
@@ -74,11 +74,11 @@ class JobsController < ApplicationController
 
   def unaccept_applicant
     @job = find_job_with_id
-    
+
     applicant_id = params[:job_application_id]
 
     query = @job.job_applications.where(:id => applicant_id)
-    
+
     if !query.empty?
       query.last.update_attribute(:is_accepted, false)
       redirect_to job_path(@job), notice: 'Unaccepted applicant!'
@@ -90,11 +90,11 @@ class JobsController < ApplicationController
   private
     def job_params
       params.require(:job).permit(:username,
-        :title, 
-        :description, 
-        :reocurring, 
+        :title,
+        :description,
+        :reocurring,
         :work_date,
-        :response_deadline, 
+        :response_deadline,
         :hourly_pay,
         :payment_method,
         :is_accepting_applicants)

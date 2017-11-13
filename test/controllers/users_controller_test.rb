@@ -38,7 +38,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         username: "PossibleUserName",
         password: "PossiblePassword",
         email: "possible@email.com",
-        account_type: "client",
+        account_type: "employer",
 		terms_of_service: "1"}}
     end
 
