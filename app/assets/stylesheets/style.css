@@ -520,7 +520,7 @@ job block style
 .job_container a:hover {
 	border: 0;
 }
-.job_container .username {
+.job_container .username, .job_container .title {
 	font-size: 1.5em;
 	color: #333;
 	padding-left: 10px;
