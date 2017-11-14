@@ -4,53 +4,6 @@ GIT
   specs:
     bcrypt (3.1.11)
 
-GIT
-  remote: https://github.com/rspec/rspec-core.git
-  revision: c23bf6c223be4b0b4cbec4ab2d3de5c055ce230f
-  branch: master
-  specs:
-    rspec-core (3.8.pre)
-      rspec-support (= 3.8.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-expectations.git
-  revision: 1461c96f5da75125e1f82b90de7fd0c0f7919cf4
-  branch: master
-  specs:
-    rspec-expectations (3.8.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.8.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-mocks.git
-  revision: 77dd81f598a0cd1e3f554a66787fa807ad6937a5
-  branch: master
-  specs:
-    rspec-mocks (3.8.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.8.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-rails.git
-  revision: 8fc4518d028c12672a0589b682dbdc415b471509
-  branch: master
-  specs:
-    rspec-rails (3.8.pre)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (= 3.8.pre)
-      rspec-expectations (= 3.8.pre)
-      rspec-mocks (= 3.8.pre)
-      rspec-support (= 3.8.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-support.git
-  revision: 24c5a051bfb49fba545e8278239085a800398340
-  branch: master
-  specs:
-    rspec-support (3.8.pre)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -114,7 +67,6 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.3)
     erubi (1.7.0)
     excon (0.59.0)
     execjs (2.7.0)
@@ -279,11 +231,6 @@ DEPENDENCIES
   pg (= 0.18.1)
   puma (~> 3.0)
   rails (~> 5.1.4)
-  rspec-core!
-  rspec-expectations!
-  rspec-mocks!
-  rspec-rails!
-  rspec-support!
   sass-rails (~> 5.0)
   sqlite3
   turbolinks (~> 5)
