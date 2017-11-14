@@ -10,6 +10,7 @@ one:
   response_deadline:
   hourly_pay: 1
   payment_method: Credit
+  user: one
 
 two:
   id: 2
@@ -21,3 +22,4 @@ two:
   response_deadline:
   hourly_pay: 1
   payment_method: Credit
+  user: two
