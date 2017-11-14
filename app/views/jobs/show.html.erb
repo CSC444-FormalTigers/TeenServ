@@ -50,8 +50,13 @@
     <h2 class="page_title">Applicants to this Job</h2>
     <% @job.job_applications.each do |app| %>
     <li>
-      <%= link_to app.user.name,
-        user_path(app.user) %>
+      <% if !app.user.name.blank? %>
+        <%= link_to app.user.name,
+          user_path(app.user) %>
+      <% else %>
+        <%= link_to app.user.username,
+          user_path(app.user) %>
+      <% end %>
 
       <% unless app.user.resume.blank? %>
         <%= link_to 'Show Resume',
