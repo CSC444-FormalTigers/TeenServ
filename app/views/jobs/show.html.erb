@@ -48,7 +48,8 @@
     <%= link_to 'Edit this job', edit_job_path(@job) %>
 
     <h2 class="page_title">Applicants to this Job</h2>
-    <% @job.job_applications.each do |app| %>
+    <% @apps = @job.job_applications.includes(:user)%>
+    <% @apps.order("users.username ASC").each do |app| %>
     <li>
       <% if !app.user.name.blank? %>
         <%= link_to app.user.name,
