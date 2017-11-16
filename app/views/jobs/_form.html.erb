@@ -14,10 +14,7 @@
     </div>
   <% end %>
 
-  <!--<div class="field">
-    <%= form.label :username %><br>
-    <%= form.text_field :username,:readonly => true, value: current_user.username %>
-  </div>-->
+  <%= form.hidden_field :username, value: current_user.username %>
   <div class="field">
     <%= form.label :title, 'Title' %><br>
     <%= form.text_field :title, autofocus: true %>
