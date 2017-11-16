@@ -97,6 +97,7 @@ class JobsController < ApplicationController
         :response_deadline,
         :hourly_pay,
         :payment_method,
+        :location,
         :is_accepting_applicants)
     end
 
