@@ -7,6 +7,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -62,9 +63,12 @@ table {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'Raleway';
+	font-family: 'Lato', sans-serif;
 	background: #e2e2e2;
 	padding-bottom: 50px;
+}
+strong {
+	font-weight: bold;
 }
 /* Keep everything under X px wide, center with margin*/
 .container {
@@ -72,8 +76,15 @@ body {
 	margin: 0 auto;
 }
 .padded-container {
-	padding: 50px;
+	padding: 50px; /* need some padding on most pagges */
 	position: relative;
+}
+.padded-container:after {
+	/* clearfix for floated child divs */
+	/* Ensures padded-container wraps around left-panel and right-panel. */
+  content: '';
+  clear: both;
+  display: table;
 }
 /*
 Remove underline front links and replace with border-bottom
@@ -599,4 +610,26 @@ gmaps
     height: 400px;
     position: relative;
     overflow: hidden;
+}
+/*
+ Split Panels
+ */
+.right-panel, .left-panel {
+ box-sizing: border-box; /* Include padding and border in width */
+ float: left;
+}
+.right-panel {
+  width: 70%;
+  border-left: 2px solid #efefef;
+  padding-left: 30px;
+}
+#main_content .right-panel h4 {
+  text-align: left;
+  margin: 5px 0;
+  margin-top: 20px;
+}
+
+.left-panel {
+  float: left;
+  width: 30%;
 }

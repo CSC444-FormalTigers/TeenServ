@@ -1,31 +1,46 @@
 <div class="padded-container">
-<%-# Show to all user types -%>
-<h2 class="page_title"><%= @user.username %></h2>
-<div id="photo_container">
-  <%=
-    user = @user
-    render partial: 'user_image', locals: {user: user}
-  %>
-</div>
-  <% if !@user.resume.file.nil? %>
-    <span class="resume_link"><%= link_to 'Show Resume', resume_user_path + '.pdf' %></span><br>
-  <% end %>
-  <% if current_user.admin? or current_user == @user %>
-    <%-# Private View -%>
-    <span class="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></span>
-    <div class="model_data_block">
-	  <% if current_user.admin? %>
-        <% for attribute in @user.attributes.keys %>
-  	      <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
-        <% end %>
-	  <% else %>
-	    <% for attribute in @attributes_to_display %>
-          <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
-        <% end %>
-	  <% end %>
+  <%-# Show to all user types -%>
+  <h2 class="page_title"><%= @user.username %></h2>
+  <div class="left-panel">
+    <div id="photo_container">
+      <%=
+        user = @user
+        render partial: 'user_image', locals: {user: user}
+      %>
     </div>
-  <% else %>
-    <%-# Public View -%>
-
-  <% end %>
+  </div>
+  <div class="right-panel">
+    <h4>Personal Information</h4>
+    <p><strong>Name: </strong><%= @user.name %></p>
+    <p><strong>Age: </strong><%= @user.age %></p>
+    <% if !@user.resume.file.nil? %>
+      <p><span class="resume_link"><%= link_to 'Show Resume', resume_user_path + '.pdf' %></span></p>
+    <% end %>
+    <h4>Contact Information</h4>
+    <p><strong>Cell Phone: </strong><%= @user.cell_phone %></p>
+    <p><strong>Home Phone: </strong><%= @user.home_phone %></p>
+    <p><strong>Email Address: </strong><%= @user.email %></p>
+    <p><strong>Address: </strong><%= @user.address %></p>
+    <p><strong>Account Type: </strong><%= @user.account_type %></p>
+    <h4>Security</h4>
+    <p><strong>Number of Sign Ins: </strong><%= @user.sign_in_count %></p>
+    <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
+    <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
+    <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
+    <% if current_user.admin? or current_user == @user %>
+      <%-# Private View -%>
+      <span class="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></span>
+      <div class="model_data_block">
+      <% if current_user.admin? %>
+          <% for attribute in @user.attributes.keys %>
+    	      <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
+          <% end %>
+      <% else %>
+        <% for attribute in @attributes_to_display %>
+            <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
+          <% end %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
