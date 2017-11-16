@@ -8,6 +8,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -274,7 +275,8 @@ Main content
 	margin-bottom: 20px;
 }
 #main_content .page_title {
-	padding-top: 10px;;
+	padding-top: 10px;
+	padding-bottom: 20px;
 }
 /*
 table styles
