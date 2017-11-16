@@ -1,3 +1,12 @@
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap">
+</script>
+
+
 <div class="padded-container">
   <h1 class="page_title"> Listing all jobs </h1>
   <% if current_user.account_type == "employer" %>
@@ -52,3 +61,5 @@
     <% end %>
   <!--</table>-->
 </div>
+
+
