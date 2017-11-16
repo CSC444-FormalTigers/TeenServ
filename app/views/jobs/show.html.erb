@@ -21,8 +21,7 @@
     }
     function codeAddress() {
         // Define address to center map to
-        // var address = <%= @job.location %> Not workking yet
-        var address = '111 St George St, Toronto ON'
+        var address = <%= @job.location %>
         console.log(address);
         geocoder.geocode({
             'address': address
