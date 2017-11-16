@@ -588,3 +588,15 @@ Admin Styles
 	background: #25c0f7;
 	border: 1px solid #22b0e6;
 }
+/*
+gmaps
+*/
+.gmap {
+    width: 100%;
+}
+#map {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}

@@ -1,12 +1,52 @@
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div class="gmap">
+  <div id="map"></div>
 </div>
+<script>
+    var map;
+    var infowindow;
 
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap">
+    function initMap() {
+      var pyrmont = {lat: -33.867, lng: 151.195};
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 15
+      });
+
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: pyrmont,
+        radius: 500,
+        type: ['store']
+      }, callback);
+    }
+
+    function callback(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          createMarker(results[i]);
+        }
+      }
+    }
+
+    function createMarker(place) {
+      var placeLoc = place.geometry.location;
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+      });
+    }
 </script>
 
-
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQCmfz4R5g4&callback=initMap&libraries=places">
+</script>
 <div class="padded-container">
   <h1 class="page_title"> Listing all jobs </h1>
   <% if current_user.account_type == "employer" %>
@@ -19,24 +59,6 @@ src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] 
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag 'Search', name: nil %>
   <% end %>
-
-  <!--<table>
-    <tr>
-      <th>Username</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Reocurring</th>
-      <th>Work Date</th>
-      <th>Response Deadline</th>
-      <th>Hourly Pay</th>
-      <th>Payment Method</th>
-      <th>Created At</th>
-      <th>Updated At</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>-->
-
     <% @jobs.each do |job| %>
     <%= render partial: 'job', locals: {job: job} %>
     <!--<tr>
@@ -59,7 +81,4 @@ src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] 
       <% end %>
     </tr>-->
     <% end %>
-  <!--</table>-->
 </div>
-
-

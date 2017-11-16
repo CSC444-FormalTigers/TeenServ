@@ -2,7 +2,7 @@
   <%= link_to job_path(job) do %>
     <span class="title"><%= job.title %></span>
   <% end %>
-  <%= link_to user_path(job.user) do %>
+  <%= link_to users_path(job.user) do %>
     <span class="username"><%= job.username %></span>
   <% end %>
   <% if current_user.admin? or current_user.username == job.username %>
