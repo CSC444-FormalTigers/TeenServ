@@ -5,44 +5,14 @@
     <div class="gmap-mini">
       <div id="map"></div>
     </div>
+
     <script>
-    var geocoder;
-    var map;
-    function initMap() {
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(43.6532, 79.3832);
-        var mapOptions = {
-            zoom: 13,
-            center: latlng
-        };
-        map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        // Call the codeAddress function (once) when the map is idle (ready)
-        google.maps.event.addListenerOnce(map, 'idle', codeAddress);
-    }
-    function codeAddress() {
-        // Define address to center map to
-        var address = "<%== escape_javascript @job.location %>";
-        console.log(address);
-        geocoder.geocode({
-            'address': address
-        }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                // Center map on location
-                map.setCenter(results[0].geometry.location);
-                // Add marker on location
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-    }
+      var address = "<%== escape_javascript @job.location %>";
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQCmfz4R5g4&callback=initMap&libraries=places">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQCmfz4R5g4&callback=initJobShowMap&libraries=places">
     </script>
+
   </div>
   <div class="right-panel">
     <% if @job.is_accepting_applicants == 'false' %>
