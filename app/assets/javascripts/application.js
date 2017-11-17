@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks DISABLED OVER JS MULTIPLE LOAD BUG
 //= require_tree .
