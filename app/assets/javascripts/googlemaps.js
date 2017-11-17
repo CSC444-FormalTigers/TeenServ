@@ -1,12 +1,10 @@
-    
-
 var map;
 var infowindow;
 
 function initJobIndexMap() {
   var pyrmont = {lat: -33.867, lng: 151.195};
 
-  var map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
     zoom: 15
   });
