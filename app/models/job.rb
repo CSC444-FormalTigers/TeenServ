@@ -14,6 +14,9 @@ class Job < ApplicationRecord
   validates :payment_method, 
     presence: true
 
+  validates :location,
+    presence: true
+
 def self.search(search)
   if search
     where('description LIKE ?', "%#{search}%")

@@ -11,6 +11,7 @@ one:
   hourly_pay: 1
   payment_method: Credit
   user: one
+  location: TestLocation
 
 two:
   id: 2
@@ -23,3 +24,4 @@ two:
   hourly_pay: 1
   payment_method: Credit
   user: two
+  location: TestLocation
