@@ -2,15 +2,24 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this job from being created:
+      </h2>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :username %><br />
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :username} %>
     <%= f.text_field :username, autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :email} %>
     <%= f.email_field :email%>
   </div>
 
@@ -19,26 +28,31 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :password} %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :password_confirmation} %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :name, 'Full Name' %><br />
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :name} %>
     <%= f.text_field :name, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :account_type, 'Account Type' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :account_type} %>
     <%= f.select(:account_type, options_for_select({'Employer' => 'employer', 'Teenager' => 'teenager'})) %>
   </div>
 
   <div class= "field">
-  <%= f.check_box :terms_of_service %><span>I Accept <%= link_to "Terms of Service", "/misc/terms" %></span>
+    <%= f.check_box :terms_of_service %><span>I Accept <%= link_to "Terms of Service", "/misc/terms" %></span>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :terms_of_service} %>
   </div>
 
 

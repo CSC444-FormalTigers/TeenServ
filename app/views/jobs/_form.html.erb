@@ -6,57 +6,61 @@
         <%= pluralize(@job.errors.count, "error") %> prohibited
         this job from being created:
       </h2>
-      <ul>
-        <% @job.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
     </div>
   <% end %>
 
   <%= form.hidden_field :username, value: current_user.username %>
   <div class="field">
     <%= form.label :title, 'Title' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :title} %>
     <%= form.text_field :title, autofocus: true %>
   </div>
 
   <div class="field">
     <%= form.label :location, 'Location' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :location} %>
     <%= form.text_field :location, id: 'location' %>
   </div>
 
   <div class="field">
     <%= form.label :description, 'Description' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :description} %>
     <%= form.text_field :description %>
   </div>
 
   <div class="field">
     <%= form.label :reocurring, 'Is the work reocurring?' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :reocurring} %>
     <%= form.check_box :reocurring %>
   </div>
 
   <div class="field">
     <%= form.label :is_accepting_applicants, "Accepting Applicants? (nobody can apply for this job until checked)" %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :is_accepting_applicants} %>
     <%= form.check_box :is_accepting_applicants %>
   </div>
 
   <div class="field">
     <%= form.label :work_date, 'Work Date' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :work_date} %>
     <%= form.datetime_local_field :work_date, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
   </div>
 
   <div class="field">
     <%= form.label :response_deadline, 'Response Deadline' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :response_deadline} %>
     <%= form.datetime_local_field :response_deadline, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
   </div>
 
   <div class="field">
     <%= form.label :hourly_pay, 'Hourly Wage' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :hourly_pay} %>
     <%= form.number_field :hourly_pay %>
   </div>
 
   <div class="field">
     <%= form.label :payment_method, 'Payment Method' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :payment_method} %>
     <%= form.text_field :payment_method %>
   </div>
 
