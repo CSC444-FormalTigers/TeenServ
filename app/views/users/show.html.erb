@@ -27,6 +27,14 @@
     <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
     <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
     <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
+    <% if @user.account_type == "employer" and @user.jobs.any? %>
+      <h2 class="page_title"> Job Postings </h2>
+      <% @user.jobs.each do |job| %>
+        <li>
+        <%= link_to job.title, job_path(job.id) %>
+	</li>
+      <% end %>
+    <% end %>
     <% if current_user.admin? or current_user == @user %>
       <%-# Private View -%>
       <%= link_to edit_user_path(@user), class: "edit_button" do %>
