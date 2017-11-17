@@ -58,7 +58,9 @@
     <p><strong>Wage (hourly): </strong><%= @job.hourly_pay %></p>
     <p><strong>Payment Method: </strong><%= @job.payment_method %></p>
     <% if current_user.username == @job.username or current_user.admin? %>
-      <%= link_to 'Edit this job', edit_job_path(@job) %>
+    <%= link_to edit_job_path(@job), class: "edit_button" do %>
+    <%= fa_icon "pencil"%>Edit Job
+    <% end %>
       <h2 class="page_title">Applicants to this Job</h2>
       <% @apps = @job.job_applications.includes(:user)%>
       <% @apps.order("users.username ASC").each do |app| %>

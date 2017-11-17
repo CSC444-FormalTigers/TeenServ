@@ -9,6 +9,8 @@ License: none (public domain)
 
 
 
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -520,9 +522,10 @@ job block style
 	overflow: hidden;
 	padding: 10px;
 	margin: 0;
+	position: relative;
 }
 .job_container:nth-child(even) {
-	background: #f7f7f7;
+	background: #f1f1f1;
 }
 .job_container:nth-child(odd) {
 	background: #efefef;
@@ -533,29 +536,77 @@ job block style
 .job_container a:hover {
 	border: 0;
 }
-.job_container .username, .job_container .title {
-	font-size: 1.5em;
-	color: #333;
-	padding-left: 10px;
+.job_container span {
+	border-left: 1px solid #d6d6d6;
+	padding: 0 10px;
+}
+.job_container .username {
+	font-size: .8em;
 	line-height: 48px;
+}
+.job_container .title {
+    font-size: 1em;
+	color: #000;
+	border: none;
+	line-height: 48px;
+}
+.job_container .work_date, .job_container .response_deadline {
+	font-size: .7em;
+	color: #6f6f6f;
+	line-height: 48px;
+}
+.job_container .hourly_pay {
+	color: #404040;
+	font-size: .7em;
+}
+.job_container .description {
+	display: block;
+	width: 70%;
+	border: none;
+	font-size: .9em;
+	font-weight: 300;
+}
+.job_container .view_job {
+    border: none;
+    font-size: .7em;
+    margin-top: 15px;
+    display: inline-block;
 }
 .job_container div {
 	float: right;
 }
 .job_container div a {
 	text-align: center;
-	line-height: 50px;
-	width: 75px;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
 	margin-right: 10px;
 	color: #fff;
-	background: var(--blue);
 	display: inline-block;
+	transition: background ease .2s;
 }
 .job_container .edit a {
 	margin: 0;
+	background: #22b0e6;
+	background: var(--blue);
+	border: 1px solid #2185ab;
 }
 .job_container .delete a {
 	background: #e61818;
+	border: 1px solid #ab1d1e;
+}
+.job_container .edit a:hover {
+	background: #25baf3;
+}
+.job_container .delete a:hover {
+	background: #f51a1a;
+}
+.job_container .edit a:active {
+	background: #1f9fd0;
+}
+.job_container .delete a:active {
+	background: #d01717;
 }
 /*
 Admin Styles
@@ -597,6 +648,172 @@ Admin Styles
 	padding-right: 20px;
 }
 .add_button:hover {
+	color: #fff;
+	background: #25c0f7;
+	border: 1px solid #22b0e6;
+}
+/**
+* Edit Button Style
+*/
+.edit_button {
+	transition: background ease .2s,
+	border ease .2s;
+	float: right;
+	position: absolute;
+	top: 20px; right: 20px;
+	display: inline-block;
+	border-bottom: none;
+	background: #22b0e6;
+	border: 1px solid #1fa2d4;
+	border-radius: 2px;
+	color: #fff;
+	padding: 15px 20px;
+}
+.edit_button .fa {
+	padding-right: 20px;
+}
+.edit_button:hover {
+	color: #fff;
+	background: #25c0f7;
+	border: 1px solid #22b0e6;
+}
+/*
+gmaps
+*/
+.gmap {
+    width: 100%;
+}
+#map {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+/*
+ Split Panels
+ */
+.right-panel, .left-panel {
+ box-sizing: border-box; /* Include padding and border in width */
+ float: left;
+}
+.right-panel {
+  width: 70%;
+  border-left: 2px solid #efefef;
+  padding-left: 30px;
+}
+#main_content .right-panel h4 {
+  text-align: left;
+  margin: 5px 0;
+  margin-top: 20px;
+}
+
+.left-panel {
+  float: left;
+  width: 30%;
+}
+
+}
+.job_container div {
+	float: right;
+}
+.job_container div a {
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.job_container .edit a {
+	margin: 0;
+	background: #22b0e6;
+	background: var(--blue);
+	border: 1px solid #2185ab;
+}
+.job_container .delete a {
+	background: #e61818;
+	border: 1px solid #ab1d1e;
+}
+.job_container .edit a:hover {
+	background: #25baf3;
+}
+.job_container .delete a:hover {
+	background: #f51a1a;
+}
+.job_container .edit a:active {
+	background: #1f9fd0;
+}
+.job_container .delete a:active {
+	background: #d01717;
+}
+/*
+Admin Styles
+*/
+.model_data_block {
+	background: #c5c5c5;
+	border-top: 2px solid #ccc;
+	color: #000;
+	padding: 20px;
+	border-radius: 0px;
+	margin-top: 150px;
+}
+.edit_link {
+	float: right;
+	font-size: 1.1em;
+}
+.resume_link {
+	float: right;
+	font-size: 1.1em;
+}
+/**
+* Add Button Style
+*/
+.add_button {
+	transition: background ease .2s,
+	border ease .2s;
+	float: right;
+	position: absolute;
+	top: 20px; left: 20px;
+	display: inline-block;
+	border-bottom: none;
+	background: #22b0e6;
+	border: 1px solid #1fa2d4;
+	border-radius: 2px;
+	color: #fff;
+	padding: 15px 20px;
+}
+.add_button .fa {
+	padding-right: 20px;
+}
+.add_button:hover {
+	color: #fff;
+	background: #25c0f7;
+	border: 1px solid #22b0e6;
+}
+/**
+* Edit Button Style
+*/
+.edit_button {
+	transition: background ease .2s,
+	border ease .2s;
+	float: right;
+	position: absolute;
+	top: 20px; right: 20px;
+	display: inline-block;
+	border-bottom: none;
+	background: #22b0e6;
+	border: 1px solid #1fa2d4;
+	border-radius: 2px;
+	color: #fff;
+	padding: 15px 20px;
+}
+.edit_button .fa {
+	padding-right: 20px;
+}
+.edit_button:hover {
 	color: #fff;
 	background: #25c0f7;
 	border: 1px solid #22b0e6;

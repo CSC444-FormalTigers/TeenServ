@@ -2,8 +2,15 @@
   <%= link_to job_path(job) do %>
     <span class="title"><%= job.title %></span>
   <% end %>
+  <span class="hourly_pay"><%= job.hourly_pay %>$ per hour</span>
+  <span class="work_date">WORK DATE: <%= job.work_date %></span>
+  <span class="response_deadline">RESPOND BY: <%= job.response_deadline %></span>
   <%= link_to users_path(job.user) do %>
     <span class="username"><%= job.username %></span>
+  <% end %>
+  <span class="description"><%= job.description %></span>
+  <%= link_to job_path(job) do %>
+    <span class="view_job">VIEW JOB</span>
   <% end %>
   <% if current_user.admin? or current_user.username == job.username %>
     <div class="edit">
