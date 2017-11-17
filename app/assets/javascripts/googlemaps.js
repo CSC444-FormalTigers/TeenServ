@@ -1,5 +1,6 @@
 var map;
 var infowindow;
+var geocoder;
 
 function initJobIndexMap() {
   var pyrmont = {lat: -33.867, lng: 151.195};
@@ -10,13 +11,37 @@ function initJobIndexMap() {
   });
 
   infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch({
-    location: pyrmont,
-    radius: 500,
-    type: ['store']
-  }, callback);
+  geocoder = new google.maps.Geocoder();
+  
+  var bounds = new google.maps.LatLngBounds();
+  for (var i=0; i < addresses.length; i++) {
+    
+    console.log(addresses[i]);
+    geocoder.geocode({
+        'address': addresses[i]
+    }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            // Center map on location
+            // map.setCenter(results[0].geometry.location);
+            // Add marker on location
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+
+            bounds.extend(marker.getPosition());
+            map.fitBounds(bounds);
+
+        } else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+
+  }
+
 }
+
+/* Commenting this out for example on how to add listener to the markers.
 
 function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -38,6 +63,7 @@ function createMarker(place) {
     infowindow.open(map, this);
   });
 }
+*/
 
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
@@ -109,8 +135,6 @@ function initJobNewMap() {
 }
 
 
-
-var geocoder;
 
 function initJobShowMap() {
     geocoder = new google.maps.Geocoder();

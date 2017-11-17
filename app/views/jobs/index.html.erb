@@ -2,6 +2,12 @@
   <div id="map"></div>
 </div>
 
+<% addressesArray = [] %>
+<% Job.all.each do |job| %>
+  <% addressesArray.push job.location %>
+<% end %>
+<%= javascript_tag "addresses = #{addressesArray.to_json.html_safe};" %>
+
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQCmfz4R5g4&callback=initJobIndexMap&libraries=places">
 </script>
