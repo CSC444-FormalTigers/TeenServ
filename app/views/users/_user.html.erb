@@ -1,10 +1,10 @@
 <div class="user_container">
   <%= link_to user_path(user) do %>
-    <span class="username"><%= user.username %></span>
-    <span class="user_photo">
-      <%= render partial: 'user_image', locals: {user: user} %>
-    </span>
-    <span class="user_type"><%= user.account_type %></span>
+  <span class="user_photo">
+    <%= render partial: 'user_image', locals: {user: user} %>
+  </span>
+  <span class="name"><%= user.name %></span>
+  <span class="username"><%= user.username %></span>
   <% end %>
   <% if current_user.admin? or current_user == user %>
     <div class="edit">
