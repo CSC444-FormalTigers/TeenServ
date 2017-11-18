@@ -13,6 +13,11 @@
     <h4>Personal Information</h4>
     <p><strong>Name: </strong><%= @user.name %></p>
     <p><strong>Age: </strong><%= @user.age %></p>
+    <p><stong>Rating:</strong><%= @user.rating %></p>
+    <%=
+      user = @user
+      render partial: 'rate_button', locals: {user: user}
+    %>
     <% if !@user.resume.file.nil? %>
       <p><span class="resume_link"><%= link_to 'Show Resume', resume_user_path + '.pdf' %></span></p>
     <% end %>

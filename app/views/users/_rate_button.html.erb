@@ -1,0 +1,7 @@
+<span class="rating"><%= user.rating %></span>
+<%= link_to upvote_path(:id => user.id) do %>
+  <i class="fa fa-thumbs-o-up"></i>
+<% end %>
+<%= link_to downvote_path(:id => user.id) do %>
+  <i class="fa fa-thumbs-o-down"></i>
+<% end %>
