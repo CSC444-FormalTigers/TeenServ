@@ -13,7 +13,7 @@
     <h4>Personal Information</h4>
     <p><strong>Name: </strong><%= @user.name %></p>
     <p><strong>Age: </strong><%= @user.age %></p>
-    <p><stong>Rating:</strong><%= @user.rating %></p>
+    <p><strong>Rating: </strong><%= @user.rating %></p>
     <%=
       user = @user
       render partial: 'rate_button', locals: {user: user}
