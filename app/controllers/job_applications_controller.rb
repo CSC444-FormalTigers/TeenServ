@@ -4,7 +4,10 @@ class JobApplicationsController < ApplicationController
     
     if @job.is_accepting_applicants
       @job_application = @job.job_applications.create(job_application_params)
+
       if(@job_application.save)
+        JobMailer.new_applicants_notification_email(@job).deliver_later
+
         redirect_to job_path(@job), notice: "Successfully applied for this job"
       else
         render job_path(@job), notice: "You have already applied to this job"
@@ -26,8 +29,6 @@ class JobApplicationsController < ApplicationController
 
   private
     def job_application_params
-      #params.require(:job_application).permit(:applicant_username)
-      #params.require(:job_application).permit(:job_id, :user_id)
       params.require(:job_application).permit(:user_id)
     end
 
