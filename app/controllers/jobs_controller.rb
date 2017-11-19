@@ -21,8 +21,6 @@ class JobsController < ApplicationController
     @job = current_user.jobs.create(job_params)
 
     if @job.save
-      JobMailer.welcome_email(current_user).deliver_later
-
       redirect_to @job, notice: 'Created Job!'
     else
       render 'new'
