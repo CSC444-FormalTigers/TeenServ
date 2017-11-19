@@ -59,13 +59,14 @@ class JobsController < ApplicationController
 
   def accept_applicant
     @job = find_job_with_id
-
     applicant_id = params[:job_application_id]
-
     query = @job.job_applications.where(:id => applicant_id)
 
     if !query.empty?
-      query.last.update_attribute(:is_accepted, true)
+      job_app = query.last
+      job_app.update_attribute(:is_accepted, true)
+      JobMailer.application_accepted_notification_email(job_app).deliver_later
+
       redirect_to job_path(@job), notice: 'Accepted applicant!'
     else
       redirect_back root_url
@@ -74,9 +75,7 @@ class JobsController < ApplicationController
 
   def unaccept_applicant
     @job = find_job_with_id
-
     applicant_id = params[:job_application_id]
-
     query = @job.job_applications.where(:id => applicant_id)
 
     if !query.empty?
