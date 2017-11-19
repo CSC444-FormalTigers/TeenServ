@@ -13,6 +13,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -882,4 +883,28 @@ gmaps
 .left-panel {
   float: left;
   width: 30%;
+}
+/*
+Upvote Downvote
+*/
+.vote {
+	padding-top: 10px;
+}
+.vote #downvote, .vote #upvote {
+  color: #2d2d2d;
+  background: #f1f1f1;
+  padding: 5px 20px;
+  margin: 5px;
+  border: 1px solid #dee2e4;
+  border-bottom:1px solid #1f2c31;
+}
+.vote #downvote:hover, .vote #upvote:hover {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-bottom:1px solid #22b0e6;
+}
+.vote #downvote:active, .vote #upvote:active {
+  background: #efefef;
+  border: 1px solid #dee2e4;
+  border-bottom:1px solid #22b0e6;
 }

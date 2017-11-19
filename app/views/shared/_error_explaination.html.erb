@@ -1,0 +1,9 @@
+<% if instance.errors.include?(attribute) %>
+  <div id="error_explanation">
+    <ul>
+      <% instance.errors.full_messages_for(attribute).each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

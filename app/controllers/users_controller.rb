@@ -82,6 +82,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def upvote
+    @user = find_user_with_id
+    User.increment_counter(:rating, params[:id])
+    redirect_to @user
+  end
+
+  def downvote
+    @user = find_user_with_id
+    User.decrement_counter(:rating, params[:id])
+    redirect_to @user
+  end
+
   private
     def user_params
       params.require(:user).permit(:username,

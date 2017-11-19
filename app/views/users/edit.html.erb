@@ -9,73 +9,80 @@
         <%= pluralize(@user.errors.count, "error") %> prohibited
         this user from being created:
       </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
     </div>
   <% end %>
 
   <p>
     <%= form.label :password %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :password} %>
     <%= form.password_field :password %>
   </p>
 
   <p>
     <%= form.label :password_confirmation %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :password_confirmation} %>
     <%= form.password_field :password_confirmation %>
   </p>
 
   <p>
     <%= form.label :avatar %> <br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :avatar} %>
     <%= form.file_field :avatar, accept: 'image/*' %>
   </p>
 
   <p>
     <%= form.label :email %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :email} %>
     <%= form.text_field :email %>
   </p>
 
   <p>
     <%= form.label :name, 'Full Name' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :name} %>
     <%= form.text_field :name %>
   </p>
 
 
   <p>
     <%= form.label :age, 'Age' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :age} %>
     <%= form.number_field :age %>
   </p>
 
   <p>
     <%= form.label :gender, 'Gender' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :gender} %>
     <%= form.select(:gender, options_for_select(['male', 'female', 'other'])) %>
   </p>
 
   <p>
     <%= form.label :cell_phone , 'Cell Phone Number' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :cell_phone} %>
     <%= form.telephone_field :cell_phone %>
   </p>
 
   <p>
     <%= form.label :home_phone , 'Home Phone Number' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :home_phone} %>
     <%= form.telephone_field :home_phone %>
   </p>
 
   <p>
     <%= form.label :address, 'Address' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :adress} %>
     <%= form.text_field :address %>
   </p>
 
   <p>
     <%= form.label :account_type, 'Account Type' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :account_type} %>
     <%= form.select(:account_type, options_for_select({'Employer' => 'employer', 'Teenager' => 'teenager'}, "#{@user.account_type}")) %>
   </p>
 
   <% if @user.account_type == 'teenager' %>
     <p>
       <%= form.label :resume, 'Resume' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :resume} %>
       <%= form.file_field :resume, accept: '.pdf' %>
     </p>
   <% end %>

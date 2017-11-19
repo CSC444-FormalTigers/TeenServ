@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
+  get "/upvote" => "users#upvote"
+  get "/downvote" => "users#downvote"
+
   resources :users, except: [:new, :create] do
     member do
       get 'grant_admin'
@@ -27,7 +30,10 @@ Rails.application.routes.draw do
     member do
       patch 'accept_applicant'
       patch 'unaccept_applicant'
+<<<<<<< HEAD
       get 'pay_teenager'
+=======
+>>>>>>> c2a4e201ea276ce34ad8ad51fd10f7d4c543fec4
     end
   end
 

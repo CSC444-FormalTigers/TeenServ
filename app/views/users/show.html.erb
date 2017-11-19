@@ -13,6 +13,11 @@
     <h4>Personal Information</h4>
     <p><strong>Name: </strong><%= @user.name %></p>
     <p><strong>Age: </strong><%= @user.age %></p>
+    <p><strong>Rating: </strong><%= @user.rating %></p>
+    <%=
+      user = @user
+      render partial: 'rate_button', locals: {user: user}
+    %>
     <% if !@user.resume.file.nil? %>
       <p><span class="resume_link"><%= link_to 'Show Resume', resume_user_path + '.pdf' %></span></p>
     <% end %>
@@ -27,6 +32,14 @@
     <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
     <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
     <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
+    <% if @user.account_type == "employer" and @user.jobs.any? %>
+      <h2 class="page_title"> Job Postings </h2>
+      <% @user.jobs.each do |job| %>
+        <li>
+        <%= link_to job.title, job_path(job.id) %>
+	</li>
+      <% end %>
+    <% end %>
     <% if current_user.admin? or current_user == @user %>
       <%-# Private View -%>
       <%= link_to edit_user_path(@user), class: "edit_button" do %>

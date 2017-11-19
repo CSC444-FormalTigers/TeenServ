@@ -1,0 +1,8 @@
+<div class="vote">
+  <%= link_to upvote_path(:id => user.id), id: "upvote" do %>
+    <i class="fa fa-thumbs-o-up"></i>
+  <% end %>
+  <%= link_to downvote_path(:id => user.id), id: "downvote" do %>
+    <i class="fa fa-thumbs-o-down"></i>
+  <% end %>
+</div>
