@@ -7,6 +7,7 @@ one:
   account_type: employer
   admin: false
   encrypted_password: test1
+  name: John
 
 two:
   username: test2
@@ -14,6 +15,7 @@ two:
   email: test2@email.com
   account_type: employer
   admin: false
+  name: John
 
 user_with_avatar:
   username: avatar
@@ -23,6 +25,7 @@ user_with_avatar:
   admin: false
   avatar: testdownload.jpg
   resume: test.pdf
+  name: John
 
 user_with_disposable_avatar:
   username: avatar2
@@ -32,6 +35,7 @@ user_with_disposable_avatar:
   admin: false
   avatar: testdownload.jpg
   resume: test.pdf
+  name: John
 
 admin:
   username: admin
@@ -39,3 +43,4 @@ admin:
   email: admin@admin.com
   account_type: employer
   admin: true
+  name: John
