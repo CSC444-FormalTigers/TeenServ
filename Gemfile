@@ -64,3 +64,4 @@ gem 'mailboxer'
 
 gem 'fog-aws', '1.4.1'
 gem 'figaro', '1.1.1'
+gem 'paypal-sdk-adaptivepayments'

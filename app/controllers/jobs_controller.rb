@@ -87,6 +87,49 @@ class JobsController < ApplicationController
     end
   end
 
+  def pay_teenager
+    @job = find_job_with_id
+
+    worker_id = params[:worker_id]
+    hours_worked = params[:hours_worked]
+    worker = User.where(:id => worker_id).first
+    employer = @job.user
+    worker_pay = hours_worked.to_i * @job.hourly_pay
+    #Hard coded percentage of what we get (5%)
+    our_pay = worker_pay * 1.05
+
+    @api = PayPal::SDK::AdaptivePayments.new
+    @pay = @api.build_pay({
+      :actionType => "PAY",
+      :cancelUrl =>  job_url(@job),
+      :currencyCode => "CAD",
+      :feesPayer => "EACHRECEIVER",
+      :receiverList => {
+        :receiver => [{
+          :amount => our_pay,
+          :email => "teenserv-midway@gmail.com",
+          :primary => true
+        }, {
+          :amount => worker_pay,
+          :email => worker.email,
+          :primary => false
+        }
+        ]
+      },
+      :returnUrl => job_url(@job)
+    })
+
+    @response = @api.pay(@pay)
+
+    if @response.success? && @response.payment_exec_status != "ERROR"
+      @response.payKey
+      redirect_to @api.payment_url(@response)
+    else
+      flash[:error] = "There was an error with processing your payment."
+      redirect_to job_path(@job)
+    end
+  end
+
   private
     def job_params
       params.require(:job).permit(:username,

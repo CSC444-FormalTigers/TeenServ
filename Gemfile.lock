@@ -127,6 +127,11 @@ GEM
     nokogiri (1.8.1-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    paypal-sdk-adaptivepayments (1.117.1)
+      paypal-sdk-core (~> 0.3.0)
+    paypal-sdk-core (0.3.4)
+      multi_json (~> 1.0)
+      xml-simple
     pg (0.18.1)
     pg (0.18.1-x64-mingw32)
     pg (0.18.1-x86-mingw32)
@@ -209,6 +214,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -228,6 +234,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   mailboxer
+  paypal-sdk-adaptivepayments
   pg (= 0.18.1)
   puma (~> 3.0)
   rails (~> 5.1.4)
