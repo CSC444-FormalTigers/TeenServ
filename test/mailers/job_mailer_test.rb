@@ -8,7 +8,7 @@ class JobMailerTest < ActionMailer::TestCase
   test "can send new applicants notification" do
     job = jobs(:one)
 
-    email = JobMailer.new_applicants_notification_email(job.user, job)
+    email = JobMailer.new_applicants_notification_email(job)
 
     assert_emails 1 do
       email.deliver_now
