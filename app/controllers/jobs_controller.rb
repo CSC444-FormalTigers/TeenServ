@@ -124,8 +124,8 @@ class JobsController < ApplicationController
       @response.payKey
       redirect_to @api.payment_url(@response)
     else
-      flash[:error] = "There was an error with processing your payment."
-      print "\n" + @response.error[0].message + "\n"
+      flash[:error] = "There was an error with processing your payment. ERROR: " +
+        @response.error[0].message
       redirect_to job_path(@job)
     end
   end
