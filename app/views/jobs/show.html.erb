@@ -27,10 +27,12 @@
     <h4>Payment Information</h4>
     <p><strong>Wage (hourly): </strong><%= @job.hourly_pay %></p>
     <p><strong>Payment Method: </strong><%= @job.payment_method %></p>
+
     <% if current_user.username == @job.username or current_user.admin? %>
-    <%= link_to edit_job_path(@job), class: "edit_button" do %>
-    <%= fa_icon "pencil"%>Edit Job
-    <% end %>
+      <%= link_to edit_job_path(@job), class: "edit_button" do %>
+        <%= fa_icon "pencil"%>Edit Job
+      <% end %>
+
       <h2 class="page_title">Applicants to this Job</h2>
       <% @apps = @job.job_applications.includes(:user)%>
       <% @apps.order("users.username ASC").each do |app| %>
@@ -64,11 +66,14 @@
       <% end %>
     <% else %>
       <% app = current_user.job_applications.where(:job_id == @job.id).last %>
+
     <% if app.blank? %>
+
       <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
         <%= form.hidden_field :user_id, value: current_user.id %>
         <%= form.submit %>
       <% end %>
+
       <% else %>
         <%= button_to 'Cancel Job Application',
         job_job_application_path(@job, app),
