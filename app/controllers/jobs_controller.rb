@@ -65,7 +65,7 @@ class JobsController < ApplicationController
     if !query.empty?
       job_app = query.last
       job_app.update_attribute(:is_accepted, true)
-      #JobMailer.application_accepted_notification_email(job_app).deliver_later
+      JobMailer.application_accepted_notification_email(job_app).deliver_now
 
       redirect_to job_path(@job), notice: 'Accepted applicant!'
     else
