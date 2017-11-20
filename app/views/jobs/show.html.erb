@@ -15,8 +15,8 @@
 
   </div>
   <div class="right-panel">
-    <% if @job.is_accepting_applicants == 'false' %>
-      <strong>THIS JOB IS NOT CURRENTLY ACCEPTING APPLICANTS.</strong>
+    <% if @job.is_accepting_applicants == false %>
+      <strong>THIS JOB IS CURRENTLY NOT ACCEPTING APPLICANTS.</strong>
     <% end %>
     <p><strong>RSVP: </strong><%= @job.response_deadline %></p>
     <h4>Description</h4>
