@@ -14,11 +14,11 @@ function initJobIndexMap() {
   geocoder = new google.maps.Geocoder();
 
   var bounds = new google.maps.LatLngBounds();
-  for (var i=0; i < g__addresses.length; i++) {
+  for (var i=0; i < g__jobs.length; i++) {
     
-    console.log(g__addresses[i]);
+    console.log(g__jobs[i]);
     geocoder.geocode({
-        'address': g__addresses[i]
+        'address': g__jobs[i].location
     }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             // Add marker on location
