@@ -14,6 +14,15 @@ License: none (public domain)
 
 
 
+
+
+
+
+
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -97,34 +106,48 @@ Remove underline front links and replace with border-bottom
 */
 a {
 	text-decoration: none;
-	border-bottom: 1px solid #17b0e6;
+	border-bottom: 1px solid #03A9F4
+	border-bottom: 1px solid var(--primary);
 	padding: 0 2px;
-	color: #17b0e6;
-	color: var(--blue);
+	color: #03A9F4;
+	color: var(--primary);
 	transition: color ease .2s, border ease .2s;
 }
 a:hover {
-	color: #25c0f7;
-	color: var(--highlight-blue);
-	border-bottom: 1px solid #17b0e6;
-	border-bottom: 1px solid var(--highlight-blue);
+	color: #1CB4F9;
+	color: var(--light-primary);
+	border-bottom: 1px solid #1CB4F9;
+	border-bottom: 1px solid var(--light-primary);
 }
 /**
 Header style
 */
 :root {
 	/* Only good on modern browsers, fallback with real px value in late production. */
-	--header-height: 60px;
-	--blue: #17b0e6;
+	/* If you change these, change all corresponding falllback valees in sheet */
+	--dark-primary: #0288D1;
+	--light-primary: #1CB4F9;
+	--primary: #03A9F4;
+	--accent-color: #FF5722;
+	--dark-accent: #DE4E00;
+	--light-accent: #FD6434;
 	--highlight-blue: #25c0f7;
+	--divider-color: #BDBDBD;
+	--border-color: #EFEFEF;
+	--secondary-text: #757575;
+	--primary-text: #212121;
+	--light-text: #FFFFFF;
+	--background-color: #FFFFFF;
 }
 header {
-	background: #fff;
+	background: #fff; /* fallback */
+	background: var(--background-color);
 	padding-left: 15px;
-	color: #232323;
-	border-bottom: 2px solid #efefef;
-	height: 60px; /* fallback */
-	height: var(--header-height);
+	color: #212121;
+	color: var(--primary-text);
+	border-bottom: 2px solid #efefef; /* fallback */
+	border-bottom: 2px solid var(--border-color);
+	height: 60px;
 	position: relative;
 }
 header h1 {
@@ -144,9 +167,9 @@ header a:hover {
 }
 header a#logo {
 	line-height: 60px;
-	line-height: var(--header-height);
 	text-decoration: none;
-	color: #333;
+	color: #212121;
+	color: var(--primary-text);
 }
 
 header #nav {
@@ -159,9 +182,9 @@ header #nav li {
 header #nav li a {
 	text-decoration: none;
 	display: block;
-	color: #333;
+	color: #212121;
+	color: var(--primary-text);
 	line-height: 60px;
-	line-height: var(--header-height);
 	text-align: center;
 	transition: background ease .2s;
 }
@@ -182,15 +205,17 @@ Footer style
 	position: absolute;
 	text-align:center;
 	border-top: 2px solid #efefef;
+	border-top: 2px solid var(--border-color);
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
 }
-.footer a{
+.footer a {
 	padding: 10px 20px 10px 0;
 	text-decoration: none;
 	display: inline-block;
-	color: #333;
+	color: #212121;
+	color: var(--primary-text);
 	border-bottom: 0;
 	font-size: .8em;
 }
@@ -210,8 +235,10 @@ Notifications
 	text-align: center;
 	background: #333;
 	color: #fff;
+	color: var(--light-text);
 	padding: 13px;
 	position: absolute;
+	z-index: 100;
 	top: 75px;
 	width: 30%;
 	right: 10px;
@@ -228,8 +255,10 @@ Notifications
 }
 
 .flash.notice {
-	border: 1px solid #248db5;
-	background: #17b0e6;
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
+	background: #03A9F4;
+	background: var(--primary);
 }
 /* CSS animation to hide notifications after 5 seconds */
 @-webkit-keyframes seconds {
@@ -335,17 +364,21 @@ form input[readonly="readonly"] {
 }
 form input[type="submit"] {
 	transition: background ease .3s;
-	background: #17b0e6;
-	border: 1px solid #ccc;
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 	border-radius: 3px;
 	padding: 10px 30px;
 	color: #fff;
+	color: var(--light-text);
 	cursor: pointer;
 	margin: 0 auto;
 	display: block;
 }
 form input[type="submit"]:hover {
-	background: #25c0f7;
+	background: #1CB4F9;
+	background: var(--light-primary);
 }
 /**
 * Search Form
@@ -372,31 +405,42 @@ form input[type="submit"]:hover {
 Features
 */
 div#eyecatch {
-	background: #8cb2bf;
-	color: #000;
-	padding-top: 70px;
-	padding-bottom: 30px;
+	background: #03A9F4;
+	background: var(--primary);
+	color: #FFF;
+	color: var(--light-text);
+	padding-top: 150px;
+	padding-bottom: 70px;
+}
+#eyecatch h3, #eyecatch h1 {
+	text-align: left;
+	margin: 10px 20%;
+	text-transform: initial;
+}
+#eyecatch h3 {
+	font-weight: 400;
 }
 #features {
-	padding: 50px;;
+	padding: 50px;
 	margin-top: 20px;
 	display: flex;
 	justify-content: space-between;
 }
 #features a {
 	font-size: .9em;
-	border: 5px solid #e6e6e6;
-	background: #ececec;
+	border: 5px solid #e3e3e3;
+	background: #eeeeee;
 	flex: 1; /*grow*/
 	max-width: 25%;
 	border-radius: 50px;
 	padding: 0 2%;
 	text-decoration: none;
-	color: #000;
+	color: #212121;
+	color: var(--primary-text);
 }
 #features a:hover {
-	border: 5px solid #eaeaea;
-	background: #ededed;
+	border: 5px solid #efefef;
+	background: #fff;
 }
 .feature:first-child {
 	margin-left: 5%;
@@ -441,7 +485,7 @@ sections
 	margin-left: 5%;
 }
 .section p {
-
+	font-weight: 300;
 }
 #sections .section h4 {
 	text-align: left;
@@ -525,27 +569,40 @@ user block style
 	display: inline-block;
 	transition: background ease .2s;
 }
+.user_container div a {
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
 .user_container .edit a {
-	margin-right: 0;
-	background: #22b0e6;
-	background: var(--blue);
-	border: 1px solid #2185ab;
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 }
 .user_container .delete a {
-	background: #e61818;
-	border: 1px solid #ab1d1e;
+	background: #5f5f5f;
+	border: 1px solid #313131;
 }
 .user_container .edit a:hover {
-	background: #25baf3;
+	background: #1CB4F9;
+	background: var(--light-primary);
 }
 .user_container .delete a:hover {
-	background: #f51a1a;
+	background: #676767;
 }
 .user_container .edit a:active {
-	background: #1f9fd0;
+	background: #0288D1;
+	background: var(--dark-primary);
 }
 .user_container .delete a:active {
-	background: #d01717;
+	background: #505050;
 }
 /*
 job block style
@@ -622,94 +679,28 @@ job block style
 }
 .job_container .edit a {
 	margin: 0;
-	background: #22b0e6;
-	background: var(--blue);
-	border: 1px solid #2185ab;
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 }
 .job_container .delete a {
-	background: #e61818;
-	border: 1px solid #ab1d1e;
+	background: #5f5f5f;
+	border: 1px solid #313131;
 }
 .job_container .edit a:hover {
-	background: #25baf3;
+	background: #1CB4F9;
+	background: var(--light-primary);
 }
 .job_container .delete a:hover {
-	background: #f51a1a;
+	background: #676767;
 }
 .job_container .edit a:active {
-	background: #1f9fd0;
+	background: #0288D1;
+	background: var(--dark-primary);
 }
 .job_container .delete a:active {
-	background: #d01717;
-}
-/*
-Admin Styles
-*/
-.model_data_block {
-	background: #c5c5c5;
-	border-top: 2px solid #ccc;
-	color: #000;
-	padding: 20px;
-	border-radius: 0px;
-	margin-top: 150px;
-}
-.edit_link {
-	float: right;
-	font-size: 1.1em;
-}
-.resume_link {
-	float: right;
-	font-size: 1.1em;
-}
-/**
-* Add Button Style
-*/
-.add_button {
-	transition: background ease .2s,
-	border ease .2s;
-	float: right;
-	position: absolute;
-	top: 20px; left: 20px;
-	display: inline-block;
-	border-bottom: none;
-	background: #22b0e6;
-	border: 1px solid #1fa2d4;
-	border-radius: 2px;
-	color: #fff;
-	padding: 15px 20px;
-}
-.add_button .fa {
-	padding-right: 20px;
-}
-.add_button:hover {
-	color: #fff;
-	background: #25c0f7;
-	border: 1px solid #22b0e6;
-}
-/**
-* Edit Button Style
-*/
-.edit_button {
-	transition: background ease .2s,
-	border ease .2s;
-	float: right;
-	position: absolute;
-	top: 20px; right: 20px;
-	display: inline-block;
-	border-bottom: none;
-	background: #22b0e6;
-	border: 1px solid #1fa2d4;
-	border-radius: 2px;
-	color: #fff;
-	padding: 15px 20px;
-}
-.edit_button .fa {
-	padding-right: 20px;
-}
-.edit_button:hover {
-	color: #fff;
-	background: #25c0f7;
-	border: 1px solid #22b0e6;
+	background: #505050;
 }
 /*
 gmaps
@@ -745,42 +736,6 @@ gmaps
   float: left;
   width: 30%;
 }
-.job_container div {
-	float: right;
-}
-.job_container div a {
-	text-align: center;
-	line-height: 30px;
-	width: 40px;
-	font-size: .8em;
-	border-radius: 3px;
-	margin-right: 10px;
-	color: #fff;
-	display: inline-block;
-	transition: background ease .2s;
-}
-.job_container .edit a {
-	margin: 0;
-	background: #22b0e6;
-	background: var(--blue);
-	border: 1px solid #2185ab;
-}
-.job_container .delete a {
-	background: #e61818;
-	border: 1px solid #ab1d1e;
-}
-.job_container .edit a:hover {
-	background: #25baf3;
-}
-.job_container .delete a:hover {
-	background: #f51a1a;
-}
-.job_container .edit a:active {
-	background: #1f9fd0;
-}
-.job_container .delete a:active {
-	background: #d01717;
-}
 /*
 Admin Styles
 */
@@ -811,8 +766,10 @@ Admin Styles
 	top: 20px; left: 20px;
 	display: inline-block;
 	border-bottom: none;
-	background: #22b0e6;
-	border: 1px solid #1fa2d4;
+    background: #FF5722;
+	background: var(--accent-color);
+	border: 1px solid #DE4E00;
+	border: 1px solid var(--dark-accent);
 	border-radius: 2px;
 	color: #fff;
 	padding: 15px 20px;
@@ -822,8 +779,14 @@ Admin Styles
 }
 .add_button:hover {
 	color: #fff;
-	background: #25c0f7;
-	border: 1px solid #22b0e6;
+	background: #FD6434;
+	background: var(--light-accent);
+	border: 1px solid #DE4E00;
+	border: 1px solid var(--dark-accent);
+}
+.add_button:active {
+    background: #DE4E00;
+    background: var(--dark-accent);
 }
 /**
 * Edit Button Style
@@ -831,13 +794,14 @@ Admin Styles
 .edit_button {
 	transition: background ease .2s,
 	border ease .2s;
-	float: right;
 	position: absolute;
 	top: 20px; right: 20px;
 	display: inline-block;
 	border-bottom: none;
-	background: #22b0e6;
-	border: 1px solid #1fa2d4;
+	background: #FF5722;
+	background: var(--accent-color);
+	border: 1px solid #DE4E00;
+	border: 1px solid var(--dark-accent);
 	border-radius: 2px;
 	color: #fff;
 	padding: 15px 20px;
@@ -847,8 +811,16 @@ Admin Styles
 }
 .edit_button:hover {
 	color: #fff;
-	background: #25c0f7;
-	border: 1px solid #22b0e6;
+	background: #FD6434;
+	background: var(--light-accent);
+	border: 1px solid #DE4E00;
+	border: 1px solid var(--dark-accent);
+}
+.edit_button:active {
+	background: #DE4E00;
+	background: var(--dark-accent);
+	border: 1px solid #DE4E00;
+	border: 1px solid var(--dark-accent);
 }
 /*
 gmaps
@@ -895,16 +867,35 @@ Upvote Downvote
   background: #f1f1f1;
   padding: 5px 20px;
   margin: 5px;
-  border: 1px solid #dee2e4;
+  border: 1px solid #efefef;
+  border: 1px solid var(--border-color);
   border-bottom:1px solid #1f2c31;
 }
 .vote #downvote:hover, .vote #upvote:hover {
   background: #ffffff;
   border: 1px solid #e6e6e6;
-  border-bottom:1px solid #22b0e6;
+  border-bottom: 1px solid #03A9F4;
+  border-bottom: 1px solid var(--primary);
 }
 .vote #downvote:active, .vote #upvote:active {
   background: #efefef;
-  border: 1px solid #dee2e4;
-  border-bottom:1px solid #22b0e6;
+}
+/*
+Admin Styles
+*/
+.model_data_block {
+	background: #c5c5c5;
+	border-top: 2px solid #ccc;
+	color: #000;
+	padding: 20px;
+	border-radius: 0px;
+	margin-top: 150px;
+}
+.edit_link {
+	float: right;
+	font-size: 1.1em;
+}
+.resume_link {
+	float: right;
+	font-size: 1.1em;
 }
