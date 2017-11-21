@@ -11,7 +11,7 @@
     <%= link_to(jobs_path) do %>
       <div class="feature">
         <h4>Average Wage</h4>
-        <p><%= @average_wage %></p>
+        <p><%= @average_wage.round(2) %></p>
       </div>
     <% end %>
     <%= link_to(users_path) do %>
