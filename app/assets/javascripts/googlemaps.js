@@ -12,10 +12,10 @@ function initJobIndexMap() {
 
   infowindow = new google.maps.InfoWindow();
   geocoder = new google.maps.Geocoder();
-  
+
   var bounds = new google.maps.LatLngBounds();
   for (var i=0; i < addresses.length; i++) {
-    
+
     console.log(addresses[i]);
     geocoder.geocode({
         'address': addresses[i]
@@ -33,7 +33,7 @@ function initJobIndexMap() {
             map.fitBounds(bounds);
 
         } else {
-            alert("Geocode was not successful for the following reason: " + status);
+            console.error("Geocode was not successful for the following reason: " + status);
         }
     });
 
@@ -69,7 +69,7 @@ function createMarker(place) {
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-function initJobEditMap() {
+function initJobFormMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
@@ -165,4 +165,3 @@ function codeAddress() {
         }
     });
 }
-

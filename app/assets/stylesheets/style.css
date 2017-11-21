@@ -23,6 +23,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -766,10 +767,10 @@ Admin Styles
 	top: 20px; left: 20px;
 	display: inline-block;
 	border-bottom: none;
-    background: #FF5722;
-	background: var(--accent-color);
-	border: 1px solid #DE4E00;
-	border: 1px solid var(--dark-accent);
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 	border-radius: 2px;
 	color: #fff;
 	padding: 15px 20px;
@@ -779,14 +780,14 @@ Admin Styles
 }
 .add_button:hover {
 	color: #fff;
-	background: #FD6434;
-	background: var(--light-accent);
-	border: 1px solid #DE4E00;
-	border: 1px solid var(--dark-accent);
+	background: #1CB4F9;
+	background: var(--light-primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 }
 .add_button:active {
-    background: #DE4E00;
-    background: var(--dark-accent);
+	background: #0288D1;
+	background: var(--dark-primary);
 }
 /**
 * Edit Button Style
@@ -798,10 +799,10 @@ Admin Styles
 	top: 20px; right: 20px;
 	display: inline-block;
 	border-bottom: none;
-	background: #FF5722;
-	background: var(--accent-color);
-	border: 1px solid #DE4E00;
-	border: 1px solid var(--dark-accent);
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 	border-radius: 2px;
 	color: #fff;
 	padding: 15px 20px;
@@ -811,16 +812,14 @@ Admin Styles
 }
 .edit_button:hover {
 	color: #fff;
-	background: #FD6434;
-	background: var(--light-accent);
-	border: 1px solid #DE4E00;
-	border: 1px solid var(--dark-accent);
+	background: #1CB4F9;
+	background: var(--light-primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 }
 .edit_button:active {
-	background: #DE4E00;
-	background: var(--dark-accent);
-	border: 1px solid #DE4E00;
-	border: 1px solid var(--dark-accent);
+	background: #0288D1;
+	background: var(--dark-primary);
 }
 /*
 gmaps
