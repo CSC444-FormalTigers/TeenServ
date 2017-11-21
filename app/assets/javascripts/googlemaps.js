@@ -14,20 +14,24 @@ function initJobIndexMap() {
   geocoder = new google.maps.Geocoder();
 
   var bounds = new google.maps.LatLngBounds();
-  for (var i=0; i < addresses.length; i++) {
-
-    console.log(addresses[i]);
+  for (var i=0; i < g__addresses.length; i++) {
+    
+    console.log(g__addresses[i]);
     geocoder.geocode({
-        'address': addresses[i]
+        'address': g__addresses[i]
     }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            // Center map on location
-            // map.setCenter(results[0].geometry.location);
             // Add marker on location
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location
             });
+
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent("TODO: CHANGE THIS TO DESCRIBE JOB!");
+              infowindow.open(map, this);
+            });
+
 
             bounds.extend(marker.getPosition());
             map.fitBounds(bounds);
