@@ -32,7 +32,6 @@ function initJobIndexMap() {
               infowindow.open(map, this);
             });
 
-
             bounds.extend(marker.getPosition());
             map.fitBounds(bounds);
 
