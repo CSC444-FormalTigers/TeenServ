@@ -106,7 +106,7 @@ Remove underline front links and replace with border-bottom
 */
 a {
 	text-decoration: none;
-	border-bottom: 1px solid #03A9F4
+	border-bottom: 1px solid #03A9F4;
 	border-bottom: 1px solid var(--primary);
 	padding: 0 2px;
 	color: #03A9F4;
