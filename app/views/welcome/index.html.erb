@@ -11,7 +11,11 @@
     <%= link_to(jobs_path) do %>
       <div class="feature">
         <h4>Average Wage</h4>
+		<% if @average_wage.present? %>
         <p><%= @average_wage.round(2) %></p>
+		<% else %>
+		<p>n/a</p>
+		<% end %>
       </div>
     <% end %>
     <%= link_to(users_path) do %>

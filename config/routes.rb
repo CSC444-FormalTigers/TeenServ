@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   get 'misc/contact'
   get 'misc/faq'
 
-  resources :conversations
-  resources :messages
-
   devise_for :users
 
   get 'welcome/index'
