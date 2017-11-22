@@ -414,12 +414,12 @@ div#eyecatch {
 	padding-bottom: 20px;
 }
 #eyecatch h3, #eyecatch h1 {
-	font-size: 130%;
 	text-align: left;
 	margin: 10px 20%;
 	text-transform: initial;
 }
 #eyecatch h3 {
+	font-size: 130%;
 	font-weight: 400;
 }
 #features {

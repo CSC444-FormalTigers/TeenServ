@@ -60,8 +60,6 @@ gem 'devise', '4.3.0'
 
 gem 'carrierwave', '1.2.1'
 
-gem 'mailboxer'
-
 gem 'fog-aws', '1.4.1'
 gem 'figaro', '1.1.1'
 gem 'paypal-sdk-adaptivepayments'

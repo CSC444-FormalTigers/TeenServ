@@ -40,8 +40,6 @@ class User < ApplicationRecord
 
   attr_accessor :terms_of_service
 
-  acts_as_messageable
-
   def mailboxer_email(object)
   #currently not implemented
 	return nil
