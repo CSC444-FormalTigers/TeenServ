@@ -15,11 +15,19 @@ function initJobIndexMap() {
 
   var bounds = new google.maps.LatLngBounds();
   for (var i=0; i < g__jobs.length; i++) {
-    
-    console.log(g__jobs[i]);
+    var job = g__jobs[i];
+    console.log(job);
     geocoder.geocode({
-        'address': g__jobs[i].location
-    }, function (results, status) {
+        'address': job.location
+    }, createGeocodeCallback(job, bounds)
+    );
+
+  }
+
+}
+
+function createGeocodeCallback(job, bounds) {
+    return function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             // Add marker on location
             var marker = new google.maps.Marker({
@@ -28,7 +36,8 @@ function initJobIndexMap() {
             });
 
             google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent("TODO: CHANGE THIS TO DESCRIBE JOB!");
+              var myContent = "<h3>" + job.title + "</h3>";
+              infowindow.setContent(myContent);
               infowindow.open(map, this);
             });
 
@@ -38,10 +47,7 @@ function initJobIndexMap() {
         } else {
             console.error("Geocode was not successful for the following reason: " + status);
         }
-    });
-
-  }
-
+    };
 }
 
 /* Commenting this out for example on how to add listener to the markers.

@@ -6,7 +6,7 @@ class JobApplicationsController < ApplicationController
       @job_application = @job.job_applications.create(job_application_params)
 
       if(@job_application.save)
-        JobMailer.new_applicants_notification_email(@job).deliver_later
+        JobMailer.new_applicants_notification_email(@job).deliver_now
 
         redirect_to job_path(@job), notice: "Successfully applied for this job"
       else
