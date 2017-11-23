@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
   <title>TeenServ</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -11,43 +12,46 @@
   <header>
     <div class="container">
       <%= link_to root_path, id: "logo" do %><h1>TeenServ</h1><% end %>
-      <ul id="nav">
-        <% if signed_in? %>
-        <li>
-          <%= link_to jobs_path do %>
-          <%= fa_icon "briefcase"%>Jobs
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path do %>
-          <%= fa_icon "group"%>Users
-          <% end %>
-        </li>
-        <li>
-          <%= link_to user_path(current_user) do %>
-          <%= fa_icon "user" %>My Profile
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, :method => :delete do %>
-          <%= fa_icon "sign-out"%>Logout
-          <% end %>
-        </li>
+      <div id="dropdown_container">
+        <%= fa_icon "bars", id: "menu_toggle"%>
+        <ul id="nav">
+          <% if signed_in? %>
+          <li>
+            <%= link_to jobs_path do %>
+            <%= fa_icon "briefcase"%>Jobs
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_path do %>
+            <%= fa_icon "group"%>Users
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_path(current_user) do %>
+            <%= fa_icon "user" %>My Profile
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
+            <%= fa_icon "sign-out"%>Logout
+            <% end %>
+          </li>
 
-        <% else %>
-        <li>
-          <%= link_to new_user_session_path do%>
-          <%= fa_icon "sign-in"%>Login
+          <% else %>
+          <li>
+            <%= link_to new_user_session_path do%>
+            <%= fa_icon "sign-in"%>Login
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+            <%= fa_icon "user-plus"%>Register
+            <% end %>
+          </li>
           <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_registration_path do %>
-          <%= fa_icon "user-plus"%>Register
-          <% end %>
-        </li>
-        <% end %>
 
-      </ul>
+        </ul>
+      </div>
     </div>
   </header>
 

@@ -2,16 +2,16 @@ class Job < ApplicationRecord
   belongs_to :user
   has_many :job_applications, dependent: :destroy
 
-  validates :title, 
+  validates :title,
     presence: true
-	
-  validates :description, 
+
+  validates :description,
     presence: true
-	
-  validates :hourly_pay, 
+
+  validates :hourly_pay,
     :numericality => {only_integer: true}
 
-  validates :payment_method, 
+  validates :payment_method,
     presence: true
 
   validates :location,
