@@ -2,7 +2,13 @@
   <div id="map"></div>
 </div>
 
+<% job_routes = [] %>
+<% Job.all.each do |job| %>
+  <% job_routes.push( job_url(job) ) %>
+<% end %>
+
 <%= javascript_tag "g__jobs = #{Job.all.to_json.html_safe};" %>
+<%= javascript_tag "g__job_routes = #{job_routes.to_json.html_safe};" %>
 
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQCmfz4R5g4&callback=initJobIndexMap&libraries=places">

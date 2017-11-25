@@ -16,17 +16,20 @@ function initJobIndexMap() {
   var bounds = new google.maps.LatLngBounds();
   for (var i=0; i < g__jobs.length; i++) {
       var job = g__jobs[i];
+      var job_route = g__job_routes[i];
+
       console.log(job);
+
       geocoder.geocode({
           'address': job.location
-          }, createGeocodeCallback(job, bounds)
+          }, createGeocodeCallback(job, job_route, bounds)
       );
 
   }
 
 }
 
-function createGeocodeCallback(job, bounds) {
+function createGeocodeCallback(job, job_route, bounds) {
     return function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             // Add marker on location
@@ -41,7 +44,8 @@ function createGeocodeCallback(job, bounds) {
                   "<p><strong>When: </strong>" + job.work_date + "</p>" +
                   "<p><strong>Where: </strong>"+ job.location + "</p>" +
                   "<p><strong>Wage (hourly): </strong>" + job.hourly_pay + "</p>" +
-                  "<p><strong>Payment Method: </strong>" + job.payment_method + "</p>";
+                  "<p><strong>Payment Method: </strong>" + job.payment_method + "</p>" +
+                  "<a href=\"" + job_route + "\">Go to this job's page</a>";
               infowindow.setContent(myContent);
               infowindow.open(map, this);
             });
