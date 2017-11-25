@@ -50,7 +50,8 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
         description: "Some Description",
 		hourly_pay: "10",
         payment_method: "Credit",
-        location: "Some Location"}}
+        location: "Some Location",
+        type_of_service: "other (please specificy in description)"}}
     end
 
     assert_redirected_to job_url(Job.last)

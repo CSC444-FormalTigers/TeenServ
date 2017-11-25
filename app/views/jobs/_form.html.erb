@@ -4,7 +4,13 @@
     <div id="error_explanation">
       <h2>
         <%= pluralize(@job.errors.count, "error") %> prohibited
-        this job from being created:
+        this job from being created: <br>
+        <% @job.errors.each do |attribute,error|%>
+          <%= attribute %>
+          <%= error %>
+          <br>
+        <% end %>
+
       </h2>
     </div>
   <% end %>
@@ -34,6 +40,12 @@
     <%= form.label :description, 'Description' %><br>
     <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :description} %>
     <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_of_service, 'Type of Service' %><br>
+    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :type_of_service} %>
+    <%= form.select :type_of_service, Job.services, :prompt => 'Select One' %>
   </div>
 
   <div class="field">

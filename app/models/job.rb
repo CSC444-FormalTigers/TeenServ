@@ -2,6 +2,21 @@ class Job < ApplicationRecord
   belongs_to :user
   has_many :job_applications, dependent: :destroy
 
+  def self.services
+    [
+      'babysitting',
+      'yard work',
+      'snow shoveling',
+      'furniture moving',
+      'simple cleaning tasks',
+      'out of town services',
+      'dog walking',
+      'computer help',
+      'tutoring',
+      'other (please specificy in description)'
+    ]
+  end
+
   validates :title,
     presence: true
 
@@ -17,12 +32,15 @@ class Job < ApplicationRecord
   validates :location,
     presence: true
 
-def self.search(search)
-  if search
-    where('description LIKE ?', "%#{search}%")
-  else
-    all
+  validates :type_of_service,
+    inclusion: {in:self.services}
+
+  def self.search(search)
+    if search
+      where('description LIKE ?', "%#{search}%")
+    else
+      all
+    end
   end
-end
 
 end

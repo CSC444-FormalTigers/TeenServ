@@ -2,6 +2,7 @@
   <%= link_to job_path(job) do %>
     <span class="title"><%= job.title %></span>
   <% end %>
+  <span class="type_of_service"><%= job.type_of_service %></span>
   <span class="hourly_pay"><%= job.hourly_pay %>$ per hour</span>
   <span class="work_date">WORK DATE: <%= job.work_date %></span>
   <span class="response_deadline">RESPOND BY: <%= job.response_deadline %></span>

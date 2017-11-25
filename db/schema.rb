@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118204514) do
+ActiveRecord::Schema.define(version: 20171125202704) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20171118204514) do
     t.boolean "is_accepting_applicants", default: true
     t.string "payment_method"
     t.string "location"
+    t.string "type_of_service"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class JobTest < ActiveSupport::TestCase
-  
+
   setup do
     @job = Job.new
     @job.title = "Some title"
@@ -9,6 +9,7 @@ class JobTest < ActiveSupport::TestCase
     @job.hourly_pay = 13
     @job.payment_method = "Credit"
     @job.location = "Some Location"
+    @job.type_of_service = "other (please specificy in description)"
   end
 
   test "can save a job" do
@@ -26,7 +27,7 @@ class JobTest < ActiveSupport::TestCase
 
   test "hourly pay can only be an integer" do
     orig_hourly_pay = @job.hourly_pay
-    
+
     @job.hourly_pay = "Not a number"
     assert_not @job.save, "Cannot save string as hourly pay"
 
@@ -35,7 +36,7 @@ class JobTest < ActiveSupport::TestCase
 
     @job.hourly_pay = 13
     assert @job.save
-    
+
   end
 
   test "deleting a user deletes its jobs" do
@@ -48,5 +49,5 @@ class JobTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordNotFound) { job.reload }
 
   end
-  
+
 end

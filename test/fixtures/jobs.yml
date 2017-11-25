@@ -12,6 +12,7 @@ one:
   payment_method: Credit
   user: one
   location: TestLocation
+  type_of_service: babysitting
 
 two:
   id: 2
@@ -25,3 +26,4 @@ two:
   payment_method: Credit
   user: two
   location: TestLocation
+  type_of_service: babysitting

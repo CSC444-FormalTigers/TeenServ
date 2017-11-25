@@ -141,7 +141,8 @@ class JobsController < ApplicationController
         :hourly_pay,
         :payment_method,
         :location,
-        :is_accepting_applicants)
+        :is_accepting_applicants,
+        :type_of_service)
     end
 
     def find_job_with_id

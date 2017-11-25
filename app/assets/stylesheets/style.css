@@ -641,7 +641,7 @@ job block style
 	color: #6f6f6f;
 	line-height: 48px;
 }
-.job_container .hourly_pay {
+.job_container .hourly_pay, .job_container .type_of_service {
 	color: #404040;
 	font-size: .7em;
 }
