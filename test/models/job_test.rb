@@ -9,7 +9,7 @@ class JobTest < ActiveSupport::TestCase
     @job.hourly_pay = 13
     @job.payment_method = "Credit"
     @job.location = "Some Location"
-    @job.type_of_service = "other (please specificy in description)"
+    @job.type_of_service = "other (please specify in description)"
   end
 
   test "can save a job" do
