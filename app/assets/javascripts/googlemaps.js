@@ -15,12 +15,12 @@ function initJobIndexMap() {
 
   var bounds = new google.maps.LatLngBounds();
   for (var i=0; i < g__jobs.length; i++) {
-    var job = g__jobs[i];
-    console.log(job);
-    geocoder.geocode({
-        'address': job.location
-    }, createGeocodeCallback(job, bounds)
-    );
+      var job = g__jobs[i];
+      console.log(job);
+      geocoder.geocode({
+          'address': job.location
+          }, createGeocodeCallback(job, bounds)
+      );
 
   }
 
@@ -36,7 +36,12 @@ function createGeocodeCallback(job, bounds) {
             });
 
             google.maps.event.addListener(marker, 'click', function() {
-              var myContent = "<h3>" + job.title + "</h3>";
+              var myContent = "<h2>Job Title: " + job.title + "</h2>\n" +
+                  "<p><strong>Description: </strong>" + job.description + "</p>" +
+                  "<p><strong>When: </strong>" + job.work_date + "</p>" +
+                  "<p><strong>Where: </strong>"+ job.location + "</p>" +
+                  "<p><strong>Wage (hourly): </strong>" + job.hourly_pay + "</p>" +
+                  "<p><strong>Payment Method: </strong>" + job.payment_method + "</p>";
               infowindow.setContent(myContent);
               infowindow.open(map, this);
             });
@@ -49,30 +54,6 @@ function createGeocodeCallback(job, bounds) {
         }
     };
 }
-
-/* Commenting this out for example on how to add listener to the markers.
-
-function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
-
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
-*/
 
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
