@@ -17,16 +17,27 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQC
 <div class="padded-container">
   <h1 class="page_title"> Listing all jobs </h1>
   <% if current_user.account_type == "employer" %>
-  <%= link_to new_job_path, class: "add_button" do %>
-  <%= fa_icon "plus"%>Post Job
-  <% end %>
+    <%= link_to new_job_path, class: "add_button" do %>
+      <%= fa_icon "plus"%>Post Job
+    <% end %>
   <% end %>
 
   <%= form_tag(jobs_path, method: :get, :class => "search") do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag 'Search', name: nil %>
-  <% end %>
-    <% @jobs.each do |job| %>
-    <%= render partial: 'job', locals: {job: job} %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+    <br>
+    <% Job.services.each do |service| %>
+      <br>
+      <% if params[:services]%>
+        <%= check_box_tag 'services[]',service, params[:services].include?(service)  %>
+      <% else %>
+        <%= check_box_tag 'services[]',service%>
+      <% end %>
+      <%= service %>
     <% end %>
+  <% end %>
+
+  <% @jobs.each do |job| %>
+    <%= render partial: 'job', locals: {job: job} %>
+  <% end %>
 </div>
