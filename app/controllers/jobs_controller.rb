@@ -14,8 +14,7 @@ class JobsController < ApplicationController
   ]
 
   def index
-    print params[:services]
-    @jobs = Job.search(params[:search],params[:services]).order(created_at: :desc)
+    @jobs = Job.search(params[:services]).order(created_at: :desc)
   end
 
   def create

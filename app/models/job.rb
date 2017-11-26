@@ -35,11 +35,9 @@ class Job < ApplicationRecord
   validates :type_of_service,
     inclusion: {in:self.services}
 
-  def self.search(search,services)
+  def self.search(services)
     if services
       where(type_of_service: services)
-    elsif search
-      where('description LIKE ?', "%#{search}%")
     else
       all
     end

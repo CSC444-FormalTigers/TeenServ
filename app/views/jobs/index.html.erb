@@ -13,6 +13,14 @@
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQCmfz4R5g4&callback=initJobIndexMap&libraries=places">
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#filter_btn').click(function(){
+    $('#filter').toggle();
+  });
+});
+</script>
 
 <div class="padded-container">
   <h1 class="page_title"> Listing all jobs </h1>
@@ -21,22 +29,23 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0ugsCqZWxUskx1eCqacGoQC
       <%= fa_icon "plus"%>Post Job
     <% end %>
   <% end %>
-
-  <%= form_tag(jobs_path, method: :get, :class => "search") do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag 'Search', name: nil %>
-    <br>
-    <% Job.services.each do |service| %>
-      <br>
-      <% if params[:services]%>
-        <%= check_box_tag 'services[]',service, params[:services].include?(service)  %>
-      <% else %>
-        <%= check_box_tag 'services[]',service%>
+  <div id="filter_btn" class="filter_button">
+    Filtering
+  </div>
+  <div id="filter" class="hidden">
+    <%= form_tag(jobs_path, method: :get, :class => "search") do %>
+      <% Job.services.each do |service| %>
+        <br>
+        <% if params[:services]%>
+          <%= check_box_tag 'services[]',service, params[:services].include?(service)  %>
+        <% else %>
+          <%= check_box_tag 'services[]',service%>
+        <% end %>
+        <%= service %>
       <% end %>
-      <%= service %>
+      <%= submit_tag 'Filter', name: nil %>
     <% end %>
-  <% end %>
-
+  </div>
   <% @jobs.each do |job| %>
     <%= render partial: 'job', locals: {job: job} %>
   <% end %>
