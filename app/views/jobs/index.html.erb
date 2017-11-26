@@ -6,8 +6,11 @@
 <% Job.all.each do |job| %>
   <% job_routes.push( job_url(job) ) %>
 <% end %>
-
-<%= javascript_tag "g__jobs = #{Job.all.to_json.html_safe};" %>
+<% if params[:services] %>
+  <%= javascript_tag "g__jobs = #{Job.search(params[:services]).to_json.html_safe};" %>
+<% else %>
+  <%= javascript_tag "g__jobs = #{Job.all.to_json.html_safe};" %>
+<% end %>
 <%= javascript_tag "g__job_routes = #{job_routes.to_json.html_safe};" %>
 
 <script async defer
