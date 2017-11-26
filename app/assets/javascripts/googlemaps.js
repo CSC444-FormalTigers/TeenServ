@@ -2,6 +2,11 @@ var map;
 var infowindow;
 var geocoder;
 
+$('#my-link').click(function(event) {
+  alert('Hooray!');
+  event.preventDefault(); // Prevent link from following its href
+});
+
 function initJobIndexMap() {
   var pyrmont = {lat: -33.867, lng: 151.195};
 
