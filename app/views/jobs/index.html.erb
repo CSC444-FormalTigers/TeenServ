@@ -1,15 +1,17 @@
-<%= link_to 'Link with unobtrusive JavaScript',
-        jobs_url,
-        :id => 'my-link' %>
-
 <div class="gmap">
   <div id="map"></div>
 </div>
+
+
+<% unused_var = '' %>
+<%= text_field_tag :search_location, unused_var %>
+
 
 <% job_routes = [] %>
 <% Job.all.each do |job| %>
   <% job_routes.push( job_url(job) ) %>
 <% end %>
+
 
 <%= javascript_tag "g__jobs = #{Job.all.to_json.html_safe};" %>
 <%= javascript_tag "g__job_routes = #{job_routes.to_json.html_safe};" %>
