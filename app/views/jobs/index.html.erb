@@ -2,6 +2,11 @@
   <div id="map"></div>
 </div>
 
+
+<% unused_var = '' %>
+<%= text_field_tag :search_location, unused_var %>
+
+
 <% job_routes = [] %>
 <% Job.all.each do |job| %>
   <% job_routes.push( job_url(job) ) %>
