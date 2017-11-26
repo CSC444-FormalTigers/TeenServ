@@ -20,7 +20,7 @@ var getDistance = function(p1, p2) {
 };
 
 
-function initJobIndexMapAutoComplete() {
+function initJobIndexMapAutoComplete(markersArray) {
   var input = document.getElementById('search_location');
   console.log(input);
 
@@ -30,7 +30,7 @@ function initJobIndexMapAutoComplete() {
   // bounds option in the request.
   autocomplete.bindTo('bounds', map);
 
-  var marker = new google.maps.Marker({
+  var search_marker = new google.maps.Marker({
     map: map,
     anchorPoint: new google.maps.Point(0, -29),
 		icon: {
@@ -40,7 +40,7 @@ function initJobIndexMapAutoComplete() {
   });
 
   autocomplete.addListener('place_changed', function() {
-    marker.setVisible(false);
+    search_marker.setVisible(false);
   	//var bounds = new google.maps.LatLngBounds();
     var place = autocomplete.getPlace();
 
@@ -54,10 +54,23 @@ function initJobIndexMapAutoComplete() {
 		map.setCenter(place.geometry.location);
 		map.setZoom(17);  // Why 17? Because it looks good.
 
-    marker.setPosition(place.geometry.location);
-    marker.setVisible(true);
+    search_marker.setPosition(place.geometry.location);
+    search_marker.setVisible(true);
 
+    //getPosition()
     //getDistance(p1,p2);
+
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(search_marker.getPosition());
+    for(var i=0; i < markersArray.length; i++) {
+      var marker = markersArray[i];
+      var distance = getDistance(marker.getPosition(), search_marker.getPosition());
+      
+      if (distance <= 5000) {
+        bounds.extend(marker.getPosition());
+        map.fitBounds(bounds);
+      }
+    }
 
 
   });
@@ -74,6 +87,7 @@ function initJobIndexMap() {
   infowindow = new google.maps.InfoWindow();
   geocoder = new google.maps.Geocoder();
   var bounds = new google.maps.LatLngBounds();
+  var markersArray = [];
 
   for (var i=0; i < g__jobs.length; i++) {
       var job = g__jobs[i];
@@ -83,14 +97,14 @@ function initJobIndexMap() {
 
       geocoder.geocode({
           'address': job.location
-          }, createGeocodeCallback(job, job_route, bounds)
+          }, createGeocodeCallback(job, job_route, bounds, markersArray)
       );
   }
 
-	initJobIndexMapAutoComplete();
+	initJobIndexMapAutoComplete(markersArray);
 }
 
-function createGeocodeCallback(job, job_route, bounds) {
+function createGeocodeCallback(job, job_route, bounds, markersArray) {
     return function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             // Add marker on location
@@ -98,6 +112,8 @@ function createGeocodeCallback(job, job_route, bounds) {
                 map: map,
                 position: results[0].geometry.location
             });
+
+            markersArray.push(marker);
 
             google.maps.event.addListener(marker, 'click', function() {
               var myContent = "<h2>Job Title: " + job.title + "</h2>\n" +
