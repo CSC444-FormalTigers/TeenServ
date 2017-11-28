@@ -65,17 +65,18 @@
           data: {confirm: 'Are you sure?'} %>
       </li>
       <% end %>
-    <% else %>
-      <% app = current_user.job_applications.where(:job_id == @job.id).last %>
+    <% elsif current_user.teenager? %>
+      <% app = @job.job_applications.where(user_id: current_user.id).last %>
 
-    <% if app.blank? %>
+      <% if app.blank? %>
 
-      <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
-        <%= form.submit %>
-      <% end %>
+        <%= form_with(model: [ @job, @job.job_applications.new ], local: true) do |form| %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.submit %>
+        <% end %>
 
       <% else %>
+      <%= app.user_id %>
         <%= button_to 'Cancel Job Application',
         job_job_application_path(@job, app),
         method: :delete,
