@@ -32,16 +32,25 @@
     <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
     <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
     <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
-    <% if @user.account_type == "employer" and @user.jobs.any? %>
+    <% if @user.employer? and @user.jobs.any? %>
       <h2 class="page_title"> Job Postings </h2>
       <% @user.jobs.each do |job| %>
         <li>
-        <%= link_to job.title, job_path(job.id) %>
-	</li>
+          <%= link_to job.title, job_path(job.id) %>
+        </li>
       <% end %>
     <% end %>
     <% if current_user.admin? or current_user == @user %>
       <%-# Private View -%>
+      <% if @user.teenager? and @user.job_applications.any?  %>
+        <h2 class="page_title"> Jobs Applied To </h2>
+        <% @user.job_applications.each do |app| %>
+          <li>
+            <%= link_to app.job.title, job_path(app.job.id) %>
+          </li>
+        <% end %>
+      <% end %>
+      
       <%= link_to edit_user_path(@user), class: "edit_button" do %>
       <%= fa_icon "pencil"%>Edit Profile
       <% end %>

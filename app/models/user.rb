@@ -45,4 +45,12 @@ class User < ApplicationRecord
 	return nil
   end
 
+  def employer?
+    return self.account_type == "employer"
+  end
+
+  def teenager?
+    return self.account_type == "teenager"
+  end
+
 end
