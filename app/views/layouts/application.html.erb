@@ -56,7 +56,7 @@
   </header>
 
   <% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "flash #{key}" %>
+    <%= content_tag :div, value, class: "flash #{key}" %>
   <% end %>
 
   <section class="container" id="main_content">

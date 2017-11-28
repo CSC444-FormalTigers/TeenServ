@@ -228,7 +228,7 @@ Notifications
 	color: #fff;
 	color: var(--light-text);
 	padding: 13px;
-	position: absolute;
+	//position: absolute;
 	z-index: 100;
 	top: 75px;
 	width: 30%;

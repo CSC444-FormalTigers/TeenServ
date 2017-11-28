@@ -9,7 +9,7 @@ class JobApplicationsController < ApplicationController
         begin
         JobMailer.new_applicants_notification_email(@job).deliver_now
         rescue Net::SMTPAuthenticationError => e
-          flash[:success] = "Problem sending email notification to job owner."
+          flash[:danger] = "Problem sending email notification to job owner."
         end
 
         redirect_to job_path(@job), notice: "Successfully applied for this job"
