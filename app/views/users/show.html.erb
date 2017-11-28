@@ -44,13 +44,18 @@
       <%-# Private View -%>
       <% if @user.teenager? and @user.job_applications.any?  %>
         <h2 class="page_title"> Jobs Applied To </h2>
-        <% @user.job_applications.each do |app| %>
+        <% @user.job_applications.joins(:job).order("jobs.title ASC").each do |app| %>
           <li>
             <%= link_to app.job.title, job_path(app.job.id) %>
+            <% if app.is_accepted %>
+              Accepted
+            <% else %>
+              Not Yet Accepted
+            <% end %>
           </li>
         <% end %>
       <% end %>
-      
+
       <%= link_to edit_user_path(@user), class: "edit_button" do %>
       <%= fa_icon "pencil"%>Edit Profile
       <% end %>
