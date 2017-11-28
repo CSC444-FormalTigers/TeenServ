@@ -94,8 +94,8 @@ class JobsController < ApplicationController
     worker = User.where(:id => worker_id).first
     employer = @job.user
     worker_pay = hours_worked.to_i * @job.hourly_pay
-    #Hard coded percentage of what we get (5%)
-    our_pay = worker_pay * 1.05
+    #Hard coded percentage of what we get (10%)
+    our_pay = (worker_pay * 1.10).round(2)
 
     @api = PayPal::SDK::AdaptivePayments.new
     @pay = @api.build_pay({

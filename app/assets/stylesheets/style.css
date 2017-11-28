@@ -852,6 +852,37 @@ Admin Styles
 	background: var(--dark-primary);
 }
 /*
+timesheet
+*/
+.timesheet_button {
+		cursor: pointer;
+		transition: background ease .2s,
+		border ease .2s;
+		display: inline-block;
+		border-bottom: none;
+		background: #03A9F4;
+		background: var(--primary);
+		border: 1px solid #0288D1;
+		border: 1px solid var(--dark-primary);
+		border-radius: 2px;
+		color: #fff;
+		padding: 5px 5px;
+}
+.timesheet_button .fa {
+	padding-right: 20px;
+}
+.timesheet_button:hover {
+	color: #fff;
+	background: #1CB4F9;
+	background: var(--light-primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
+}
+.timesheet_button:active {
+	background: #0288D1;
+	background: var(--dark-primary);
+}
+/*
 gmaps
 */
 .gmap {

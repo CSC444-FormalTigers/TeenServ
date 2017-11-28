@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     member do
       patch 'accept_applicant'
       patch 'unaccept_applicant'
-      get 'pay_teenager'
+      post 'pay_teenager'
     end
   end
 
