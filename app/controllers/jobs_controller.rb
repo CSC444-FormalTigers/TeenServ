@@ -65,7 +65,12 @@ class JobsController < ApplicationController
     if !query.empty?
       job_app = query.last
       job_app.update_attribute(:is_accepted, true)
+
+      begin
       JobMailer.application_accepted_notification_email(job_app).deliver_now
+      rescue Net::SMTPAuthenticationError => e
+        flash[:success] = "Problem sending email notification to applicant."
+      end
 
       redirect_to job_path(@job), notice: 'Accepted applicant!'
     else

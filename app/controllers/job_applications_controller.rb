@@ -6,7 +6,11 @@ class JobApplicationsController < ApplicationController
       @job_application = @job.job_applications.create(job_application_params)
 
       if(@job_application.save)
+        begin
         JobMailer.new_applicants_notification_email(@job).deliver_now
+        rescue Net::SMTPAuthenticationError => e
+          flash[:success] = "Problem sending email notification to job owner."
+        end
 
         redirect_to job_path(@job), notice: "Successfully applied for this job"
       else
