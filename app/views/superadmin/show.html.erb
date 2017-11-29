@@ -1,10 +1,29 @@
 <div class="padded-container">
-  <h1>Users</h1>
+  <h3 class="table_title">Users</h3>
   <%= render partial: 'table', locals: {data: @users} %>
 
-  <h1>Jobs</h1>
+  <h3 class="table_title">Teenagers</h3>
+  <%= render partial: 'table', locals: {data: @teenagers} %>
+
+  <h3 class="table_title">Jobs</h3>
   <%= render partial: 'table', locals: {data: @jobs} %>
 
-  <h1>Job Applications</h1>
+  <h3 class="table_title">Job Applications</h3>
   <%= render partial: 'table', locals: {data: @job_applications} %>
+
+  <h3 class="table_title">Change Logs</h3>
+  <%= render partial: 'table', locals: {data: @changelogs} %>
+
+  <h3 class="table_title">Endorsements</h3>
+  <%= render partial: 'table', locals: {data: @endorsements} %>
+
+  <h3 class="table_title">Reviews</h3>
+  <%= render partial: 'table', locals: {data: @reviews} %>
+
+  <h3 class="table_title">Skills</h3>
+  <%= render partial: 'table', locals: {data: @skills} %>
+
+  <h3 class="table_title">Transactions</h3>
+  <%= render partial: 'table', locals: {data: @transactions} %>
+
 </div>
