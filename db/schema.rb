@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125202704) do
+ActiveRecord::Schema.define(version: 20171129214943) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 20171125202704) do
     t.text "address"
     t.text "photo"
     t.text "account_type"
-    t.string "password_digest"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -130,6 +129,7 @@ ActiveRecord::Schema.define(version: 20171125202704) do
     t.string "avatar"
     t.string "resume"
     t.integer "rating", default: 0
+    t.boolean "banned"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
