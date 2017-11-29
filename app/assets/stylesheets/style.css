@@ -8,6 +8,8 @@ License: none (public domain)
 
 
 
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -222,23 +224,29 @@ Footer style
 /**
 Notifications
 */
+#notifications {
+	position: absolute;
+	top: 62px;
+	right: 0;
+	width: 30%;
+}
 .flash {
 	text-align: center;
 	background: #333;
 	color: #fff;
 	color: var(--light-text);
 	padding: 13px;
-	//position: absolute;
+	float: right;
 	z-index: 100;
-	top: 75px;
-	width: 30%;
-	right: 10px;
-	-webkit-animation: seconds 1.0s forwards;
+	width: 100%;
+	margin: 10px;
+	margin-bottom: 0;
+	/*-webkit-animation: seconds 1.0s forwards;
 	-webkit-animation-iteration-count: 1;
 	-webkit-animation-delay: 5s;
 	animation: seconds 1.0s forwards;
 	animation-iteration-count: 1;
-	animation-delay: 5s;
+	animation-delay: 5s;*/
 }
 .flash.danger {
 	border: 1px solid #bb3434;
