@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <% data.columns.each do |column| %>
+      <th><%= column.name %></th>
+    <% end %>
+  </tr>
+<% data.all.each do |data_row| %>
+  <tr>
+    <% data_row.attributes.each do |cell_name, cell_value| %>
+      <td><%= cell_value %></td>
+    <% end %>
+  </tr>
+<% end%>
+</table>

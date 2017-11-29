@@ -4,12 +4,6 @@ http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
 License: none (public domain)
 */
-
-
-
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -315,21 +309,32 @@ Main content
 table styles
 */
 #main_content table {
-	width:100%;
+	border: 2px solid #dadada;
+	display: block;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-width: 100vw;
+    font-size: .8em;
+    table-layout: fixed;
 }
 #main_content th {
-	background: #f8f8f8;
+	background: #03A9F4;
+	background: var(--primary);
+	color: #fff;
+	color: var(--light-text);
 	padding: 10px;
-	border: 1px solid #f6f6f6;
-	border-bottom: none;
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
 }
 #main_content tr:nth-child(even) {
-	background: #f6f6f6;
+	background: #ffffff;
 }
 #main_content tr {
-	background: #f8f8f8;
+	background: #efefef;
 }
 #main_content td {
+	min-width: 100px;
 	padding: 10px;
 	border: 1px solid #f6f6f6;
 }

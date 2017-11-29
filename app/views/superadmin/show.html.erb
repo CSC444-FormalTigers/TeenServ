@@ -1,0 +1,10 @@
+<div class="padded-container">
+  <h1>Users</h1>
+  <%= render partial: 'table', locals: {data: @users} %>
+
+  <h1>Jobs</h1>
+  <%= render partial: 'table', locals: {data: @jobs} %>
+
+  <h1>Job Applications</h1>
+  <%= render partial: 'table', locals: {data: @job_applications} %>
+</div>
