@@ -235,12 +235,12 @@ Notifications
 	width: 100%;
 	margin: 10px;
 	margin-bottom: 0;
-	/*-webkit-animation: seconds 1.0s forwards;
+	-webkit-animation: seconds 1.0s forwards;
 	-webkit-animation-iteration-count: 1;
 	-webkit-animation-delay: 5s;
 	animation: seconds 1.0s forwards;
 	animation-iteration-count: 1;
-	animation-delay: 5s;*/
+	animation-delay: 5s;
 }
 .flash.danger {
 	border: 1px solid #bb3434;
