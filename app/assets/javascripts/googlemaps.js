@@ -81,9 +81,24 @@ function initJobIndexMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
-    zoom: 15,
+    zoom: 12,
     clickableIcons: false
   });
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(pos);
+     }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+  }
 
   infowindow = new google.maps.InfoWindow();
   geocoder = new google.maps.Geocoder();
@@ -117,7 +132,7 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
             markersArray.push(marker);
 
             google.maps.event.addListener(marker, 'click', function() {
-              var myContent = "<h2>Job Title: " + job.title + "</h2>\n" +
+              var myContent = "<h2>" + job.title + "</h2>\n" +
                   "<p><strong>Description: </strong>" + job.description + "</p>" +
                   "<p><strong>When: </strong>" + job.work_date + "</p>" +
                   "<p><strong>Where: </strong>"+ job.location + "</p>" +
@@ -127,9 +142,9 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
               infowindow.setContent(myContent);
               infowindow.open(map, this);
             });
-
+/*
             bounds.extend(marker.getPosition());
-            map.fitBounds(bounds);
+            map.fitBounds(bounds);*/
 
         } else {
             console.error("Geocode was not successful for the following reason: " + status);
@@ -146,6 +161,20 @@ function initJobFormMap() {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
   });
+  if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+       }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+  }
   var input = document.getElementById('location');
   console.log(input);
 
@@ -236,4 +265,13 @@ function codeAddress() {
             alert("Geocode was not successful for the following reason: " + status);
         }
     });
+}
+
+
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
 }
