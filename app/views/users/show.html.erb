@@ -25,6 +25,9 @@
     <p><strong>Cell Phone: </strong><%= @user.cell_phone %></p>
     <p><strong>Home Phone: </strong><%= @user.home_phone %></p>
     <p><strong>Email Address: </strong><%= @user.email %></p>
+    <% if @user.teenager? %>
+      <p><strong>PayPal Email Address: </strong><%= @user.paypal_email %></p>
+    <% end %>
     <p><strong>Address: </strong><%= @user.address %></p>
     <p><strong>Account Type: </strong><%= @user.account_type %></p>
     <h4>Security</h4>
@@ -67,7 +70,7 @@
       <% else %>
         <% for attribute in @attributes_to_display %>
             <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
-          <% end %>
+        <% end %>
       <% end %>
       </div>
     <% end %>

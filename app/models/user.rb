@@ -22,6 +22,12 @@ class User < ApplicationRecord
     :email_format => { :message => 'format is invalid.' },
     uniqueness: true
 
+  validates :paypal_email,
+    presence: true,
+    :email_format => { :message => 'format is invalid.'},
+    uniqueness: true,
+    :unless => :employer?
+
   validates :age,
     :allow_blank => true,
     numericality: { only_integer: true, greater_than: 0, less_than: 200 }

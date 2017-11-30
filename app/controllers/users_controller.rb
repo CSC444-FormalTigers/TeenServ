@@ -109,7 +109,8 @@ class UsersController < ApplicationController
       	:photo,
       	:account_type,
         :avatar,
-        :resume)
+        :resume,
+        :paypal_email)
     end
 
     def find_user_with_id

@@ -7,6 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user_with_files = users(:user_with_avatar)
     @user_with_disposable_files = users(:user_with_disposable_avatar)
     @admin = users(:admin)
+    @teen = users(:teen)
   end
 
   test "can get index of users" do
@@ -39,6 +40,39 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         password: "PossiblePassword",
         email: "possible@email.com",
         account_type: "employer",
+		terms_of_service: "1"}}
+    end
+
+    assert_redirected_to root_path
+    assert_equal 'PossibleUserName', User.last.username
+    sign_in users(:one)
+  end
+
+  test "can't create teenager without paypal email" do
+    sign_out :user
+    assert_no_difference('User.count') do
+      post users_url, params: {user: {
+        username: "PossibleUserName",
+        password: "PossiblePassword",
+        email: "possible@email.com",
+        paypal_email: "",
+        account_type: "teenager",
+        terms_of_service: "1"
+        }}
+    end
+    assert_response :success
+    sign_in users(:one)
+  end
+
+  test "can create a teenager" do
+    sign_out :user
+    assert_difference('User.count') do
+      post users_url, params: {user: {
+        username: "PossibleUserName",
+        password: "PossiblePassword",
+        email: "possible@email.com",
+        paypal_email: "possible@email.com",
+        account_type: "teenager",
 		terms_of_service: "1"}}
     end
 
@@ -80,6 +114,35 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_path(@user)
 
     assert_equal "possible@email.com", @user.reload.email
+  end
+
+  test "can update teenager with paypal_email" do
+    sign_out :user
+    sign_in @teen
+    patch user_url(@teen),
+      params: { user: {
+        password: "TestPassword",
+        password_confirmation: "TestPassword",
+        email: "possible@email.com",
+        paypal_email: "possible@email.com"} }
+    assert_redirected_to user_path(@teen)
+
+    assert_equal "possible@email.com", @teen.reload.email
+    assert_equal "possible@email.com", @teen.reload.email
+  end
+
+  test "can't update teenager with blank paypal_email" do
+    sign_out :user
+    sign_in @teen
+    patch user_url(@teen),
+      params: { user: {
+        password: "TestPassword",
+        password_confirmation: "TestPassword",
+        email: "possible@email.com",
+        paypal_email: ""} }
+    assert_response :success
+
+    assert_equal users(:teen).paypal_email, @teen.reload.paypal_email
   end
 
   test "can update user without password" do

@@ -44,3 +44,12 @@ admin:
   account_type: employer
   admin: true
   name: John
+
+teen:
+  username: teen
+  password: teenager
+  email: teen@teen.com
+  paypal_email: teen@teen.com
+  account_type: teenager
+  admin: false
+  name: teen
