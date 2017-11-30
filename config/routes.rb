@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'superadmin' => "superadmin#show"
+
   get 'misc/about'
   get 'misc/policy'
   get 'misc/terms'
