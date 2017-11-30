@@ -3,9 +3,7 @@
 </div>
 
 
-Search for jobs within 5km of: 
-<% unused_var = '' %>
-<%= text_field_tag :search_location, unused_var %>
+Search for jobs within <%= number_field_tag :search_within_distance, 5000 %>m of: <%= text_field_tag :search_location %>
 
 
 <% job_routes = [] %>

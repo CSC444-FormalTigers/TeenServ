@@ -19,7 +19,7 @@ var getDistance = function(p1, p2) {
   return d; // returns the distance in meter
 };
 
-function boundNearPosition(position, markersArray) {
+function boundNearPosition(position, markersArray, withinDistance) {
   var isNothingNear = true;
   var bounds = new google.maps.LatLngBounds();
   bounds.extend(position);
@@ -27,7 +27,7 @@ function boundNearPosition(position, markersArray) {
     var marker = markersArray[i];
     var distance = getDistance(marker.getPosition(), position);
     
-    if (distance <= 5000) {
+    if (distance <= withinDistance) {
       console.log("Job nearby within: " + distance + " meters" );
       bounds.extend(marker.getPosition());
       isNothingNear = false;
@@ -68,6 +68,11 @@ function initJobIndexMapAutoComplete(markersArray) {
 
   autocomplete.addListener('place_changed', function() {
     search_marker.setVisible(false);
+
+    var within_distance = document.getElementById('search_within_distance');
+    within_distance = parseInt(within_distance.value);
+    console.log("Find jobs within: " + within_distance + "m...")
+
     var place = autocomplete.getPlace();
 
     if (!place.geometry) {
@@ -80,7 +85,7 @@ function initJobIndexMapAutoComplete(markersArray) {
     search_marker.setPosition(place.geometry.location);
     search_marker.setVisible(true);
 
-    boundNearPosition(search_marker.getPosition(), markersArray);
+    boundNearPosition(search_marker.getPosition(), markersArray, within_distance);
   });
 }
 
