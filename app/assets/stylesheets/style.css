@@ -883,6 +883,12 @@ timesheet
 	background: var(--dark-primary);
 }
 /*
+paypal email script
+*/
+#paypal_email.field {
+	display:none;
+}
+/*
 gmaps
 */
 .gmap {
