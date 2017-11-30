@@ -111,19 +111,6 @@ function initJobIndexMap() {
     );
   }
 
-/*
-  try {
-    tryGeolocation(bounds, markersArray);
-  }
-  catch(err) {
-    for(var i=0; i < markersArray.length; i++) {
-      var marker = markersArray[i];
-      bounds.extend(marker.getPosition());
-    }
-    map.fitBounds(bounds);
-  }
-  */
-
 	initJobIndexMapAutoComplete(markersArray);
 
 }
@@ -162,28 +149,6 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
 }
 
 
-function tryGeolocation(bounds, markersArray) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("Obtained current user location");
-
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      boundNearPosition(pos, markersArray);
-
-    }, function() {
-      console.log("Failed geolocation");
-      handleLocationError(true, infowindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    console.log("Browser doesn't support geolocation");
-    handleLocationError(false, infowindow, map.getCenter());
-  }
-}
 
 
 // This example requires the Places library. Include the libraries=places
@@ -287,14 +252,3 @@ function codeAddress() {
     });
 }
 
-
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-          'Error: The Geolocation service failed.' :
-          'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-
-  throw "Failed to obtain geolocation!";
-}
