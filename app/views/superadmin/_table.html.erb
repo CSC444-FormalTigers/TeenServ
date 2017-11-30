@@ -1,11 +1,30 @@
+<%
+  if data.table_name == "jobs"
+    datalink_path = :job_path
+  elsif data.table_name == "users"
+    datalink_path = :user_path
+  elsif data.table_name == "job_applications"
+    datalink_path = :job_job_application_path
+  else
+    datalink_path = :welcome_index_path
+  end
+%>
 <table>
   <tr>
+    <th>Entry Link</th>
     <% data.columns.each do |column| %>
       <th><%= column.name %></th>
     <% end %>
   </tr>
 <% data.all.each do |data_row| %>
   <tr>
+    <% if data.table_name == "job_applications" %>
+      <%-# Need to manage job_applications differently -%>
+      <%-# link requires job_id and application id -%>
+      <td><%= link_to send(datalink_path, data_row.job_id, data_row.id) do %>VIEW ENTRY<% end %></td>
+    <% else %>
+      <td><%= link_to send(datalink_path, data_row.id) do %>VIEW ENTRY<% end %></td>
+    <% end %>
     <% data_row.attributes.each do |cell_name, cell_value| %>
       <td><%= cell_value %></td>
     <% end %>
