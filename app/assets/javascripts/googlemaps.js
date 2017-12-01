@@ -112,28 +112,16 @@ function initJobIndexMap() {
 
     geocoder.geocode({
         'address': job.location
-        }, createGeocodeCallback(job, job_route, bounds, markersArray)
+        }, createGeocodeCallback(job, job_route, markersArray)
     );
   }
 
-/*
-  try {
-    tryGeolocation(bounds, markersArray);
-  }
-  catch(err) {
-    for(var i=0; i < markersArray.length; i++) {
-      var marker = markersArray[i];
-      bounds.extend(marker.getPosition());
-    }
-    map.fitBounds(bounds);
-  }
-  */
+  tryGeolocation();
 
 	initJobIndexMapAutoComplete(markersArray);
-
 }
 
-function createGeocodeCallback(job, job_route, bounds, markersArray) {
+function createGeocodeCallback(job, job_route, markersArray) {
     return function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             // Add marker on location
@@ -156,9 +144,6 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
               infowindow.open(map, this);
             });
 
-            bounds.extend(marker.getPosition());
-            map.fitBounds(bounds);
-
 
         } else {
             console.error("Geocode was not successful for the following reason: " + status);
@@ -167,7 +152,7 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
 }
 
 
-function tryGeolocation(bounds, markersArray) {
+function tryGeolocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       console.log("Obtained current user location");
@@ -177,7 +162,7 @@ function tryGeolocation(bounds, markersArray) {
         lng: position.coords.longitude
       };
 
-      boundNearPosition(pos, markersArray);
+      map.setCenter(pos);
 
     }, function() {
       console.log("Failed geolocation");
@@ -300,6 +285,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           'Error: The Geolocation service failed.' :
           'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
-
-  throw "Failed to obtain geolocation!";
 }
