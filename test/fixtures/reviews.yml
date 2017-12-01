@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  reviewer: MyString
-  reviewee: MyString
-  service_id: 1
+review_one:
+  reviewer_id: 0 
+  reviewee_id: 1
   rating: 1
-  description: MyText
+  description: "This guy rocks"
 
-two:
-  reviewer: MyString
-  reviewee: MyString
-  service_id: 1
-  rating: 1
-  description: MyText
+review_two:
+  reviewer_id: 1
+  reviewee_id: 0
+  rating: 4
+  description: "This guy sucks"

@@ -11,6 +11,12 @@ class User < ApplicationRecord
   has_many :job_applications, dependent: :destroy
   has_many :jobs, dependent: :destroy
 
+  # sent_reviews "names" the Review join table for accessing through the reviewer association
+  has_many :sent_reviews, foreign_key: :reviewer_id, class_name: "Review", dependent: :destroy
+
+  # received_reviews "names" the Review join table for accessing through the reviewee association
+  has_many :received_reviews, foreign_key: :reviewee_id, class_name: "Review", dependent: :destroy
+
   validates :username,
     presence: true,
     :format => {:with => /\A[0-9\w_]{4,20}\z/,
