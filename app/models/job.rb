@@ -35,12 +35,25 @@ class Job < ApplicationRecord
   validates :type_of_service,
     inclusion: {in:self.services}
 
+  validates :work_date,
+    presence: true
+
+  validates :response_deadline,
+    presence: true
+
   def self.search(services)
     if services
       where(type_of_service: services)
     else
       all
     end
+  end
+
+  
+  private
+
+
+  def incorrect_response_deadline_check
   end
 
 end

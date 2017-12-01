@@ -3,13 +3,7 @@ require 'test_helper'
 class JobTest < ActiveSupport::TestCase
 
   setup do
-    @job = Job.new
-    @job.title = "Some title"
-    @job.description = "Some description"
-    @job.hourly_pay = 13
-    @job.payment_method = "Credit"
-    @job.location = "Some Location"
-    @job.type_of_service = "other (please specify in description)"
+    @job = Job.new(new_job_params[:job])
   end
 
   test "can save a job" do

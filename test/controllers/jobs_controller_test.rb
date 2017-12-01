@@ -31,10 +31,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     sign_out @user
 
     assert_no_difference('Job.count') do
-      post jobs_url, params: {job: {
-        username: "PossibleUserName",
-        title: "Some Title",
-        description: "Some Description",}}
+      post jobs_url, params: new_job_params
     end
     assert_redirected_to new_user_session_url
 
@@ -44,14 +41,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
   test "can create a job" do
     assert_difference('Job.count') do
-      post jobs_url, params: {job: {
-        username: "PossibleUserName",
-        title: "Some Title",
-        description: "Some Description",
-		hourly_pay: "10",
-        payment_method: "Credit",
-        location: "Some Location",
-        type_of_service: "other (please specify in description)"}}
+      post jobs_url, params: new_job_params
     end
 
     assert_redirected_to job_url(Job.last)
@@ -135,4 +125,5 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     @job_application.reload
     assert(!@job_application.is_accepted)
   end
+
 end
