@@ -19,6 +19,33 @@ var getDistance = function(p1, p2) {
   return d; // returns the distance in meter
 };
 
+function boundNearPosition(position, markersArray, withinDistance) {
+  var isNothingNear = true;
+  var bounds = new google.maps.LatLngBounds();
+  bounds.extend(position);
+  for(var i=0; i < markersArray.length; i++) {
+    var marker = markersArray[i];
+    var distance = getDistance(marker.getPosition(), position);
+    
+    if (distance <= withinDistance) {
+      console.log("Job nearby within: " + distance + " meters" );
+      bounds.extend(marker.getPosition());
+      isNothingNear = false;
+    }
+  }
+
+  if(isNothingNear) {
+    console.log("No jobs near: " + position.lat + ", " + position.lng);
+    console.log("markers array lngth: " + markersArray.length);
+    for(var i=0; i < markersArray.length; i++) {
+      var marker = markersArray[i];
+      bounds.extend(marker.getPosition());
+    }
+  }
+
+  map.fitBounds(bounds);
+}
+
 
 function initJobIndexMapAutoComplete(markersArray) {
   var input = document.getElementById('search_location');
@@ -41,7 +68,11 @@ function initJobIndexMapAutoComplete(markersArray) {
 
   autocomplete.addListener('place_changed', function() {
     search_marker.setVisible(false);
-  	//var bounds = new google.maps.LatLngBounds();
+
+    var within_distance = document.getElementById('search_within_distance');
+    within_distance = parseInt(within_distance.value);
+    console.log("Find jobs within: " + within_distance + "m...")
+
     var place = autocomplete.getPlace();
 
     if (!place.geometry) {
@@ -51,28 +82,10 @@ function initJobIndexMapAutoComplete(markersArray) {
       return;
     }
 
-		map.setCenter(place.geometry.location);
-		map.setZoom(17);  // Why 17? Because it looks good.
-
     search_marker.setPosition(place.geometry.location);
     search_marker.setVisible(true);
 
-    //getPosition()
-    //getDistance(p1,p2);
-
-    var bounds = new google.maps.LatLngBounds();
-    bounds.extend(search_marker.getPosition());
-    for(var i=0; i < markersArray.length; i++) {
-      var marker = markersArray[i];
-      var distance = getDistance(marker.getPosition(), search_marker.getPosition());
-      
-      if (distance <= 5000) {
-        bounds.extend(marker.getPosition());
-        map.fitBounds(bounds);
-      }
-    }
-
-
+    boundNearPosition(search_marker.getPosition(), markersArray, within_distance);
   });
 }
 
@@ -81,9 +94,10 @@ function initJobIndexMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
-    zoom: 15,
+    zoom: 12,
     clickableIcons: false
   });
+
 
   infowindow = new google.maps.InfoWindow();
   geocoder = new google.maps.Geocoder();
@@ -91,21 +105,23 @@ function initJobIndexMap() {
   var markersArray = [];
 
   for (var i=0; i < g__jobs.length; i++) {
-      var job = g__jobs[i];
-      var job_route = g__job_routes[i];
+    var job = g__jobs[i];
+    var job_route = g__job_routes[i];
 
-      console.log(job);
+    console.log(job);
 
-      geocoder.geocode({
-          'address': job.location
-          }, createGeocodeCallback(job, job_route, bounds, markersArray)
-      );
+    geocoder.geocode({
+        'address': job.location
+        }, createGeocodeCallback(job, job_route, markersArray)
+    );
   }
+
+  tryGeolocation();
 
 	initJobIndexMapAutoComplete(markersArray);
 }
 
-function createGeocodeCallback(job, job_route, bounds, markersArray) {
+function createGeocodeCallback(job, job_route, markersArray) {
     return function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             // Add marker on location
@@ -117,7 +133,7 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
             markersArray.push(marker);
 
             google.maps.event.addListener(marker, 'click', function() {
-              var myContent = "<h2>Job Title: " + job.title + "</h2>\n" +
+              var myContent = "<h2>" + job.title + "</h2>\n" +
                   "<p><strong>Description: </strong>" + job.description + "</p>" +
                   "<p><strong>When: </strong>" + job.work_date + "</p>" +
                   "<p><strong>Where: </strong>"+ job.location + "</p>" +
@@ -128,14 +144,37 @@ function createGeocodeCallback(job, job_route, bounds, markersArray) {
               infowindow.open(map, this);
             });
 
-            bounds.extend(marker.getPosition());
-            map.fitBounds(bounds);
 
         } else {
             console.error("Geocode was not successful for the following reason: " + status);
         }
     };
 }
+
+
+function tryGeolocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("Obtained current user location");
+
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      map.setCenter(pos);
+
+    }, function() {
+      console.log("Failed geolocation");
+      handleLocationError(true, infowindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    console.log("Browser doesn't support geolocation");
+    handleLocationError(false, infowindow, map.getCenter());
+  }
+}
+
 
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
@@ -236,4 +275,14 @@ function codeAddress() {
             alert("Geocode was not successful for the following reason: " + status);
         }
     });
+}
+
+
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
 }

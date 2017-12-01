@@ -11,6 +11,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
     @job_application = job_applications(:one)
     @job_application.job = @job
+    @job_application.user = users(:one)
     assert @job_application.save
 
   end
@@ -24,7 +25,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to job_url(@job)
   end
 
-  test "can be deleted" do 
+  test "can be deleted" do
     assert_difference('JobApplication.count', -1) do
       delete job_job_application_url(@job, @job_application)
     end
@@ -37,6 +38,14 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'JobApplication.count' do
       post job_job_applications_url(@job), params: {job_application: {
 	      user_id: @user.id}}
+    end
+    assert_redirected_to job_url(@job)
+  end
+
+  test "cannot apply to same job twice" do
+    assert_no_difference 'JobApplication.count' do
+      post job_job_applications_url(@job), params: {job_application: {
+	      user_id: users(:one).id}}
     end
     assert_redirected_to job_url(@job)
   end

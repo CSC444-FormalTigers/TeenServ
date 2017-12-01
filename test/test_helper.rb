@@ -45,3 +45,27 @@ class ActiveSupport::TestCase
   FileUtils.cp_r carrierwave_template.join('uploads'), $carrierwave_root
 
 end
+
+
+module JobHelper
+  def new_job_params
+    { job: {
+        username: "PossibleUserName",
+        title: "Some Title",
+        description: "Some Description",
+        hourly_pay: "10",
+        payment_method: "Credit",
+        location: "Some Location",
+        type_of_service: "other (please specify in description)",
+        work_date: 10.days.from_now,
+        response_deadline: 1.days.from_now}}
+  end
+end
+
+class ActionDispatch::IntegrationTest
+	include JobHelper
+end
+
+class ActiveSupport::TestCase
+  include JobHelper
+end

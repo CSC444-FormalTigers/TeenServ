@@ -3,13 +3,7 @@ require 'test_helper'
 class JobTest < ActiveSupport::TestCase
 
   setup do
-    @job = Job.new
-    @job.title = "Some title"
-    @job.description = "Some description"
-    @job.hourly_pay = 13
-    @job.payment_method = "Credit"
-    @job.location = "Some Location"
-    @job.type_of_service = "other (please specify in description)"
+    @job = Job.new(new_job_params[:job])
   end
 
   test "can save a job" do
@@ -47,6 +41,13 @@ class JobTest < ActiveSupport::TestCase
 
     assert user.destroy
     assert_raise(ActiveRecord::RecordNotFound) { job.reload }
+
+  end
+
+  test "cannot have response deadline be later than work date" do
+    @job.work_date = 1.days.from_now
+    @job.response_deadline = 10.days.from_now
+    assert_not @job.save, "Cannot save when response deadline later than work date"
 
   end
 

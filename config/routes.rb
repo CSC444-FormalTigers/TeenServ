@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'misc/about'
+  get 'superadmin' => "superadmin#show"
+
   get 'misc/policy'
   get 'misc/terms'
   get 'misc/contact'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     member do
       patch 'accept_applicant'
       patch 'unaccept_applicant'
-      get 'pay_teenager'
+      post 'pay_teenager'
     end
   end
 

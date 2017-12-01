@@ -54,10 +54,11 @@
       </div>
     </div>
   </header>
-
-  <% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "flash #{key}" %>
-  <% end %>
+  <div id="notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
+  </div>
 
   <section class="container" id="main_content">
     <%= yield %>

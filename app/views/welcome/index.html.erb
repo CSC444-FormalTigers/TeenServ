@@ -2,22 +2,25 @@
   <h1>Hello! Welcome to TeenServ</h1>
   <h3>The best place to connect with local employees for short-term work.</h3>
   <div id="features">
+
     <%= link_to(jobs_path) do %>
       <div class="feature">
         <h4>Open Jobs</h4>
         <p><%= @Jobs.count %></p>
       </div>
     <% end %>
+
     <%= link_to(jobs_path) do %>
       <div class="feature">
         <h4>Average Wage</h4>
-		<% if @average_wage.present? %>
-        <p><%= @average_wage.round(2) %></p>
-		<% else %>
-		<p>n/a</p>
-		<% end %>
+        <% if @average_wage.present? %>
+          <p><%= @average_wage.round(2) %>$</p>
+        <% else %>
+          <p>n/a</p>
+        <% end %>
       </div>
     <% end %>
+
     <%= link_to(users_path) do %>
       <div class="feature">
         <h4>Number of Users</h4>
@@ -25,28 +28,33 @@
       </div>
     <% end %>
   </div>
+
+  <h4>*All cash values are in Canadian dollars*</h3>
+
 </div>
+
+
 <div id="sections">
   <div class="section">
-    <span class="clip"><%= image_tag("example_image.jpg") %></span>
-    <h4>Lorem Title</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quam tellus, pretium at imperdiet id, venenatis et ligula. Mauris sed dolor nulla. Nulla id ex eu ante mollis feugiat scelerisque et felis.</p>
+    <h4>Who made TeenServ?</h4>
+    <p> The Formal Tigers have created TeenServ. </p>
   </div>
   <div class="section">
-    <span class="clip"><%= image_tag("example_image.jpg") %></span>
-    <h4>Lorem Title</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quam tellus, pretium at imperdiet id, venenatis et ligula. Mauris sed dolor nulla. Nulla id ex eu ante mollis feugiat scelerisque et felis. Nam at risus ligula. Maecenas malesuada, augue ac gravida tempor, augue elit lobortis metus, eget vestibulum odio dui id mi. Nunc convallis bibendum ex, id tristique sem pellentesque et. Vivamus at scelerisque ipsum. Donec eu risus feugiat, mattis lorem eget, consequat erat. Nullam dapibus in urna nec ultrices.</p>
+    <h4>What does TeenServ do?</h4>
+    <p>TeenServ connects employers to local teenagers to provide specific services such as babysitting, lawn-mowing, snow-shoveling, and other tasks. </p>
   </div>
   <div class="section">
-    <span class="clip"><%= image_tag("example_image.jpg") %></span>
-    <h4>Lorem Title</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quam tellus, pretium at imperdiet id, venenatis et ligula. Mauris sed dolor nulla. Nulla id ex eu ante mollis feugiat scelerisque et felis. Nam at risus ligula. Maecenas malesuada, augue ac gravida tempor, augue elit lobortis metus, eget vestibulum odio dui id mi.</p>
+    <h4>How to use TeenServ?</h4>
+    <p>Register an account! That'll give you access to find or create jobs!</p>
+    <p>For employers post some jobs and wait for teens to apply!</p>
+    <p>For teenagers, find some jobs near you to do!</p>
   </div>
+
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="hosted_button_id" value="PUK5KXZQAD25U">
-  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="PUK5KXZQAD25U">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
   </form>
 
 </div>

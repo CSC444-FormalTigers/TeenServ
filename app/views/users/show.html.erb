@@ -25,6 +25,9 @@
     <p><strong>Cell Phone: </strong><%= @user.cell_phone %></p>
     <p><strong>Home Phone: </strong><%= @user.home_phone %></p>
     <p><strong>Email Address: </strong><%= @user.email %></p>
+    <% if @user.teenager? %>
+      <p><strong>PayPal Email Address: </strong><%= @user.paypal_email %></p>
+    <% end %>
     <p><strong>Address: </strong><%= @user.address %></p>
     <p><strong>Account Type: </strong><%= @user.account_type %></p>
     <h4>Security</h4>
@@ -32,16 +35,30 @@
     <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
     <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
     <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
-    <% if @user.account_type == "employer" and @user.jobs.any? %>
+    <% if @user.employer? and @user.jobs.any? %>
       <h2 class="page_title"> Job Postings </h2>
       <% @user.jobs.each do |job| %>
         <li>
-        <%= link_to job.title, job_path(job.id) %>
-	</li>
+          <%= link_to job.title, job_path(job.id) %>
+        </li>
       <% end %>
     <% end %>
     <% if current_user.admin? or current_user == @user %>
       <%-# Private View -%>
+      <% if @user.teenager? and @user.job_applications.any?  %>
+        <h2 class="page_title"> Jobs Applied To </h2>
+        <% @user.job_applications.joins(:job).order("jobs.title ASC").each do |app| %>
+          <li>
+            <%= link_to app.job.title, job_path(app.job.id) %>
+            <% if app.is_accepted %>
+              Accepted
+            <% else %>
+              Not Yet Accepted
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+
       <%= link_to edit_user_path(@user), class: "edit_button" do %>
       <%= fa_icon "pencil"%>Edit Profile
       <% end %>
@@ -53,7 +70,7 @@
       <% else %>
         <% for attribute in @attributes_to_display %>
             <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
-          <% end %>
+        <% end %>
       <% end %>
       </div>
     <% end %>

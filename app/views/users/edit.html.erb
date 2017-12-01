@@ -36,6 +36,14 @@
     <%= form.text_field :email %>
   </p>
 
+  <% if @user.teenager? %>
+    <p>
+      <%= form.label :paypal_email %><br>
+      <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :paypal_email} %>
+      <%= form.text_field :paypal_email %>
+    </p>
+  <% end %>
+
   <p>
     <%= form.label :name, 'Full Name' %><br>
     <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :name} %>
@@ -71,12 +79,6 @@
     <%= form.label :address, 'Address' %><br>
     <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :adress} %>
     <%= form.text_field :address %>
-  </p>
-
-  <p>
-    <%= form.label :account_type, 'Account Type' %><br>
-    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :account_type} %>
-    <%= form.select(:account_type, options_for_select({'Employer' => 'employer', 'Teenager' => 'teenager'}, "#{@user.account_type}")) %>
   </p>
 
   <% if @user.account_type == 'teenager' %>

@@ -35,11 +35,28 @@ class Job < ApplicationRecord
   validates :type_of_service,
     inclusion: {in:self.services}
 
+  validates :work_date,
+    presence: true
+
+  validates :response_deadline,
+    presence: true
+
+  validate :response_deadline_cannot_be_later_than_work_date
+
   def self.search(services)
     if services
       where(type_of_service: services)
     else
       all
+    end
+  end
+
+  
+  private
+
+  def response_deadline_cannot_be_later_than_work_date
+    if response_deadline.present? && response_deadline > work_date
+      errors.add(:response_deadline, "Can't be later than the work date.")
     end
   end
 
