@@ -1,10 +1,10 @@
 <div id="eyecatch">
-  <h1>Hello! Welcome to TeenServ</h1>
-  <h3>The best place to connect with local employees for short-term work.</h3>
+  <h1>Welcome to TeenServ</h1>
+  <h3>A network of student employees searching for genuine work experiences.</h3>
   <div id="features">
-
     <%= link_to(jobs_path) do %>
       <div class="feature">
+        <%= material_icon.work %>
         <h4>Open Jobs</h4>
         <p><%= @Jobs.count %></p>
       </div>
@@ -12,6 +12,7 @@
 
     <%= link_to(jobs_path) do %>
       <div class="feature">
+        <%= material_icon.attach_money %>
         <h4>Average Wage</h4>
         <% if @average_wage.present? %>
           <p><%= @average_wage.round(2) %>$</p>
@@ -23,6 +24,7 @@
 
     <%= link_to(users_path) do %>
       <div class="feature">
+        <%= material_icon.people %>
         <h4>Number of Users</h4>
         <p><%= @Users.count %></p>
       </div>
