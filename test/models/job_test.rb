@@ -44,4 +44,11 @@ class JobTest < ActiveSupport::TestCase
 
   end
 
+  test "cannot have response deadline be later than work date" do
+    @job.work_date = 1.days.from_now
+    @job.response_deadline = 10.days.from_now
+    assert_not @job.save, "Cannot save when response deadline later than work date"
+
+  end
+
 end
