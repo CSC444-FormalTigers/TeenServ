@@ -63,13 +63,13 @@
   <div class="field">
     <%= form.label :work_date, 'Work Date' %><br>
     <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :work_date} %>
-    <%= form.datetime_local_field :work_date, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
+    <%= form.datetime_select :work_date, default: DateTime.now %>
   </div>
 
   <div class="field">
     <%= form.label :response_deadline, 'Response Deadline' %><br>
     <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :response_deadline} %>
-    <%= form.datetime_local_field :response_deadline, :value => Time.now.strftime('%Y-%m-%dT%H:%m') %>
+    <%= form.datetime_select :response_deadline, default: DateTime.now %>
   </div>
 
   <div class="field">
