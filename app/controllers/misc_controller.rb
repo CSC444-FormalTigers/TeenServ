@@ -1,13 +1,10 @@
 class MiscController < ApplicationController
   skip_before_action :authenticate_user!, 
-    only: [:about, 
-      :terms, 
+    only: [:terms, 
       :policy, 
       :contact, 
       :faq]
 
-  def about
-  end
   def terms
   end
   def policy
