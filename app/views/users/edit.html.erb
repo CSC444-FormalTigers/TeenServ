@@ -81,12 +81,6 @@
     <%= form.text_field :address %>
   </p>
 
-  <p>
-    <%= form.label :account_type, 'Account Type' %><br>
-    <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :account_type} %>
-    <%= form.select(:account_type, options_for_select({'Employer' => 'employer', 'Teenager' => 'teenager'}, "#{@user.account_type}")) %>
-  </p>
-
   <% if @user.account_type == 'teenager' %>
     <p>
       <%= form.label :resume, 'Resume' %><br>

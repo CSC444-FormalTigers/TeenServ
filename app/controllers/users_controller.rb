@@ -107,7 +107,6 @@ class UsersController < ApplicationController
       	:home_phone,
       	:address,
       	:photo,
-      	:account_type,
         :avatar,
         :resume,
         :paypal_email)

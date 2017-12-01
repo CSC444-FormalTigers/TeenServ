@@ -132,6 +132,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "can't update teenager with blank paypal_email" do
+    old_paypal_email = @teen.paypal_email
     sign_out :user
     sign_in @teen
     patch user_url(@teen),
@@ -142,7 +143,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         paypal_email: ""} }
     assert_response :success
 
-    assert_equal users(:teen).paypal_email, @teen.reload.paypal_email
+    assert_equal old_paypal_email, @teen.reload.paypal_email
+  end
+
+  test "user can't change account type" do
+    old_account_type = @user.account_type
+    patch user_url(@user),
+      params: { user: {
+        account_type: "teenager"
+      }}
+    assert_redirected_to user_path(@user)
+    assert_equal old_account_type, @user.reload.account_type
   end
 
   test "can update user without password" do
