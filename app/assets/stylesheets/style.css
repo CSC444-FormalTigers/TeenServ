@@ -9,6 +9,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -220,6 +221,14 @@ Footer style
 	margin-bottom: 1em;
 	margin-top: 1em;
 }
+/* separator, a horizontal rule used to separate sections of a page. */
+.separator {
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 50px;
+    padding-bottom:20px;
+    width: 100%;
+    display: block;
+}
 /**
 Notifications
 */
@@ -387,27 +396,6 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
 	background: #1CB4F9;
 	background: var(--light-primary);
-}
-/**
-* Search Form
-*/
-#main_content .search {
-	max-width: 800px;
-	padding: 0;
-	margin: 50px auto;
-}
-.search input[type="text"] {
-	width: 80%;
-	float: left;
-	padding: 10px;
-	border-radous: 5px 0 0 5px;
-}
-.search input[type="submit"] {
-	width: 20%;
-	border-radius: 0 5px 5px 0px;
-	margin: 0;
-	padding: 10px 0;
-	border-left: none;
 }
 /*
 Features
@@ -672,6 +660,35 @@ user block style
 }
 .user_container .delete a:active {
 	background: #505050;
+}
+/**
+* job Search Form
+*/
+#main_content .search {
+	max-width: 800px;
+	padding: 0;
+	margin: 50px auto;
+}
+.search input[type="text"],
+.search input[type="number"] {
+	width: 30%;
+	padding: 10px;
+	margin: 0 10px;
+	border: 1px solid #dedede;
+}
+.search input[type="text"]:hover,
+.search input[type="number"]:hover {
+	border: 1px solid #ccc;
+}
+.search input[type="submit"] {
+	width: 20%;
+	border-radius: 0 5px 5px 0px;
+	margin: 0;
+	padding: 10px 0;
+	border-left: none;
+}
+.job_container form {
+
 }
 /*
 job block style

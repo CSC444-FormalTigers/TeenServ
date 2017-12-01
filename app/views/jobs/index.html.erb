@@ -1,11 +1,6 @@
 <div class="gmap">
   <div id="map"></div>
 </div>
-
-
-Search for jobs within <%= number_field_tag :search_within_distance, 5000 %>m of: <%= text_field_tag :search_location %>
-
-
 <% job_routes = [] %>
 <% @jobs.each do |job| %>
   <% job_routes.push( job_url(job) ) %>
@@ -28,7 +23,12 @@ $(document).ready(function() {
 </script>
 
 <div class="padded-container">
-  <h1 class="page_title"> Listing all jobs </h1>
+  <h1 class="page_title">Search by Location</h1>
+  <div class="search">
+    Search for jobs within <%= number_field_tag :search_within_distance, 5000 %>m of: <%= text_field_tag :search_location %>
+  </div>
+  <span class="separator"></span>
+  <h1 class="page_title">All Jobs</h1>
   <% if current_user.account_type == "employer" %>
     <%= link_to new_job_path, class: "add_button" do %>
       <%= fa_icon "plus"%>Post Job
