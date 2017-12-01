@@ -17,7 +17,7 @@
 <script>
 $(document).ready(function() {
   $('#filter_btn').click(function(){
-    $('#filter').toggle();
+    $('#filter').toggleClass('hidden');
   });
 });
 </script>
@@ -35,10 +35,10 @@ $(document).ready(function() {
     <% end %>
   <% end %>
   <div id="filter_btn" class="filter_button">
-    Filtering
+    <%= material_icon.filter_list %>Filtering
   </div>
   <div id="filter" class="hidden">
-    <%= form_tag(jobs_path, method: :get, :class => "search") do %>
+    <%= form_tag(jobs_path, method: :get, :class => "filter_form") do %>
       <% Job.services.each do |service| %>
         <br>
         <% if params[:services]%>

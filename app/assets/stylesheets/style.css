@@ -10,6 +10,10 @@ License: none (public domain)
 
 
 
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -664,7 +668,7 @@ user block style
 /**
 * job Search Form
 */
-#main_content .search {
+.search {
 	max-width: 800px;
 	padding: 0;
 	margin: 50px auto;
@@ -915,34 +919,33 @@ h3.table_title {
 /**
 * Filter Button styles
 */
-.hidden {
-	display:none;
+#filter {
+	max-height: 500px;
+	transition: max-height ease .3s;
+	overflow: hidden;
+}
+#filter.hidden {
+	max-height: 0px;
 }
 .filter_button {
 	cursor: pointer;
 	transition: background ease .2s,
 	border ease .2s;
-	position: absolute;
-	top: 20px; right: 20px;
+	float: right;
 	display: inline-block;
-	border-bottom: none;
-	background: #03A9F4;
-	background: var(--primary);
-	border: 1px solid #0288D1;
-	border: 1px solid var(--dark-primary);
+	border: none;
 	border-radius: 2px;
-	color: #fff;
+	color: #1CB4F9;
 	padding: 15px 20px;
 }
-.filter_button .fa {
+.filter_button i {
 	padding-right: 20px;
+	float: left;
 }
 .filter_button:hover {
 	color: #fff;
 	background: #1CB4F9;
 	background: var(--light-primary);
-	border: 1px solid #0288D1;
-	border: 1px solid var(--dark-primary);
 }
 .filter_button:active {
 	background: #0288D1;
