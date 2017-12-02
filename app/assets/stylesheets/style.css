@@ -177,6 +177,17 @@ header #dropdown_container {
 #dropdown_container #menu_toggle {
 	display: none;
 }
+#language_container #language_toggle {
+	display: none;
+}
+input#language_toggle ~ .dropdown_menu{
+	display: none;
+}
+input#language_toggle:checked ~ .dropdown_menu{
+	display: block;
+	position: absolute;
+	background: #FFFFFF;
+}
 header #nav li {
 	width: 120px;
 }

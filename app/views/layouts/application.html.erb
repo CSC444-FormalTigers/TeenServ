@@ -15,6 +15,33 @@
       <div id="dropdown_container">
         <%= fa_icon "bars", id: "menu_toggle"%>
         <ul id="nav">
+          <div id="language_container">
+            <li>
+              <%= link_to '#' do %>
+              <label for="language_toggle"><%= fa_icon "bars"%>Language</label>
+              <% end %>
+            </li>
+            <input type="checkbox" id="language_toggle">
+            <div class="dropdown_menu">
+              <%= content_tag :li do %>
+                <%= link_to locale: :en_CA do %>
+                  <%=flag_icon :ca%>English
+                <%end%>
+                <%= link_to locale: :fr_CA do %>
+                  <%=flag_icon :ca%>Français
+                <%end%>
+                <%= link_to locale: :zh_CN do %>
+                  <%=flag_icon :cn%>简体中文
+                <%end%>
+                <%= link_to locale: :zh_TW do %>
+                  <%=flag_icon :cn%>國語
+                <%end%>
+                <%= link_to locale: :ja do %>
+                  <%=flag_icon :jp%>日本語
+                <%end%>
+              <% end %>
+            </div>
+          </div>
           <% if signed_in? %>
           <li>
             <%= link_to jobs_path do %>

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :banned?
+  before_action :set_locale
 
   protected
 
@@ -42,9 +43,6 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || path
   end
 
-
-end
-
   def banned?
     if current_user.present? && current_user.banned?
       sign_out current_user
@@ -52,3 +50,12 @@ end
       redirect_to root_path
     end
   end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+end

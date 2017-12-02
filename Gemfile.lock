@@ -75,6 +75,8 @@ GEM
     ffi (1.9.18-x86-mingw32)
     figaro (1.1.1)
       thor (~> 0.14)
+    flag-icons-rails (2.5.0)
+      sass (~> 3.2)
     fog-aws (1.4.1)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
@@ -229,6 +231,7 @@ DEPENDENCIES
   coffee-script-source (= 1.8.0)
   devise (= 4.3.0)
   figaro (= 1.1.1)
+  flag-icons-rails
   fog-aws (= 1.4.1)
   font-awesome-rails
   hirb

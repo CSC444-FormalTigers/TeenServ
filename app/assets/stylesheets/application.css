@@ -13,5 +13,6 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require flag-icon
  *= require material_icons
  */

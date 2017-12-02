@@ -1,37 +1,37 @@
 Rails.application.routes.draw do
-  get 'superadmin' => "superadmin#show"
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    get 'superadmin' => "superadmin#show"
+    get 'misc/policy'
+    get 'misc/terms'
+    get 'misc/contact'
+    get 'misc/faq'
 
-  get 'misc/policy'
-  get 'misc/terms'
-  get 'misc/contact'
-  get 'misc/faq'
+    devise_for :users
 
-  devise_for :users
+    get 'welcome/index'
+    root 'welcome#index'
 
-  get 'welcome/index'
-  root 'welcome#index'
+    get "/upvote" => "users#upvote"
+    get "/downvote" => "users#downvote"
 
-  get "/upvote" => "users#upvote"
-  get "/downvote" => "users#downvote"
+    resources :users, except: [:new, :create] do
+      member do
+        get 'grant_admin'
+        get 'remove_admin'
+        get 'resume'
+      end
+    end
 
-  resources :users, except: [:new, :create] do
-    member do
-      get 'grant_admin'
-      get 'remove_admin'
-      get 'resume'
+    resources :jobs do
+      resources :job_applications
+
+      member do
+        patch 'accept_applicant'
+        patch 'unaccept_applicant'
+        post 'pay_teenager'
+      end
     end
   end
-
-  resources :jobs do
-    resources :job_applications
-
-    member do
-      patch 'accept_applicant'
-      patch 'unaccept_applicant'
-      post 'pay_teenager'
-    end
-  end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

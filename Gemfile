@@ -67,3 +67,4 @@ gem 'figaro', '1.1.1'
 gem 'paypal-sdk-adaptivepayments'
 
 gem 'hirb'
+gem 'flag-icons-rails'
