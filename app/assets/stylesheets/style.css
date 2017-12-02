@@ -16,6 +16,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -518,14 +519,14 @@ Features
 /*
 sections
 */
-.section {
+#sections .section {
 	padding: 5%;
 	background: #fff;
 }
-.section:nth-child(odd) {
+#sections .section:nth-child(odd) {
 	background: #efefef;
 }
-.section .clip {
+#sections .section .clip {
 	float: left;
 	width: 30%;
 	height: 200px;
@@ -533,20 +534,26 @@ sections
 	margin: 0;
 	margin-right: 5%;
 }
-.section:after {
+#sections .section:after {
 	content: "";
 	clear: both;
 	display: table;
 }
-.section img {
-	height: 100%;
+#sections .section i {
+	font-size: 10em;
+	float: left;
+	padding-right: 60px;
 }
-.section:nth-child(even) .clip {
-	float: right;
-	margin: 0;
-	margin-left: 5%;
+#sections .section:nth-child(even) i {
+    float: right;
+    padding-left: 60px;
+    padding-right: 0;
 }
-.section p {
+#sections .section:nth-child(even) h4,
+#sections .section:nth-child(even) p {
+    text-align: right;
+}
+#sections .section p {
 	font-weight: 300;
 }
 #sections .section h4 {
