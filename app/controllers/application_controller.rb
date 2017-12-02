@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :banned?
-  before_action :set_locale
+  # before_action :set_locale#tempLocaleTag
 
   protected
 
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def default_url_options
-    { locale: I18n.locale }
-  end
+  # def default_url_options
+  #   { locale: I18n.locale }
+  # end#tempLocaleTag
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do#tempLocaleTag
     get 'superadmin' => "superadmin#show"
     get 'misc/policy'
     get 'misc/terms'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
         patch 'unaccept_applicant'
         post 'pay_teenager'
       end
-    end
+    # end#tempLocaleTag
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
