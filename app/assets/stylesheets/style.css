@@ -17,6 +17,7 @@ License: none (public domain)
 
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -204,8 +205,7 @@ Footer style
 	color: #232323;
 	position: absolute;
 	text-align:center;
-	border-top: 2px solid #efefef;
-	border-top: 2px solid var(--border-color);
+	border-top: 2px solid #cccccc;
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
