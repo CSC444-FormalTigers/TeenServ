@@ -63,6 +63,13 @@
                 <%= material_icon.account_circle %>Profile
                 <% end %>
               </li>
+              <% if current_user.admin %>
+                <li>
+                  <%= link_to superadmin_path do %>
+                  <%= material_icon.security %>Admin
+                  <% end %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to destroy_user_session_path, :method => :delete do %>
                 <%= material_icon.exit_to_app %>Logout
