@@ -18,7 +18,7 @@
         <%= material_icon.attach_money %>
         <h4>Average Wage</h4>
         <% if @average_wage.present? %>
-          <p><%= @average_wage.round(2) %>$</p>
+          <p><%= @average_wage.round(2) %>$ / hour</p>
         <% else %>
           <p>n/a</p>
         <% end %>
