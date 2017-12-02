@@ -1,6 +1,9 @@
 <div id="eyecatch">
   <h1>Welcome to TeenServ</h1>
-  <h3>A network of student employees searching for genuine work experiences.</h3>
+  <h3>
+    A network of student employees searching for genuine work experiences.
+    Get started by <%= link_to 'searching for a job', jobs_path %> or by <%= link_to 'posting a new job', new_job_path %>.
+  </h3>
   <div id="features">
     <%= link_to(jobs_path) do %>
       <div class="feature">
