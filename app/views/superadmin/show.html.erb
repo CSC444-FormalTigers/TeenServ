@@ -1,5 +1,6 @@
 <div class="padded-container">
   <% controller.redirect_to '/' unless current_user.admin%>
+  
   <h2>
   <span>Total income:<%= @transactions.sum(:amount) * 0.1 %>$</span>
   <span style="display:inline-block; width: 100px;"></span>
