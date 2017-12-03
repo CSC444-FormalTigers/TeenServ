@@ -115,7 +115,7 @@ class JobsController < ApplicationController
           :primary => true
         }, {
           :amount => worker_pay,
-          :email => worker.email,
+          :email => worker.paypal_email,
           :primary => false
         }
         ]
@@ -127,6 +127,12 @@ class JobsController < ApplicationController
 
     if @response.success? && @response.payment_exec_status != "ERROR"
       @response.payKey
+      @transaction = Transaction.new
+      @transaction.from_user = employer.username
+      @transaction.to_user = worker.username
+      @transaction.amount = our_pay
+      @transaction.service_id = @job.id
+      @transaction.save
       redirect_to @api.payment_url(@response)
     else
       flash[:error] = "There was an error with processing your payment. ERROR: " +

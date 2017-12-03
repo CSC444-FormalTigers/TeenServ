@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
   	elsif params[:account_type] == 'teenager'
   		@transaction = Transaction.all.where("to_user = ?", params[:username])
   	end
-  		
+
   end
+  
 end
