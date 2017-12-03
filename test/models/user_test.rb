@@ -8,6 +8,7 @@ class UserTest < ActiveSupport::TestCase
     @user.username = "somename"
     @user.password = "something"
     @user.email = "something@thing.com"
+    @user.paypal_email = "something@thing.com"
     @user.account_type = "employer"
     @user.terms_of_service = "1"
   end
@@ -17,10 +18,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.save, "Saved an empty user"
   end
 
-  test "should save valid user" do
-    assert @user.save, "Did not save a valid user"
-    @user.destroy
+  test "should save a valid users" do
+    User.ACCOUNT_TYPES.each do |acc_type|
+      @user.account_type = acc_type
+      assert @user.save, "Did not save a valid " + acc_type + " user."
+    end
   end
+
 
   test "should not save user when username empty" do
     @user.username = ""
