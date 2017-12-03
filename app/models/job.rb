@@ -24,7 +24,7 @@ class Job < ApplicationRecord
     presence: true
 
   validates :hourly_pay,
-    :numericality => {only_integer: true}
+    :numericality => {only_float: true}
 
   validates :payment_method,
     presence: true
@@ -51,7 +51,7 @@ class Job < ApplicationRecord
     end
   end
 
-  
+
   private
 
   def response_deadline_cannot_be_later_than_work_date
