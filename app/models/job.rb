@@ -24,7 +24,7 @@ class Job < ApplicationRecord
     presence: true
 
   validates :hourly_pay,
-    :numericality => {only_integer: true}
+    :numericality => { only_integer: true, greater_than: 0, less_than_or_equal_to: 999}
 
   validates :payment_method,
     presence: true

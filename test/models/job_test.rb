@@ -33,6 +33,19 @@ class JobTest < ActiveSupport::TestCase
 
   end
 
+  test "hourly pay cannot be less than or equal to 0" do
+    @job.hourly_pay = 0
+    assert_not @job.save, "Cannot save job with pay equal to zero"
+
+    @job.hourly_pay = -3
+    assert_not @job.save, "Cannot save job with negative pay"
+  end
+
+  test "hourly pay cannot be greater than 999" do
+    @job.hourly_pay = 1000
+    assert_not @job.save, "Cannot save job with pay greater than 999"
+  end
+
   test "deleting a user deletes its jobs" do
     user = users(:one)
     job = jobs(:one)
