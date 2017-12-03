@@ -27,7 +27,7 @@
     <p><strong>When: </strong><%= @job.work_date %></p>
     <p><strong>Where: </strong><%= @job.location %></p>
     <h4>Payment Information</h4>
-    <p><strong>Wage (hourly): </strong><%= @job.hourly_pay %></p>
+    <p><strong>Wage (hourly): </strong>$<%= @job.hourly_pay %></p>
     <p><strong>Payment Method: </strong><%= @job.payment_method %></p>
 
     <% if current_user.username == @job.username or current_user.admin? %>
