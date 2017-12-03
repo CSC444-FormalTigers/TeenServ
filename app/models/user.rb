@@ -17,6 +17,16 @@ class User < ApplicationRecord
   # received_reviews "names" the Review join table for accessing through the reviewee association
   has_many :received_reviews, foreign_key: :reviewee_id, class_name: "Review", dependent: :destroy
 
+
+
+  def self.ACCOUNT_TYPES
+    [
+      'employer',
+      'teenager'
+    ]
+  end
+
+
   validates :username,
     presence: true,
     :format => {:with => /\A[0-9\w_]{4,20}\z/,
@@ -44,7 +54,7 @@ class User < ApplicationRecord
 
   validates :account_type,
     presence: true,
-    :format => {:with => /employer|teenager/i}
+    inclusion: { in: self.ACCOUNT_TYPES }
 
   validates_acceptance_of :terms_of_service,
     allow_nil: false,
