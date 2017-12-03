@@ -61,7 +61,8 @@
   <div class="field" >
     <%= f.label :account_type, 'Account Type' %><br>
     <%= render :partial => 'shared/error_explaination', locals: {instance: @user, attribute: :account_type} %>
-    <%= f.select(:account_type, options_for_select({'Employer' => 'employer', 'Teenager' => 'teenager'})) %>
+    <%= f.select(:account_type, options_for_select( User.ACCOUNT_TYPES )) %>
+
   </div>
 
   <div class= "field">
