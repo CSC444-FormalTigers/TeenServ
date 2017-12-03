@@ -946,6 +946,10 @@ h3.table_title {
 	background: #0288D1;
 	background: var(--dark-primary);
 }
+
+.hidden{
+	display:none;
+}
 /**
 * Filter Button styles
 */
