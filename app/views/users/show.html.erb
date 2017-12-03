@@ -59,6 +59,9 @@
         <% end %>
       <% end %>
 
+      <br>
+      <%= link_to "See Transaction History", transactions_show_path(:account_type => @user.account_type, :username => @user.username) %>
+
       <%= link_to edit_user_path(@user), class: "edit_button" do %>
       <%= fa_icon "pencil"%>Edit Profile
       <% end %>

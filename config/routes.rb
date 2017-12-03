@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'transactions/show'
+
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do#tempLocaleTag
     get 'superadmin' => "superadmin#show"
     get 'misc/policy'

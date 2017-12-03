@@ -1,0 +1,35 @@
+
+<div class="padded-container">
+  
+<h2 class="table_title">Transaction History</h2>
+
+<% if @transaction == nil %>
+	<br>
+	<h2 class="message">You don't have any past transactions</h2>
+<% else %>
+
+<table>
+  <tr>
+  	<th>Transaction ID</th>
+  	<th>Payee</th>
+  	<th>Receiver</th>
+  	<th>Amount</th>
+  	<th>Job ID</th>
+  	<th>Transaction Time</th>
+  </tr>
+
+	<% @transaction.each do |data| %>
+	  <tr>
+	      <td><%= data.id %></td>
+	      <td><%= data.from_user %></td>
+	      <td><%= data.to_user %></td>
+	      <td><%= data.amount %></td>
+	      <td><%= data.service_id %></td>
+	      <td><%= data.updated_at %></td>
+	  </tr>
+	<%end%>
+
+</table>
+<%end%>
+
+</div>
