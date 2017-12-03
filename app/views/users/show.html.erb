@@ -30,11 +30,6 @@
     <% end %>
     <p><strong>Address: </strong><%= @user.address %></p>
     <p><strong>Account Type: </strong><%= @user.account_type %></p>
-    <h4>Security</h4>
-    <p><strong>Number of Sign Ins: </strong><%= @user.sign_in_count %></p>
-    <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
-    <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
-    <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
     <% if @user.employer? and @user.jobs.any? %>
       <h2 class="page_title"> Job Postings </h2>
       <% @user.jobs.each do |job| %>
@@ -45,6 +40,11 @@
     <% end %>
     <% if current_user.admin? or current_user == @user %>
       <%-# Private View -%>
+      <h4>Security</h4>
+      <p><strong>Number of Sign Ins: </strong><%= @user.sign_in_count %></p>
+      <p><strong>Last Sign In Time: </strong><%= @user.last_sign_in_at %></p>
+      <p><strong>Current IP: </strong><%= @user.current_sign_in_ip %></p>
+      <p><strong>Failled Login Attempts: </strong><%= @user.failed_attempts %></p>
       <% if @user.teenager? and @user.job_applications.any?  %>
         <h2 class="page_title"> Jobs Applied To </h2>
         <% @user.job_applications.joins(:job).order("jobs.title ASC").each do |app| %>
@@ -65,17 +65,22 @@
       <%= link_to edit_user_path(@user), class: "edit_button" do %>
       <%= fa_icon "pencil"%>Edit Profile
       <% end %>
-      <div class="model_data_block">
+
       <% if current_user.admin? %>
+      <div class="model_data_block">
           <% for attribute in @user.attributes.keys %>
     	      <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
           <% end %>
-      <% else %>
-        <% for attribute in @attributes_to_display %>
-            <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
-        <% end %>
+      <!-- Removed -->
+      <% if false %>
+        <% else %>
+          <% for attribute in @attributes_to_display %>
+              <strong><%= attribute %>: </strong><%= @user.attributes[attribute].to_s %><br>
+          <% end %>
       <% end %>
-      </div>
+        </div>
+      <% end %>
+
     <% end %>
   </div>
 </div>
