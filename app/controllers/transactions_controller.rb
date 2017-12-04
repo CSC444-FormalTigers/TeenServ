@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-
   def destroy
   	@transaction = Transaction.where(id: params[:tran_id]).first
     if @transaction != nil
