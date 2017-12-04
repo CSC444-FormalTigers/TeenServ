@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
     resources :jobs do
-      resources :job_applications
+      resources :job_applications, only: [:create, :destroy]
 
       member do
         patch 'accept_applicant'
