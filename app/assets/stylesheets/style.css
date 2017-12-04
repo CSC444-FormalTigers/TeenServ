@@ -14,6 +14,10 @@ License: none (public domain)
 
 
 
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -697,6 +701,24 @@ user block style
 .user_container .delete a:active {
 	background: #505050;
 }
+/*
+filter form
+*/
+#filter {
+	max-height: 500px;
+	transition: max-height ease .3s;
+	overflow: hidden;
+	width: 100%;
+	background: #efefef;
+	display: inline-block;
+}
+#filter.hidden {
+	max-height: 0px;
+}
+form.filter_form {
+	max-width: 100%;
+	margin: 0;
+}
 /**
 * job Search Form
 */
@@ -957,20 +979,12 @@ h3.table_title {
 /**
 * Filter Button styles
 */
-#filter {
-	max-height: 500px;
-	transition: max-height ease .3s;
-	overflow: hidden;
-}
-#filter.hidden {
-	max-height: 0px;
-}
 .filter_button {
 	cursor: pointer;
 	transition: background ease .2s,
 	border ease .2s;
 	float: right;
-	display: inline-block;
+	display: block;
 	border: none;
 	border-radius: 2px;
 	color: #1CB4F9;
@@ -1106,15 +1120,15 @@ Admin Styles
 @media (max-width:1281px) { /* hi-res laptops and desktops */ }
 @media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
 @media (max-width:814px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
-    .left-panel, .right-panel  {
-    	width: 100%;
-    }
-    .right-panel {
-    	margin-top: 50px;
-    	padding-top: 50px;
-    	border-top: 1px solid #ccc;
-    	border-left: 0;
-    }
+	.left-panel, .right-panel  {
+		width: 100%;
+	}
+	.right-panel {
+		margin-top: 50px;
+		padding-top: 50px;
+		border-top: 1px solid #ccc;
+		border-left: 0;
+	}
 	.padded-container {
 		padding: 20px;
 	}
@@ -1163,16 +1177,27 @@ Admin Styles
 	}
 }
 @media (max-width:650px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-    #main_content {
+.user_container div a {
+width: 30px;
+	 }
+	input[type="checkbox"] {
+		width: 20px;
+		height: 20px;
+		float: left;
+	}
+	label {
+		line-height: 25px;
+	}
+	#main_content {
 		padding-top: 50px;
 	}
-    header {
-    	position: fixed;
-    	top: 0;
-    	left: 0;
-    	right: 0;
-    	z-index: 1000;
-    }
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+	}
 	.padded-container {
 		padding-top: 80px;
 	}
@@ -1263,7 +1288,7 @@ Admin Styles
 }
 @media (max-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 	#eyecatch h3, #eyecatch h1 {
-	  margin: 0 30px;
-	  font-size: 1em;
+		margin: 0 30px;
+		font-size: 1em;
 	}
 }

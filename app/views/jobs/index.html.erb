@@ -37,6 +37,7 @@ $(document).ready(function() {
   <div id="filter_btn" class="filter_button">
     <%= material_icon.filter_list %>Filtering
   </div>
+  <br />
   <div id="filter" class="hidden">
     <%= form_tag(jobs_path, method: :get, :class => "filter_form") do %>
       <% Job.services.each do |service| %>
