@@ -6,5 +6,5 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     get transactions_show_url
     assert_response :success
   end
-
+  
 end
