@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 review_one:
-  reviewer_id: 0 
-  reviewee_id: 1
+  reviewer: one 
+  reviewee: two
   rating: 1
   description: "This guy rocks"
 
 review_two:
-  reviewer_id: 1
-  reviewee_id: 0
+  reviewer: two
+  reviewee: one
   rating: 4
   description: "This guy sucks"

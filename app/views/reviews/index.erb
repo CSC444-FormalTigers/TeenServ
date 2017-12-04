@@ -1,0 +1,33 @@
+<div class="padded-container">
+  <h1 class="page_title"> Listing all reviews </h1>
+
+  <% if current_user.id != params[:user_id].to_i %>
+    <%= link_to new_user_review_path(params[:user_id]), class: "add_button" do %>
+      <%= fa_icon "plus"%>Post review
+    <% end %>
+  <% end %>
+
+  <% @reviews.each do |review| %>
+    <div class="review_container">
+      <span class="reviewer"><%= review.reviewer.name %></span>
+      <span class="rating"><%= review.rating %></span>
+      <span class="description"><%= review.description %></span>
+      <% if current_user.id == review.reviewer_id %>
+        <div class="edit">
+          <%= link_to edit_user_review_path(params[:user_id], review.id) do %>
+            <%= fa_icon "pencil" %>
+          <% end %>
+        </div>
+        <div class="delete">
+          <%= link_to user_review_path(params[:user_id], review.id),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } do %>
+            <%= fa_icon "minus" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back to user\'s profile page', user_path(params[:user_id]) %>
+</div>

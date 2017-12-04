@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/downvote" => "users#downvote"
 
     resources :users, except: [:new, :create] do
+    resources :reviews, except: [:show]
       member do
         get 'grant_admin'
         get 'remove_admin'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     end
 
     resources :jobs do
-      resources :job_applications
+      resources :job_applications, only: [:create, :destroy]
 
       member do
         patch 'accept_applicant'
