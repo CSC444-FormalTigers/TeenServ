@@ -63,7 +63,7 @@
                 <%= material_icon.account_circle %>Profile
                 <% end %>
               </li>
-              <% if current_user.admin %>
+              <% if current_user.admin? %>
                 <li>
                   <%= link_to superadmin_path do %>
                   <%= material_icon.security %>Admin

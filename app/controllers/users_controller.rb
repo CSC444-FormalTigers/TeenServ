@@ -121,7 +121,7 @@ class UsersController < ApplicationController
 
     def redirect_if_not_this_user_or_admin
       @user = find_user_with_id
-      if !(@user == current_user) and !(current_user.admin)
+      if !(@user == current_user) and !(current_user.admin?)
         redirect_to root_path
       end
     end

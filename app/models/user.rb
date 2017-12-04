@@ -18,11 +18,10 @@ class User < ApplicationRecord
   has_many :received_reviews, foreign_key: :reviewee_id, class_name: "Review", dependent: :destroy
 
 
-
   def self.ACCOUNT_TYPES
-    [
-      'employer',
-      'teenager'
+    [ 
+      'employer', 
+      'teenager' 
     ]
   end
 
@@ -62,10 +61,7 @@ class User < ApplicationRecord
 
   attr_accessor :terms_of_service
 
-  def mailboxer_email(object)
-  #currently not implemented
-	return nil
-  end
+
 
   def employer?
     return self.account_type == "employer"
@@ -73,6 +69,10 @@ class User < ApplicationRecord
 
   def teenager?
     return self.account_type == "teenager"
+  end
+
+  def admin?
+    return self.admin
   end
 
 end
