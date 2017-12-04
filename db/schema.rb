@@ -146,6 +146,10 @@ ActiveRecord::Schema.define(version: 20171204062540) do
     t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "job_name"
+    t.integer "HoursWorked"
+    t.string "payment_status"
+    t.string "string"
   end
 
   create_table "users", force: :cascade do |t|
