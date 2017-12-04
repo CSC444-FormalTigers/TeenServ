@@ -105,7 +105,7 @@ class JobsController < ApplicationController
     @api = PayPal::SDK::AdaptivePayments.new
     @pay = @api.build_pay({
       :actionType => "PAY",
-      :cancelUrl =>  job_url(@job),
+      :cancelUrl => transactions_destroy_url,
       :currencyCode => "CAD",
       :feesPayer => "EACHRECEIVER",
       :receiverList => {
@@ -130,14 +130,14 @@ class JobsController < ApplicationController
       @transaction = Transaction.new
       @transaction.from_user = employer.username
       @transaction.to_user = worker.username
-      @transaction.amount = our_pay
+      @transaction.amount = worker_pay
       @transaction.service_id = @job.id
       @transaction.save
       redirect_to @api.payment_url(@response)
     else
       flash[:error] = "There was an error with processing your payment. ERROR: " +
         @response.error[0].message
-      redirect_to job_path(@job)
+        redirect_to job_path(@job)
     end
   end
 
