@@ -32,6 +32,7 @@
     <%-# When employers click "go back arrow" during transaction page, a transaction will still be saved even though it has not been successfully processed. Following section assign a payment_status on each transaction, only those finished executing pay_teenager_job_path function naturally will be assigned successful. All other transaction will be destroyed. -%>
 
     <% @transaction = Transaction.where('service_id = ?', @job.id).last %>
+    <% if @transaction != nil do %>
       <% if @transaction.service_id == @job.id && @transaction.payment_status == 'Invalid'%>
         <% @transaction.destroy %>
       <% elsif @transaction.service_id == @job.id &&@transaction.payment_status == 'Processing'%>
@@ -39,6 +40,7 @@
         <% @transaction.updated_at = DateTime.now %>
         <% @transaction.save %>
       <%end%>
+    <% end %>
 
     <% if current_user == @job.user or current_user.admin? %>
       <%= link_to edit_job_path(@job), class: "edit_button" do %>
