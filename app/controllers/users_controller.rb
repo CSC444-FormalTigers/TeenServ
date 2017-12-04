@@ -42,7 +42,9 @@ class UsersController < ApplicationController
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     if @user.update(user_params)
-      bypass_sign_in @user
+      if @user == current_user
+        bypass_sign_in @user
+      end
       redirect_to @user
     else
       render 'edit'
@@ -119,7 +121,7 @@ class UsersController < ApplicationController
 
     def redirect_if_not_this_user_or_admin
       @user = find_user_with_id
-      if !(@user == current_user) and !(current_user.admin)
+      if !(@user == current_user) and !(current_user.admin?)
         redirect_to root_path
       end
     end

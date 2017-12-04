@@ -1,4 +1,14 @@
 class TransactionsController < ApplicationController
+
+  def destroy
+  	@transaction = Transaction.last
+  	if(@transaction != nil)
+  	job_id = @transaction.service_id
+  	@transaction.destroy
+  	redirect_to job_path(job_id)
+  	end
+  end
+
   def show
 
   	if params[:account_type] == 'employer'
@@ -8,5 +18,5 @@ class TransactionsController < ApplicationController
   	end
 
   end
-  
+
 end

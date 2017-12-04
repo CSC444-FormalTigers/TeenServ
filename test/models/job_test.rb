@@ -19,18 +19,19 @@ class JobTest < ActiveSupport::TestCase
     @job.title = orig_title
   end
 
-  test "hourly pay can only be an integer" do
+  test "hourly pay can only be an float" do
     orig_hourly_pay = @job.hourly_pay
 
     @job.hourly_pay = "Not a number"
     assert_not @job.save, "Cannot save string as hourly pay"
 
     @job.hourly_pay = 20.44
-    assert_not @job.save, "Cannot save non integer numbers"
+    assert @job.save, "Can save float numbers"
 
     @job.hourly_pay = 13
-    assert @job.save
+    assert @job.save, "Can save integer numbers"
 
+    @job.hourly_pay = orig_hourly_pay
   end
 
   test "hourly pay cannot be less than or equal to 0" do

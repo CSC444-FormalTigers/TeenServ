@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'transactions/destroy'
+
   get 'transactions/show'
 
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do#tempLocaleTag
