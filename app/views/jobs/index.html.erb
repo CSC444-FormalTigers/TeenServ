@@ -31,7 +31,7 @@ $(document).ready(function() {
   <h1 class="page_title">All Jobs</h1>
   <% if current_user.account_type == "employer" %>
     <%= link_to new_job_path, class: "add_button" do %>
-      <%= fa_icon "plus"%>Post Job
+      <%= fa_icon "plus"%><span>Post Job</span>
     <% end %>
   <% end %>
   <div id="filter_btn" class="filter_button">

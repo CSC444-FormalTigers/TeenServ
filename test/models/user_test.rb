@@ -47,4 +47,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.save, "Saved a user with empty email"
   end
 
+  test "can check for admin" do
+    @user.admin = true
+    assert @user.admin?
+  end
+
+  test "superadmin is also an admin" do
+    @user.super_admin = true
+    assert @user.admin?
+  end
+
 end
