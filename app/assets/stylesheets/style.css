@@ -6,22 +6,6 @@ License: none (public domain)
 */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -96,9 +80,9 @@ strong {
 .padded-container:after {
 	/* clearfix for floated child divs */
 	/* Ensures padded-container wraps around left-panel and right-panel. */
-  content: '';
-  clear: both;
-  display: table;
+	content: '';
+	clear: both;
+	display: table;
 }
 /*
 Remove underline front links and replace with border-bottom
@@ -170,10 +154,13 @@ header a#logo {
 	color: #212121;
 	color: var(--primary-text);
 }
-
-header #nav {
-	float: right;
-	display:flex;
+#dropdown_container {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+header ul {
+	background: #fff;
 }
 header #dropdown_container {
 	float: right;
@@ -182,18 +169,19 @@ header #dropdown_container {
 	display: none;
 }
 header ul ul {
-	position: absolute;
 	z-index: 101;
 	max-height: 60px;
+	width: 120px;
 	overflow: hidden;
-	background: #fff;
 }
 header ul ul:hover {
 	max-height: 1000px;
 	overflow: hidden;
+	position: relative;
 }
 header #nav li {
 	width: 120px;
+	float: left;
 }
 header #nav li a {
 	text-decoration: none;
@@ -252,11 +240,11 @@ Footer style
 }
 /* separator, a horizontal rule used to separate sections of a page. */
 .separator {
-    border-bottom: 1px solid #e4e4e4;
-    margin-bottom: 50px;
-    padding-bottom:20px;
-    width: 100%;
-    display: block;
+	border-bottom: 1px solid #e4e4e4;
+	margin-bottom: 50px;
+	padding-bottom:20px;
+	width: 100%;
+	display: block;
 }
 /**
 Notifications
@@ -354,11 +342,11 @@ table styles
 #main_content table {
 	border: 2px solid #dadada;
 	display: block;
-    max-height: 500px;
-    overflow-y: auto;
-    overflow-x: auto;
-    max-width: 100vw;
-    font-size: .8em;
+	max-height: 500px;
+	overflow-y: auto;
+	overflow-x: auto;
+	max-width: 100vw;
+	font-size: .8em;
 }
 #main_content th {
 	min-width: 100px;
@@ -384,6 +372,7 @@ table styles
 Forms
 */
 form {
+	box-sizing: border-box;
 	width: 100%;
 	max-width: 500px;
 	margin: 0 auto;
@@ -494,7 +483,7 @@ Features
 	z-index: 0;
 }
 #features a:nth-child(3) p:after {
-  	content: '';
+	content: '';
 	display: block;
 	border-color: transparent transparent transparent #1f8ac5;
 	width: 0;
@@ -507,7 +496,7 @@ Features
 	z-index: 0;
 }
 #features a:nth-child(1) p:after {
-  	content: '';
+	content: '';
 	display: block;
 	border-color: transparent #1f8ac5 transparent transparent;
 	width: 0;
@@ -567,13 +556,13 @@ sections
 	padding-right: 60px;
 }
 #sections .section:nth-child(even) i {
-    float: right;
-    padding-left: 60px;
-    padding-right: 0;
+	float: right;
+	padding-left: 60px;
+	padding-right: 0;
 }
 #sections .section:nth-child(even) h4,
 #sections .section:nth-child(even) p {
-    text-align: right;
+	text-align: right;
 }
 #sections .section p {
 	font-weight: 300;
@@ -756,7 +745,7 @@ job block style
 	font-size: .8em;
 }
 .job_container .title {
-    font-size: 1em;
+	font-size: 1em;
 	color: #000;
 	border: none;
 	line-height: 48px;
@@ -778,10 +767,10 @@ job block style
 	font-weight: 300;
 }
 .job_container .view_job {
-    border: none;
-    font-size: .7em;
-    margin-top: 15px;
-    display: inline-block;
+	border: none;
+	font-size: .7em;
+	margin-top: 15px;
+	display: inline-block;
 }
 .job_container div {
 	float: right;
@@ -826,35 +815,35 @@ job block style
 gmaps
 */
 .gmap {
-    width: 100%;
+	width: 100%;
 }
 #map {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
+	width: 100%;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
 }
 /*
- Split Panels
- */
+Split Panels
+*/
 .right-panel, .left-panel {
- box-sizing: border-box; /* Include padding and border in width */
- float: left;
+	box-sizing: border-box; /* Include padding and border in width */
+	float: left;
 }
 .right-panel {
-  width: 70%;
-  border-left: 2px solid #efefef;
-  padding-left: 30px;
+	width: 70%;
+	border-left: 2px solid #efefef;
+	padding-left: 30px;
 }
 #main_content .right-panel h4 {
-  text-align: left;
-  margin: 5px 0;
-  margin-top: 20px;
+	text-align: left;
+	margin: 5px 0;
+	margin-top: 20px;
 }
 
 .left-panel {
-  float: left;
-  width: 30%;
+	float: left;
+	width: 30%;
 }
 /*
 Admin Styles
@@ -989,18 +978,18 @@ h3.table_title {
 timesheet
 */
 .timesheet_button {
-		cursor: pointer;
-		transition: background ease .2s,
-		border ease .2s;
-		display: inline-block;
-		border-bottom: none;
-		background: #03A9F4;
-		background: var(--primary);
-		border: 1px solid #0288D1;
-		border: 1px solid var(--dark-primary);
-		border-radius: 2px;
-		color: #fff;
-		padding: 5px 5px;
+	cursor: pointer;
+	transition: background ease .2s,
+	border ease .2s;
+	display: inline-block;
+	border-bottom: none;
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
+	border-radius: 2px;
+	color: #fff;
+	padding: 5px 5px;
 }
 .timesheet_button .fa {
 	padding-right: 20px;
@@ -1026,35 +1015,35 @@ paypal email script
 gmaps
 */
 .gmap {
-    width: 100%;
+	width: 100%;
 }
 #map {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
+	width: 100%;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
 }
 /*
- Split Panels
- */
+Split Panels
+*/
 .right-panel, .left-panel {
- box-sizing: border-box; /* Include padding and border in width */
- float: left;
+	box-sizing: border-box; /* Include padding and border in width */
+	float: left;
 }
 .right-panel {
-  width: 70%;
-  border-left: 2px solid #efefef;
-  padding-left: 30px;
+	width: 70%;
+	border-left: 2px solid #efefef;
+	padding-left: 30px;
 }
 #main_content .right-panel h4 {
-  text-align: left;
-  margin: 5px 0;
-  margin-top: 20px;
+	text-align: left;
+	margin: 5px 0;
+	margin-top: 20px;
 }
 
 .left-panel {
-  float: left;
-  width: 30%;
+	float: left;
+	width: 30%;
 }
 /*
 Upvote Downvote
@@ -1063,22 +1052,22 @@ Upvote Downvote
 	padding-top: 10px;
 }
 .vote #downvote, .vote #upvote {
-  color: #2d2d2d;
-  background: #f1f1f1;
-  padding: 5px 20px;
-  margin: 5px;
-  border: 1px solid #efefef;
-  border: 1px solid var(--border-color);
-  border-bottom:1px solid #1f2c31;
+	color: #2d2d2d;
+	background: #f1f1f1;
+	padding: 5px 20px;
+	margin: 5px;
+	border: 1px solid #efefef;
+	border: 1px solid var(--border-color);
+	border-bottom:1px solid #1f2c31;
 }
 .vote #downvote:hover, .vote #upvote:hover {
-  background: #ffffff;
-  border: 1px solid #e6e6e6;
-  border-bottom: 1px solid #03A9F4;
-  border-bottom: 1px solid var(--primary);
+	background: #ffffff;
+	border: 1px solid #e6e6e6;
+	border-bottom: 1px solid #03A9F4;
+	border-bottom: 1px solid var(--primary);
 }
 .vote #downvote:active, .vote #upvote:active {
-  background: #efefef;
+	background: #efefef;
 }
 /*
 Admin Styles
@@ -1102,12 +1091,12 @@ Admin Styles
 @media (max-width:1281px) { /* hi-res laptops and desktops */ }
 @media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
 @media (max-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
-    body {
-    	font-size: .9em;
-    }
-    #eyecatch h1 , #eyecatch h3 {
-    	margin: 0 100px;
-    }
+	body {
+		font-size: .9em;
+	}
+	#eyecatch h1 , #eyecatch h3 {
+		margin: 0 100px;
+	}
 	#eyecatch h1 {
 		font-weight: 500;
 		font-size: 1.7em;
@@ -1117,26 +1106,30 @@ Admin Styles
 		font-weight: 300;
 		font-size: 1.2em;
 	}
-    #features {
-    	flex-direction: column;
-    }
-    #features a {
-    	max-width: 100%;
-    	margin: 1%;
-    }
+	#features {
+
+	}
+	#features a {
+		width: 98% !important;
+		margin: 1% !important;
+		padding: 50px 0 !important;
+	}
+	#features a p:after {
+		display: none !important;
+	}
 
 
 }
 @media (max-width:650px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+	header {
+
+	}
 	#dropdown_container #nav {
-		width: 60vw;
-		flex-direction: column;
-		position: absolute;
+		width: 80vw;
+		position: fixed;
 		top: 62px;
 		right: 0;
-        z-index: 10;
-		height: auto;
-		background: #f0f0f0;
+		z-index: 10;
 	}
 	#dropdown_container #menu_toggle {
 		display: block;
@@ -1165,11 +1158,40 @@ Admin Styles
 	#dropdown_container #nav li {
 		width: 100%;
 	}
+	#dropdown_container ul ul {
+		width: 100%;
+		max-height: 1000px;
+	}
+	#dropdown_container ul ul li:first-child  {
+		display: none;
+	}
 	header #nav li a {
 		display: none;
 	}
 }
-@media (max-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
+@media (max-width:500px)  { /* smartphones, Android phones, landscape iPhone */
+	#sections .section i {
+		float: left !important;
+		padding-right: 60px !important;
+		padding-left: 0 !important;
+	}
+	#sections .section p, #sections .section h4 {
+		text-align: left !important;
+	}
+}
 @media (max-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-
+	#eyecatch h3, #eyecatch h1 {
+	  margin: 0 30px;
+	  font-size: 1em;
+	}
+	#sections .section i {
+		font-size: 5em !important;
+		padding-right: 30px !important;
+	}
+	#sections .section h4 {
+		font-size: .9em !important;
+	}
+	#sections .section p {
+		font-size: .9em !important;
+	}
 }
