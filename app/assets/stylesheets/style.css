@@ -592,6 +592,7 @@ User page styles
 	height: 200px;
 	border: 2px solid #efefef;
 	overflow: hidden;
+	margin: 0 auto;
 }
 #photo_container img {
 	width: 105%;
