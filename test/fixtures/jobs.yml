@@ -9,8 +9,8 @@ one:
   work_date: 2017-12-25 12:00:00
   response_deadline: 2017-12-20 12:00:00
   hourly_pay: 1
-  payment_method: Credit
-  user: one
+  payment_method: PayPal
+  user: two
   location: TestLocation
   type_of_service: babysitting
 
@@ -23,7 +23,7 @@ two:
   work_date: 2017-12-25 12:00:00
   response_deadline: 2017-12-20 12:00:00
   hourly_pay: 1
-  payment_method: Credit
-  user: two
+  payment_method: PayPal
+  user: one
   location: TestLocation
   type_of_service: babysitting
