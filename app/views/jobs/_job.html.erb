@@ -6,7 +6,7 @@
   <span class="hourly_pay"><%= job.hourly_pay %>$ per hour</span>
   <span class="work_date">WORK DATE: <%= job.work_date %></span>
   <span class="response_deadline">RESPOND BY: <%= job.response_deadline %></span>
-  <%= link_to users_path(job.user) do %>
+  <%= link_to user_path(job.user) do %>
     <span class="username"><%= job.username %></span>
   <% end %>
   <span class="description"><%= job.description %></span>
