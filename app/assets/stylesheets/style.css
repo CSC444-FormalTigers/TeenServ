@@ -65,7 +65,7 @@ body {
 	padding: 0;
 	font-family: 'Lato', sans-serif;
 	background: #e2e2e2;
-	padding-bottom: 200px;
+	padding-bottom: 100px;
 }
 strong {
 	font-weight: bold;
@@ -215,7 +215,6 @@ Footer style
 */
 .footer{
 	background: #fff;
-	padding-left: 15px;
 	color: #232323;
 	position: absolute;
 	text-align:center;
@@ -593,6 +592,7 @@ User page styles
 	height: 200px;
 	border: 2px solid #efefef;
 	overflow: hidden;
+	margin: 0 auto;
 }
 #photo_container img {
 	width: 105%;
@@ -908,6 +908,7 @@ Admin Styles
 	padding: 20px;
 	border-radius: 0px;
 	margin-top: 150px;
+	overflow: scroll;
 }
 .edit_link {
 	float: right;
