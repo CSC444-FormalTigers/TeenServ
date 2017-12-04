@@ -908,6 +908,7 @@ Admin Styles
 	padding: 20px;
 	border-radius: 0px;
 	margin-top: 150px;
+	overflow: scroll;
 }
 .edit_link {
 	float: right;
