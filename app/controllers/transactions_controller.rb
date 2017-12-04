@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-
   def destroy
   	@transaction = Transaction.last
   	if(@transaction != nil)
