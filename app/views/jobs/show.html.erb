@@ -29,7 +29,6 @@
     <h4>Payment Information</h4>
     <p><strong>Wage (hourly): </strong>$<%= @job.hourly_pay %></p>
 
-<<<<<<< HEAD
     <%-# When employers click "go back arrow" during transaction page, a transaction will still be saved even though it has not been successfully processed. Following section assign a payment_status on each transaction, only those finished executing pay_teenager_job_path function naturally will be assigned successful. All other transaction will be destroyed. -%>
 
     <% @transaction = Transaction.where('service_id = ?', @job.id).last %>
