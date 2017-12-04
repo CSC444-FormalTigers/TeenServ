@@ -7,13 +7,13 @@
   <span class="work_date">WORK DATE: <%= job.work_date %></span>
   <span class="response_deadline">RESPOND BY: <%= job.response_deadline %></span>
   <%= link_to user_path(job.user) do %>
-    <span class="username"><%= job.username %></span>
+    <span class="username"><%= job.user.username %></span>
   <% end %>
   <span class="description"><%= job.description %></span>
   <%= link_to job_path(job) do %>
     <span class="view_job">VIEW JOB</span>
   <% end %>
-  <% if current_user.admin? or current_user.username == job.username %>
+  <% if current_user.admin? or current_user == job.user %>
     <div class="edit">
       <%= link_to edit_job_path(job) do %>
         <%= fa_icon "pencil" %>

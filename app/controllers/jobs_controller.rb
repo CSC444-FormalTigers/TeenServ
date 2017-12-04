@@ -168,7 +168,7 @@ class JobsController < ApplicationController
     def redirect_if_not_owner_or_admin
       @job = find_job_with_id
       @user = current_user
-      if !(@job.username == @user.username) and !(@user.admin?)
+      if !(@job.user == @user) and !(@user.admin?)
         redirect_to root_path
       end
     end

@@ -1,7 +1,7 @@
 <div class="padded-container">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <%-# Show to all user types -%>
-  <h2 class="page_title"><%= @job.username %> - <%= @job.title %></h2>
+  <h2 class="page_title"><%= @job.user.username %> - <%= @job.title %></h2>
   <div class="left-panel">
     <div class="gmap-mini">
       <div id="map"></div>
@@ -30,7 +30,7 @@
     <p><strong>Wage (hourly): </strong>$<%= @job.hourly_pay %></p>
     <p><strong>Payment Method: </strong><%= @job.payment_method %></p>
 
-    <% if current_user.username == @job.username or current_user.admin? %>
+    <% if current_user == @job.user or current_user.admin? %>
       <%= link_to edit_job_path(@job), class: "edit_button" do %>
         <%= fa_icon "pencil"%><span>Edit Job</span>
       <% end %>
