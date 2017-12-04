@@ -78,6 +78,7 @@ strong {
 .container {
 	max-width: 1250px;
 	margin: 0 auto;
+	position: relative;
 }
 .padded-container {
 	padding: 50px; /* need some padding on most pagges */
