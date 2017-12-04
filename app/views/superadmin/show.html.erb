@@ -2,9 +2,9 @@
   <% controller.redirect_to '/' unless current_user.admin? %>
 
   <h2>
-  <span>Total income:<%= @transactions.sum(:amount) * 0.1 %>$</span>
+  <span>Total income:<%= (@transactions.sum(:amount) * 0.1).round(2) %>$</span>
   <span style="display:inline-block; width: 100px;"></span>
-  <span>Income this month:<%= @transactions.where({updated_at: Time.now.beginning_of_month..Time.now.end_of_month}).sum(:amount) * 0.1%>$</span>
+  <span>Income this month:<%= (@transactions.where({updated_at: Time.now.beginning_of_month..Time.now.end_of_month}).sum(:amount) * 0.1).round(2)%>$</span>
   </h2>
   <h3 class="table_title">Users</h3>
   <%= render partial: 'table', locals: {data: @users} %>
