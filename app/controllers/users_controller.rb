@@ -42,7 +42,9 @@ class UsersController < ApplicationController
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     if @user.update(user_params)
-      bypass_sign_in @user
+      if @user == current_user
+        bypass_sign_in @user
+      end
       redirect_to @user
     else
       render 'edit'
