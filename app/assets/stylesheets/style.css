@@ -12,6 +12,8 @@ License: none (public domain)
 
 
 
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -1149,9 +1151,28 @@ Admin Styles
 		box-sizing: border-box;
 		width: 100%;
 	}
-
+	#sections .section i {
+		font-size: 5em !important;
+		padding-right: 30px !important;
+	}
+	#sections .section h4 {
+		font-size: .9em !important;
+	}
+	#sections .section p {
+		font-size: .9em !important;
+	}
 }
 @media (max-width:650px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+    #main_content {
+		padding-top: 50px;
+	}
+    header {
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    	right: 0;
+    	z-index: 1000;
+    }
 	.padded-container {
 		padding-top: 80px;
 	}
@@ -1161,16 +1182,16 @@ Admin Styles
 	.add_button i, .edit_button i {
 		padding-right: 0 !important;
 	}
-	header {
-
-	}
-
 	#dropdown_container #nav {
 		width: 80vw;
+		border: 1px solid #efefef;
+		border-right: none;
+		border-top: none;
 		position: fixed;
 		top: 62px;
 		right: 0;
 		z-index: 10;
+		background: #ffffff;
 	}
 	#dropdown_container #menu_toggle {
 		display: block;
@@ -1196,14 +1217,14 @@ Admin Styles
 	#dropdown_container:hover #nav li a {
 		display: block;
 		width: 100%;
-		line-height: 40px !important;
+		line-height: 50px !important;
 		font-size: .9em;
 	}
 	header #nav li i {
-		line-height: 40px;
+		line-height: 50px;
 	}
 	header #nav li span {
-		line-height: 40px;
+		line-height: 50px;
 	}
 	#dropdown_container #nav li {
 		width: 100%;
@@ -1218,11 +1239,22 @@ Admin Styles
 	header #nav li a {
 		display: none;
 	}
+	#eyecatch h1 {
+		font-weight: 500;
+		font-size: 1.4em;
+		margin: 0 30px;
+	}
+	#eyecatch h3 {
+		margin-top: 40px;
+		font-weight: 300;
+		font-size: 1em;
+		margin: 0 30px;
+	}
 }
 @media (max-width:500px)  { /* smartphones, Android phones, landscape iPhone */
 	#sections .section i {
 		float: left !important;
-		padding-right: 60px !important;
+		padding-right: 30px !important;
 		padding-left: 0 !important;
 	}
 	#sections .section p, #sections .section h4 {
@@ -1233,15 +1265,5 @@ Admin Styles
 	#eyecatch h3, #eyecatch h1 {
 	  margin: 0 30px;
 	  font-size: 1em;
-	}
-	#sections .section i {
-		font-size: 5em !important;
-		padding-right: 30px !important;
-	}
-	#sections .section h4 {
-		font-size: .9em !important;
-	}
-	#sections .section p {
-		font-size: .9em !important;
 	}
 }
