@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204020909) do
+ActiveRecord::Schema.define(version: 20171204062540) do
 
   create_table "changelogs", force: :cascade do |t|
     t.datetime "timestamp"
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20171204020909) do
     t.boolean "admin", default: false
     t.string "avatar"
     t.string "resume"
-    t.integer "rating", default: 0
+    t.float "rating", default: 0.0
     t.boolean "banned"
     t.string "paypal_email"
     t.boolean "super_admin", default: false

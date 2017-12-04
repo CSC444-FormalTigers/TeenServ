@@ -153,6 +153,32 @@ class ReviewTest < ActiveSupport::TestCase
     assert review_one.id == review_value.id, "Cannot get received review from user"
   end
 
+  test "Get reviewer from review" do
+    review_one = Review.new
+    review_one.reviewer_id = users(:one).id
+    review_one.reviewee_id = users(:user_with_avatar).id
+    review_one.rating = 4
+    review_one.description = "Great experience"
+    assert review_one.save, "Cannot save initial review one"
+
+    user_value = review_one.reviewer
+    
+    assert users(:one).id == user_value.id, "Cannot get receiver from review"
+  end
+
+  test "Get reviewee from review" do
+    review_one = Review.new
+    review_one.reviewer_id = users(:one).id
+    review_one.reviewee_id = users(:user_with_avatar).id
+    review_one.rating = 4
+    review_one.description = "Great experience"
+    assert review_one.save, "Cannot save initial review one"
+
+    user_value = review_one.reviewee
+    
+    assert users(:user_with_avatar).id == user_value.id, "Cannot get received review from user"
+  end
+
   test "Deleting a user deletes their sent and received reviews" do
     user = users(:one)
 

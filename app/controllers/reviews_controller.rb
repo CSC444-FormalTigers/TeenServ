@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   def index
-    #@reviews = Review.where(reviewee_id: params[:user_id])
     @reviews = find_reviews_with_reviewee_id
   end
 
@@ -10,6 +9,7 @@ class ReviewsController < ApplicationController
     review_verification(@review)
 
     if(@review.save)
+      calculate_rating(@review.reviewee)
       redirect_to user_reviews_path(reviewee_id), notice: "Successfully submitted review!"
     else
       render 'new'
@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
   def update
     @review = find_review_with_id
     if(@review.update(update_review_params))
+      calculate_rating(@review.reviewee)
       redirect_to user_reviews_path(reviewee_id), notice: "Successfully editted review!"
     else
       render 'edit'
@@ -38,7 +39,9 @@ class ReviewsController < ApplicationController
   def destroy
     @review = find_review_with_id
     review_verification(@review)
+    @reviewee = @review.reviewee
     @review.destroy
+    calculate_rating(@reviewee)
 
     redirect_to user_reviews_path(reviewee_id), notice: "Successfully deleted review!"
   end
@@ -73,5 +76,13 @@ class ReviewsController < ApplicationController
 
     def reviewee_id
       params[:user_id].to_i
+    end
+
+    def calculate_rating(user)
+      @updated_rating = user.received_reviews.average(:rating)
+      if @updated_rating.nil?
+        @updated_rating = 0
+      end
+      user.update(rating: @updated_rating)
     end
 end
