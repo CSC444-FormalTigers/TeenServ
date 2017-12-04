@@ -37,6 +37,8 @@
         <% @transaction.destroy %>
       <% elsif @transaction.payment_status == 'Processing'%>
         <% @transaction.payment_method = 'Sucessful' %>
+        <% @transaction.updated_at = DateTime.now %>
+        <% @transaction.save %>
       <%end%>
 
     <% if current_user.username == @job.username or current_user.admin? %>
