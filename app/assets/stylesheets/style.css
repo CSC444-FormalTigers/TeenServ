@@ -5,22 +5,6 @@ v2.0 | 20110126
 License: none (public domain)
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -1165,9 +1149,9 @@ Admin Styles
 
 	}
 	#features a {
-		width: 98% !important;
-		margin: 1% !important;
-		padding: 50px 0 !important;
+		width: 90% !important;
+		margin: 2% 5% !important;
+		padding: 30px 0 !important;
 	}
 	#features a p:after {
 		display: none !important;
@@ -1178,6 +1162,9 @@ Admin Styles
 	.search input[type="text"], .search input[type="number"] {
 		box-sizing: border-box;
 		width: 100%;
+	}
+	#sections .section {
+		padding: 75px 10px;
 	}
 	#sections .section i {
 		font-size: 5em !important;
