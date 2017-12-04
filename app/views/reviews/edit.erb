@@ -1,0 +1,38 @@
+<div class="padded-container">
+  <h1 class="page_title">Edit review</h1>
+  <%= form_for(@review, :url => url_for(:controller => 'reviews', :action => 'update')) do |form| %>
+  
+    <% if @review.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@review.errors.count, "error") %> prohibited
+          this review from being created: <br>
+          <% @review.errors.each do |attribute,error|%>
+            <%= attribute %>
+            <%= error %>
+            <br>
+          <% end %>
+  
+        </h2>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :rating, 'Rating' %><br>
+      <%= render :partial => 'shared/error_explaination', locals: {instance: @review, attribute: :rating} %>
+      <%= form.select(:rating, options_for_select([1, 2, 3, 4, 5])) %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :description, 'Description' %><br>
+      <%= render :partial => 'shared/error_explaination', locals: {instance: @review, attribute: :description} %>
+      <%= form.text_field :description, id: 'description' %>
+    </div>
+  
+    <div class="field">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  <%= link_to 'Back to user\'s review page', user_reviews_path(params[:user_id]) %>
+</div>
+

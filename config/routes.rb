@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get "/downvote" => "users#downvote"
 
     resources :users, except: [:new, :create] do
+    resources :reviews, except: [:show]
       member do
         get 'grant_admin'
         get 'remove_admin'
