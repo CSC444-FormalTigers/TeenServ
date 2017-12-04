@@ -52,4 +52,9 @@ class UserTest < ActiveSupport::TestCase
     assert @user.admin?
   end
 
+  test "superadmin is also an admin" do
+    @user.super_admin = true
+    assert @user.admin?
+  end
+
 end

@@ -72,7 +72,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    return self.admin
+    return self.admin || self.super_admin
   end
 
 end
