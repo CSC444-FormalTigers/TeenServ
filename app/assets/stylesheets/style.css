@@ -5,6 +5,7 @@ v2.0 | 20110126
 License: none (public domain)
 */
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -754,7 +755,7 @@ job block style
 	width: 100%;
 	overflow: hidden;
 	padding: 10px;
-	margin: 0;
+	margin: 40px 0;
 	position: relative;
 }
 .job_container:nth-child(even) {
@@ -795,6 +796,7 @@ job block style
 .job_container .description {
 	display: block;
 	width: 70%;
+	margin-bottom: 20px;
 	border: none;
 	font-size: .9em;
 	font-weight: 300;
@@ -802,15 +804,15 @@ job block style
 .job_container .view_job {
 	border: none;
 	font-size: .7em;
-	margin-top: 15px;
 	display: inline-block;
+	background: #fff;
 }
 .job_container div {
 	float: right;
 }
 .job_container div a {
 	text-align: center;
-	line-height: 30px;
+	line-height: 40px;
 	width: 40px;
 	font-size: .8em;
 	border-radius: 3px;
@@ -1116,7 +1118,28 @@ Admin Styles
 	font-size: 1.1em;
 }
 @media (max-width:1281px) { /* hi-res laptops and desktops */ }
-@media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */
+	.job_container {
+		padding: 10px;
+	}
+	.job_container .hourly_pay,
+	.job_container .work_date,
+	.job_container .response_deadline,
+	.job_container .description {
+		display: none;
+	}
+	.job_container .view_job {
+		margin-top: 0;
+		line-height: 40px;
+		float: left;
+	}
+	.job_container .title,
+	.job_container .username,
+	.job_container .type_of_service {
+		line-height: 40px;
+		line-height: 40px;
+	}
+}
 @media (max-width:814px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
 	.left-panel, .right-panel  {
 		width: 100%;
