@@ -102,10 +102,20 @@ class JobsController < ApplicationController
     #Hard coded percentage of what we get (10%)
     our_pay = (worker_pay * 1.10).round(2)
 
+    #create transaction object
+    @transaction = Transaction.new
+    @transaction.from_user = employer.username
+    @transaction.to_user = worker.username
+    @transaction.amount = worker_pay
+    @transaction.service_id = @job.id
+    @transaction.HoursWorked = hours_worked
+    @transaction.job_name = @job.title
+    @transaction.save
+
     @api = PayPal::SDK::AdaptivePayments.new
     @pay = @api.build_pay({
       :actionType => "PAY",
-      :cancelUrl => transactions_destroy_url,
+      :cancelUrl => transactions_destroy_url + "?tran_id=#{@transaction.id}",
       :currencyCode => "CAD",
       :feesPayer => "EACHRECEIVER",
       :receiverList => {
@@ -127,24 +137,12 @@ class JobsController < ApplicationController
 
     if @response.success? && @response.payment_exec_status != "ERROR"
       @response.payKey
-      @transaction = Transaction.new
-      @transaction.from_user = employer.username
-      @transaction.to_user = worker.username
-      @transaction.amount = worker_pay
-      @transaction.service_id = @job.id
-      @transaction.HoursWorked = hours_worked
-      @transaction.job_name = @job.title
-      @transaction.created_at = DateTime.now
-      @transaction.updated_at = DateTime.now
-      @transaction.payment_status = 'Processing'
-      @transaction.save
       redirect_to @api.payment_url(@response)
-      @transaction.payment_status = 'Invalid'
-      @transaction.save
     else
       flash[:error] = "There was an error with processing your payment. ERROR: " +
         @response.error[0].message
-        redirect_to job_path(@job)
+      @transaction.destroy
+      redirect_to job_path(@job)
     end
   end
 

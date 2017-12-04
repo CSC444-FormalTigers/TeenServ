@@ -30,17 +30,6 @@
     <p><strong>Wage (hourly): </strong>$<%= @job.hourly_pay %></p>
     <p><strong>Payment Method: </strong><%= @job.payment_method %></p>
 
-    <%-# When employers click "go back arrow" during transaction page, a transaction will still be saved even though it has not been successfully processed. Following section assign a payment_status on each transaction, only those finished executing pay_teenager_job_path function naturally will be assigned successful. All other transaction will be destroyed. -%>
-
-    <% @transaction = Transaction.last %>
-      <% if @transaction.payment_status == 'Invalid'%>
-        <% @transaction.destroy %>
-      <% elsif @transaction.payment_status == 'Processing'%>
-        <% @transaction.payment_method = 'Sucessful' %>
-        <% @transaction.updated_at = DateTime.now %>
-        <% @transaction.save %>
-      <%end%>
-
     <% if current_user.username == @job.username or current_user.admin? %>
       <%= link_to edit_job_path(@job), class: "edit_button" do %>
         <%= fa_icon "pencil"%><span>Edit Job</span>
@@ -112,7 +101,6 @@
         <% end %>
 
       <% else %>
-      <%= app.user_id %>
         <%= button_to 'Cancel Job Application',
         job_job_application_path(@job, app),
         method: :delete,
