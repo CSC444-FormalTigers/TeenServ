@@ -6,6 +6,8 @@ License: none (public domain)
 */
 
 
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -750,6 +752,18 @@ form.filter_form {
 /*
 job block style
 */
+.accepted .job_container, .not_accepted .job_container {
+	margin: 0;
+}
+.accepted, .not_accepted {
+	margin-top: 20px;
+	background: #ccc;
+	padding: 5px;
+}
+.accepted p, .not_accepted p {
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
 .job_container {
 	box-sizing: border-box;
 	width: 100%;
@@ -763,6 +777,9 @@ job block style
 }
 .job_container:nth-child(odd) {
 	background: #efefef;
+}
+.accepted.job_container {
+	background: #333;
 }
 .job_container a {
 	border: 0;
@@ -788,6 +805,7 @@ job block style
 	font-size: .7em;
 	color: #6f6f6f;
 	line-height: 48px;
+	display: none;
 }
 .job_container .hourly_pay, .job_container .type_of_service {
 	color: #404040;

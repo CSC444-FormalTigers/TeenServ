@@ -30,9 +30,9 @@
     <% if @user.employer? and @user.jobs.any? %>
       <h2 class="page_title"> Job Postings </h2>
       <% @user.jobs.each do |job| %>
-        <li>
-          <%= link_to job.title, job_path(job.id) %>
-        </li>
+          <%=
+            render partial: 'jobs/job', locals: {job: job}
+          %>
       <% end %>
     <% end %>
     <% if current_user.admin? or current_user == @user %>
@@ -45,14 +45,21 @@
       <% if @user.teenager? and @user.job_applications.any?  %>
         <h2 class="page_title"> Jobs Applied To </h2>
         <% @user.job_applications.joins(:job).order("jobs.title ASC").each do |app| %>
-          <li>
-            <%= link_to app.job.title, job_path(app.job.id) %>
-            <% if app.is_accepted %>
-              Accepted
-            <% else %>
-              Not Yet Accepted
-            <% end %>
-          </li>
+        <%
+          if app.is_accepted
+            _class = 'accepted'
+            message = 'Accepted'
+          else
+            _class = 'not_accepted'
+            message = 'Not Accepted'
+          end
+        %>
+          <div class=<%= _class %>>
+            <p><%= message %></p>
+            <%=
+              render partial: 'jobs/job', locals: {job: app.job}
+            %>
+          </div>
         <% end %>
       <% end %>
 
