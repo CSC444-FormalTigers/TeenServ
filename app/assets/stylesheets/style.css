@@ -6,6 +6,12 @@ License: none (public domain)
 */
 
 
+
+
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -158,6 +164,7 @@ header a#logo {
 	position: absolute;
 	right: 0;
 	top: 0;
+	z-index: 1000;
 }
 header ul {
 	background: #fff;
@@ -250,6 +257,7 @@ Footer style
 Notifications
 */
 #notifications {
+	z-index: 120;
 	position: absolute;
 	top: 62px;
 	right: 0;
@@ -589,15 +597,16 @@ user block style
 */
 .user_container {
 	box-sizing: border-box;
-	width: 50%;
+	width: 100%;
 	float: left;
 	overflow: hidden;
-	padding: 10px;
+	padding: 5px;
 	margin: 0;
-	border: 1px solid #dcdcdc;
+	border: 1px solid #ececec;
+	margin: 10px 0;
 }
 .user_container:nth-child(even) {
-	background: #ececec;
+	background: #f1f1f1;
 }
 .user_container:nth-child(odd) {
 	background: #efefef;
@@ -616,7 +625,7 @@ user block style
 	width: 50px;
 	height: 50px;
 	float: left;
-	border: 1px solid #dcdcdc;
+	border: 1px solid #ececec;
 }
 .user_container .user_photo {
 	border: none;
@@ -625,8 +634,9 @@ user block style
 	padding-left: 10px;
 	margin-left: 10px;
 	border-left: 1px solid #e0e0e0;
-	color: #4a4a4a;
+	color: #7d7676;
 	width: 100%;
+	font-size: .9em;
 }
 .user_container .name {
 	color: #000;
@@ -874,6 +884,7 @@ h3.table_title {
 * Add Button Style
 */
 .add_button {
+	overflow: hidden;
 	transition: background ease .2s,
 	border ease .2s;
 	float: right;
@@ -907,6 +918,7 @@ h3.table_title {
 * Edit Button Style
 */
 .edit_button {
+	overflow: hidden;
 	transition: background ease .2s,
 	border ease .2s;
 	position: absolute;
@@ -1090,7 +1102,19 @@ Admin Styles
 }
 @media (max-width:1281px) { /* hi-res laptops and desktops */ }
 @media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
-@media (max-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:814px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .left-panel, .right-panel  {
+    	width: 100%;
+    }
+    .right-panel {
+    	margin-top: 50px;
+    	padding-top: 50px;
+    	border-top: 1px solid #ccc;
+    	border-left: 0;
+    }
+	.padded-container {
+		padding: 20px;
+	}
 	body {
 		font-size: .9em;
 	}
@@ -1117,13 +1141,29 @@ Admin Styles
 	#features a p:after {
 		display: none !important;
 	}
-
+	.search {
+		max-width: 400px;
+	}
+	.search input[type="text"], .search input[type="number"] {
+		box-sizing: border-box;
+		width: 100%;
+	}
 
 }
 @media (max-width:650px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+	.padded-container {
+		padding-top: 80px;
+	}
+	.add_button span, .edit_button span {
+		display: none;
+	}
+	.add_button i, .edit_button i {
+		padding-right: 0 !important;
+	}
 	header {
 
 	}
+
 	#dropdown_container #nav {
 		width: 80vw;
 		position: fixed;
@@ -1150,6 +1190,7 @@ Admin Styles
 	#dropdown_container #menu_toggle {
 		padding: 0;
 		z-index: 10;
+		font-size: 1.6em;
 	}
 	#dropdown_container:hover #nav li a {
 		display: block;

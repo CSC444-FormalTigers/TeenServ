@@ -32,7 +32,7 @@
 
     <% if current_user.username == @job.username or current_user.admin? %>
       <%= link_to edit_job_path(@job), class: "edit_button" do %>
-        <%= fa_icon "pencil"%>Edit Job
+        <%= fa_icon "pencil"%><span>Edit Job</span>
       <% end %>
 
       <h2 class="page_title">Applicants to this Job</h2>
