@@ -18,6 +18,7 @@
   	<th>Job ID</th>
   	<th>Job Name </th>
   	<th>Transaction Time</th>
+  	<th>Payment Status</th>
   </tr>
 
 	<% @transaction.each do |data| %>
@@ -36,6 +37,7 @@
 	      <%end%>
 	      </td>
 	      <td><%= data.updated_at %></td>
+	      <td><%= data.payment_status%></td>
 	  </tr>
 	<%end%>
 
