@@ -132,8 +132,15 @@ class JobsController < ApplicationController
       @transaction.to_user = worker.username
       @transaction.amount = worker_pay
       @transaction.service_id = @job.id
+      @transaction.HoursWorked = hours_worked
+      @transaction.job_name = @job.title
+      @transaction.created_at = DateTime.now
+      @transaction.updated_at = DateTime.now
+      @transaction.payment_status = 'Processing'
       @transaction.save
       redirect_to @api.payment_url(@response)
+      @transaction.payment_status = 'Invalid'
+      @transaction.save
     else
       flash[:error] = "There was an error with processing your payment. ERROR: " +
         @response.error[0].message
