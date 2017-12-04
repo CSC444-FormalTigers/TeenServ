@@ -155,7 +155,6 @@ class JobsController < ApplicationController
         :work_date,
         :response_deadline,
         :hourly_pay,
-        :payment_method,
         :location,
         :is_accepting_applicants,
         :type_of_service)

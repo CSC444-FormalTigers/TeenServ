@@ -28,7 +28,6 @@
     <p><strong>Where: </strong><%= @job.location %></p>
     <h4>Payment Information</h4>
     <p><strong>Wage (hourly): </strong>$<%= @job.hourly_pay %></p>
-    <p><strong>Payment Method: </strong><%= @job.payment_method %></p>
 
     <% if current_user == @job.user or current_user.admin? %>
       <%= link_to edit_job_path(@job), class: "edit_button" do %>
