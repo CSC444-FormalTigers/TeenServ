@@ -28,7 +28,7 @@ $(document).ready(function() {
     Search for jobs within <%= number_field_tag :search_within_distance, 5000 %>m of: <%= text_field_tag :search_location %>
   </div>
   <span class="separator"></span>
-  <h1 class="page_title">All Jobs</h1>
+  <h1 class="page_title">All Jobs accepting employees</h1>
   <% if current_user.account_type == "employer" %>
     <%= link_to new_job_path, class: "add_button" do %>
       <%= fa_icon "plus"%><span>Post Job</span>
