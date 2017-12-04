@@ -79,13 +79,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :payment_method, 'Payment Method' %><br>
-    <%= render :partial => 'shared/error_explaination', locals: {instance: @job, attribute: :payment_method} %>
-    <%= form.text_field :payment_method %>
-  </div>
-
-
-  <div class="field">
     <%= form.submit %>
   </div>
 <% end %>

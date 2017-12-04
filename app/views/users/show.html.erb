@@ -15,10 +15,6 @@
     <p><strong>Age: </strong><%= @user.age %></p>
     <p><strong>Rating: </strong><%= @user.rating %></p>
     <p><%= link_to "Reviews on #{@user.name}", user_reviews_path(@user.id) %></p>
-    <%=
-      user = @user
-      render partial: 'rate_button', locals: {user: user}
-    %>
     <% if !@user.resume.file.nil? %>
       <p><span class="resume_link"><%= link_to 'Show Resume', resume_user_path + '.pdf' %></span></p>
     <% end %>

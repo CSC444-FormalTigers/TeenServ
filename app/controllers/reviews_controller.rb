@@ -1,15 +1,17 @@
 class ReviewsController < ApplicationController
   def index
-    #@reviews = Review.where(reviewee_id: params[:user_id])
     @reviews = find_reviews_with_reviewee_id
   end
 
 
   def create
     @review = Review.new(create_review_params)
-    review_verification(@review)
+    unless review_verification(@review)
+      return
+    end
 
     if(@review.save)
+      calculate_rating(@review.reviewee)
       redirect_to user_reviews_path(reviewee_id), notice: "Successfully submitted review!"
     else
       render 'new'
@@ -23,12 +25,18 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = find_review_with_id
-    review_verification(@review)
+    unless review_verification(@review)
+      return
+    end
   end
 
   def update
     @review = find_review_with_id
+    unless review_verification(@review)
+      return
+    end
     if(@review.update(update_review_params))
+      calculate_rating(@review.reviewee)
       redirect_to user_reviews_path(reviewee_id), notice: "Successfully editted review!"
     else
       render 'edit'
@@ -37,8 +45,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = find_review_with_id
-    review_verification(@review)
+    unless review_verification(@review)
+      return
+    end
+    @reviewee = @review.reviewee
     @review.destroy
+    calculate_rating(@reviewee)
 
     redirect_to user_reviews_path(reviewee_id), notice: "Successfully deleted review!"
   end
@@ -64,14 +76,27 @@ class ReviewsController < ApplicationController
     def review_verification(review)
       if(review.nil?)
         redirect_to user_reviews_path(reviewee_id), notice: "Requested review doesn't exist"
+	return
       elsif(review.reviewer_id != current_user.id)
         redirect_to user_reviews_path(reviewee_id), notice: "Requested review isn't written by you"
+	return
       elsif (review.reviewee_id != reviewee_id)
         redirect_to user_reviews_path(reviewee_id), notice: "Requested review isn't for this user"
+	return
+      else
+        return true
       end
     end
 
     def reviewee_id
       params[:user_id].to_i
+    end
+
+    def calculate_rating(user)
+      @updated_rating = user.received_reviews.average(:rating)
+      if @updated_rating.nil?
+        @updated_rating = 0
+      end
+      user.update(rating: @updated_rating)
     end
 end

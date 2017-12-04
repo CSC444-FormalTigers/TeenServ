@@ -1,11 +1,13 @@
 class TransactionsController < ApplicationController
   def destroy
-  	@transaction = Transaction.last
-  	if(@transaction != nil)
-  	job_id = @transaction.service_id
-  	@transaction.destroy
-  	redirect_to job_path(job_id)
-  	end
+  	@transaction = Transaction.where(id: params[:tran_id]).first
+    if @transaction != nil
+      job_id = @transaction.service_id
+      @transaction.destroy
+      redirect_to job_path(job_id)
+    else
+      redirect_to root_path
+    end
   end
 
   def show

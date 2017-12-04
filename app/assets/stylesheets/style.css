@@ -6,12 +6,6 @@ License: none (public domain)
 */
 
 
-
-
-
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -69,7 +63,7 @@ body {
 	padding: 0;
 	font-family: 'Lato', sans-serif;
 	background: #e2e2e2;
-	padding-bottom: 50px;
+	padding-bottom: 200px;
 }
 strong {
 	font-weight: bold;
@@ -228,8 +222,15 @@ Footer style
 	left: 0px;
 	right: 0px;
 }
+.footer .separator {
+	padding-bottom: 0;
+	margin-bottom: 20px;
+	width: 50%;
+	margin: 0 auto;
+}
 .footer a {
-	padding: 10px 20px 10px 0;
+	padding: 5px 10px;
+	line-height: 30px;
 	text-decoration: none;
 	display: inline-block;
 	color: #212121;
@@ -418,6 +419,7 @@ form input[type="submit"] {
 	color: var(--light-text);
 	cursor: pointer;
 	margin: 0 auto;
+	margin-top: 20px;
 	display: block;
 }
 form input[type="submit"]:hover {
@@ -584,14 +586,17 @@ sections
 User page styles
 */
 #photo_container {
+	box-sizing: border-box;
 	width: 200px;
 	height: 200px;
-	border-radius: 50%;
 	border: 2px solid #efefef;
 	overflow: hidden;
 }
 #photo_container img {
-	width: 100%;
+	width: 105%;
+	height: 105%;
+	margin-left: -2.5%;
+	margin-top: -2.5%;
 }
 /*
 user block style
@@ -695,6 +700,24 @@ user block style
 .user_container .delete a:active {
 	background: #505050;
 }
+/*
+filter form
+*/
+#filter {
+	max-height: 500px;
+	transition: max-height ease .3s;
+	overflow: hidden;
+	width: 100%;
+	background: #efefef;
+	display: inline-block;
+}
+#filter.hidden {
+	max-height: 0px;
+}
+form.filter_form {
+	max-width: 100%;
+	margin: 0;
+}
 /**
 * job Search Form
 */
@@ -732,7 +755,7 @@ job block style
 	width: 100%;
 	overflow: hidden;
 	padding: 10px;
-	margin: 0;
+	margin: 40px 0;
 	position: relative;
 }
 .job_container:nth-child(even) {
@@ -773,6 +796,7 @@ job block style
 .job_container .description {
 	display: block;
 	width: 70%;
+	margin-bottom: 20px;
 	border: none;
 	font-size: .9em;
 	font-weight: 300;
@@ -780,15 +804,15 @@ job block style
 .job_container .view_job {
 	border: none;
 	font-size: .7em;
-	margin-top: 15px;
 	display: inline-block;
+	background: #fff;
 }
 .job_container div {
 	float: right;
 }
 .job_container div a {
 	text-align: center;
-	line-height: 30px;
+	line-height: 40px;
 	width: 40px;
 	font-size: .8em;
 	border-radius: 3px;
@@ -955,20 +979,12 @@ h3.table_title {
 /**
 * Filter Button styles
 */
-#filter {
-	max-height: 500px;
-	transition: max-height ease .3s;
-	overflow: hidden;
-}
-#filter.hidden {
-	max-height: 0px;
-}
 .filter_button {
 	cursor: pointer;
 	transition: background ease .2s,
 	border ease .2s;
 	float: right;
-	display: inline-block;
+	display: block;
 	border: none;
 	border-radius: 2px;
 	color: #1CB4F9;
@@ -1101,18 +1117,143 @@ Admin Styles
 	float: right;
 	font-size: 1.1em;
 }
+/*
+review block style
+*/
+.review_container {
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	padding: 5px;
+	margin: 0;
+	border: 1px solid #ececec;
+	margin: 10px 0;
+}
+.review_container:nth-child(even) {
+	background: #f1f1f1;
+}
+.review_container:nth-child(odd) {
+	background: #efefef;
+	border-left: 0;
+}
+.review_container a {
+	border: 0;
+}
+.review_container a:hover {
+	border: 0;
+}
+.review_container span {
+
+}
+.review_container .reviewer {
+	padding-left: 10px;
+	margin-left: 10px;
+	border-left: 1px solid #e0e0e0;
+	color: #7d7676;
+	width: 100%;
+	font-size: .9em;
+}
+.review_container .rating {
+	color: #000;
+	padding-left: 15px;
+	border: none;
+	line-height: 48px;
+}
+.review_container .description {
+	color: #000;
+	padding-left: 15px;
+	border: none;
+	line-height: 48px;
+	display: block;
+	width: 70%;
+	border: none;
+	font-size: .9em;
+	font-weight: 300;
+}
+.review_container div {
+	float: right;
+}
+.review_container div a {
+	margin: 10px 0;
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.review_container div a {
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.review_container .edit a {
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
+}
+.review_container .delete a {
+	background: #5f5f5f;
+	border: 1px solid #313131;
+}
+.review_container .edit a:hover {
+	background: #1CB4F9;
+	background: var(--light-primary);
+}
+.review_container .delete a:hover {
+	background: #676767;
+}
+.review_container .edit a:active {
+	background: #0288D1;
+	background: var(--dark-primary);
+}
+.review_container .delete a:active {
+	background: #505050;
+}
 @media (max-width:1281px) { /* hi-res laptops and desktops */ }
-@media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (max-width:1025px) { /* big landscape tablets, laptops, and desktops */
+	.job_container {
+		padding: 10px;
+	}
+	.job_container .hourly_pay,
+	.job_container .work_date,
+	.job_container .response_deadline,
+	.job_container .description {
+		display: none;
+	}
+	.job_container .view_job {
+		margin-top: 0;
+		line-height: 40px;
+		float: left;
+	}
+	.job_container .title,
+	.job_container .username,
+	.job_container .type_of_service {
+		line-height: 40px;
+		line-height: 40px;
+	}
+}
 @media (max-width:814px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
-    .left-panel, .right-panel  {
-    	width: 100%;
-    }
-    .right-panel {
-    	margin-top: 50px;
-    	padding-top: 50px;
-    	border-top: 1px solid #ccc;
-    	border-left: 0;
-    }
+	.left-panel, .right-panel  {
+		width: 100%;
+	}
+	.right-panel {
+		margin-top: 50px;
+		padding-top: 50px;
+		border-top: 1px solid #ccc;
+		border-left: 0;
+	}
 	.padded-container {
 		padding: 20px;
 	}
@@ -1135,9 +1276,9 @@ Admin Styles
 
 	}
 	#features a {
-		width: 98% !important;
-		margin: 1% !important;
-		padding: 50px 0 !important;
+		width: 90% !important;
+		margin: 2% 5% !important;
+		padding: 30px 0 !important;
 	}
 	#features a p:after {
 		display: none !important;
@@ -1149,9 +1290,41 @@ Admin Styles
 		box-sizing: border-box;
 		width: 100%;
 	}
-
+	#sections .section {
+		padding: 75px 10px;
+	}
+	#sections .section i {
+		font-size: 5em !important;
+		padding-right: 30px !important;
+	}
+	#sections .section h4 {
+		font-size: .9em !important;
+	}
+	#sections .section p {
+		font-size: .9em !important;
+	}
 }
 @media (max-width:650px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+     .user_container div a {
+       width: 30px;
+	 }
+	input[type="checkbox"] {
+		width: 20px;
+		height: 20px;
+	}
+	label {
+		line-height: 25px;
+	}
+	#main_content {
+		padding-top: 50px;
+	}
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+	}
 	.padded-container {
 		padding-top: 80px;
 	}
@@ -1161,16 +1334,16 @@ Admin Styles
 	.add_button i, .edit_button i {
 		padding-right: 0 !important;
 	}
-	header {
-
-	}
-
 	#dropdown_container #nav {
 		width: 80vw;
+		border: 1px solid #efefef;
+		border-right: none;
+		border-top: none;
 		position: fixed;
 		top: 62px;
 		right: 0;
 		z-index: 10;
+		background: #ffffff;
 	}
 	#dropdown_container #menu_toggle {
 		display: block;
@@ -1196,14 +1369,14 @@ Admin Styles
 	#dropdown_container:hover #nav li a {
 		display: block;
 		width: 100%;
-		line-height: 40px !important;
+		line-height: 50px !important;
 		font-size: .9em;
 	}
 	header #nav li i {
-		line-height: 40px;
+		line-height: 50px;
 	}
 	header #nav li span {
-		line-height: 40px;
+		line-height: 50px;
 	}
 	#dropdown_container #nav li {
 		width: 100%;
@@ -1218,11 +1391,22 @@ Admin Styles
 	header #nav li a {
 		display: none;
 	}
+	#eyecatch h1 {
+		font-weight: 500;
+		font-size: 1.4em;
+		margin: 0 30px;
+	}
+	#eyecatch h3 {
+		margin-top: 40px;
+		font-weight: 300;
+		font-size: 1em;
+		margin: 0 30px;
+	}
 }
 @media (max-width:500px)  { /* smartphones, Android phones, landscape iPhone */
 	#sections .section i {
 		float: left !important;
-		padding-right: 60px !important;
+		padding-right: 30px !important;
 		padding-left: 0 !important;
 	}
 	#sections .section p, #sections .section h4 {
@@ -1231,17 +1415,111 @@ Admin Styles
 }
 @media (max-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 	#eyecatch h3, #eyecatch h1 {
-	  margin: 0 30px;
-	  font-size: 1em;
+		margin: 0 30px;
+		font-size: 1em;
 	}
-	#sections .section i {
-		font-size: 5em !important;
-		padding-right: 30px !important;
-	}
-	#sections .section h4 {
-		font-size: .9em !important;
-	}
-	#sections .section p {
-		font-size: .9em !important;
-	}
+}
+/*
+review block style
+*/
+.review_container {
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	padding: 5px;
+	margin: 0;
+	border: 1px solid #ececec;
+	margin: 10px 0;
+}
+.review_container:nth-child(even) {
+	background: #f1f1f1;
+}
+.review_container:nth-child(odd) {
+	background: #efefef;
+	border-left: 0;
+}
+.review_container a {
+	border: 0;
+}
+.review_container a:hover {
+	border: 0;
+}
+.review_container span {
+
+}
+.review_container .reviewer {
+	padding-left: 10px;
+	margin-left: 10px;
+	border-left: 1px solid #e0e0e0;
+	color: #7d7676;
+	width: 100%;
+	font-size: .9em;
+}
+.review_container .rating {
+	color: #000;
+	padding-left: 15px;
+	border: none;
+	line-height: 48px;
+}
+.review_container .description {
+	color: #000;
+	padding-left: 15px;
+	border: none;
+	line-height: 48px;
+	display: block;
+	width: 70%;
+	border: none;
+	font-size: .9em;
+	font-weight: 300;
+}
+.review_container div {
+	float: right;
+}
+.review_container div a {
+	margin: 10px 0;
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.review_container div a {
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.review_container .edit a {
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
+}
+.review_container .delete a {
+	background: #5f5f5f;
+	border: 1px solid #313131;
+}
+.review_container .edit a:hover {
+	background: #1CB4F9;
+	background: var(--light-primary);
+}
+.review_container .delete a:hover {
+	background: #676767;
+}
+.review_container .edit a:active {
+	background: #0288D1;
+	background: var(--dark-primary);
+}
+.review_container .delete a:active {
+	background: #505050;
 }

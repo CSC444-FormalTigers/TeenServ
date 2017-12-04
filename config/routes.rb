@@ -15,9 +15,6 @@ Rails.application.routes.draw do
     get 'welcome/index'
     root 'welcome#index'
 
-    get "/upvote" => "users#upvote"
-    get "/downvote" => "users#downvote"
-
     resources :users, except: [:new, :create] do
     resources :reviews, except: [:show]
       member do
