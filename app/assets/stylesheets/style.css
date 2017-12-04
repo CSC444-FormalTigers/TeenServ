@@ -1305,3 +1305,107 @@ Admin Styles
 		font-size: 1em;
 	}
 }
+/*
+review block style
+*/
+.review_container {
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	padding: 5px;
+	margin: 0;
+	border: 1px solid #ececec;
+	margin: 10px 0;
+}
+.review_container:nth-child(even) {
+	background: #f1f1f1;
+}
+.review_container:nth-child(odd) {
+	background: #efefef;
+	border-left: 0;
+}
+.review_container a {
+	border: 0;
+}
+.review_container a:hover {
+	border: 0;
+}
+.review_container span {
+
+}
+.review_container .reviewer {
+	padding-left: 10px;
+	margin-left: 10px;
+	border-left: 1px solid #e0e0e0;
+	color: #7d7676;
+	width: 100%;
+	font-size: .9em;
+}
+.review_container .rating {
+	color: #000;
+	padding-left: 15px;
+	border: none;
+	line-height: 48px;
+}
+.review_container .description {
+	color: #000;
+	padding-left: 15px;
+	border: none;
+	line-height: 48px;
+	display: block;
+	width: 70%;
+	border: none;
+	font-size: .9em;
+	font-weight: 300;
+}
+.review_container div {
+	float: right;
+}
+.review_container div a {
+	margin: 10px 0;
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.review_container div a {
+	text-align: center;
+	line-height: 30px;
+	width: 40px;
+	font-size: .8em;
+	border-radius: 3px;
+	margin-right: 10px;
+	color: #fff;
+	display: inline-block;
+	transition: background ease .2s;
+}
+.review_container .edit a {
+	background: #03A9F4;
+	background: var(--primary);
+	border: 1px solid #0288D1;
+	border: 1px solid var(--dark-primary);
+}
+.review_container .delete a {
+	background: #5f5f5f;
+	border: 1px solid #313131;
+}
+.review_container .edit a:hover {
+	background: #1CB4F9;
+	background: var(--light-primary);
+}
+.review_container .delete a:hover {
+	background: #676767;
+}
+.review_container .edit a:active {
+	background: #0288D1;
+	background: var(--dark-primary);
+}
+.review_container .delete a:active {
+	background: #505050;
+}
