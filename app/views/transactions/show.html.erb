@@ -13,8 +13,10 @@
   	<th>Transaction ID</th>
   	<th>Payee</th>
   	<th>Receiver</th>
+  	<th>HoursWorked</th>
   	<th>Amount</th>
   	<th>Job ID</th>
+  	<th>Job Name </th>
   	<th>Transaction Time</th>
   </tr>
 
@@ -23,8 +25,16 @@
 	      <td><%= data.id %></td>
 	      <td><%= data.from_user %></td>
 	      <td><%= data.to_user %></td>
+	      <td><%= data.HoursWorked %></td>
 	      <td><%= data.amount %></td>
 	      <td><%= data.service_id %></td>
+	      <td>
+	      <% if Job.find(data.service_id) == nil %>
+	      <%= data.job_name %></td>
+	      <%else%>
+	      <%= link_to Job.find(data.service_id).title, job_path(Job.find(data.service_id))%>
+	      <%end%>
+	      </td>
 	      <td><%= data.updated_at %></td>
 	  </tr>
 	<%end%>
