@@ -1,6 +1,6 @@
 <div class="padded-container">
   <% controller.redirect_to '/' unless current_user.admin? %>
-  
+
   <h2>
   <span>Total income:<%= @transactions.sum(:amount) * 0.1 %>$</span>
   <span style="display:inline-block; width: 100px;"></span>
@@ -9,8 +9,10 @@
   <h3 class="table_title">Users</h3>
   <%= render partial: 'table', locals: {data: @users} %>
 
-  <h3 class="table_title">Teenagers</h3>
-  <%= render partial: 'table', locals: {data: @teenagers} %>
+  <% if false %><%# Used to 'comment out' the unused tables. %>
+    <h3 class="table_title">Teenagers</h3>
+    <%= render partial: 'table', locals: {data: @teenagers} %>
+  <% end %>
 
   <h3 class="table_title">Jobs</h3>
   <%= render partial: 'table', locals: {data: @jobs} %>
@@ -21,14 +23,18 @@
   <h3 class="table_title">Change Logs</h3>
   <%= render partial: 'table', locals: {data: @changelogs} %>
 
-  <h3 class="table_title">Endorsements</h3>
-  <%= render partial: 'table', locals: {data: @endorsements} %>
+  <% if false %><%# Used to 'comment out' the unused tables. %>
+    <h3 class="table_title">Endorsements</h3>
+    <%= render partial: 'table', locals: {data: @endorsements} %>
+  <% end %>
 
   <h3 class="table_title">Reviews</h3>
   <%= render partial: 'table', locals: {data: @reviews} %>
 
-  <h3 class="table_title">Skills</h3>
-  <%= render partial: 'table', locals: {data: @skills} %>
+  <% if false %><%# Used to 'comment out' the unused tables. %>
+    <h3 class="table_title">Skills</h3>
+    <%= render partial: 'table', locals: {data: @skills} %>
+  <% end %>
 
   <h3 class="table_title">Transactions</h3>
   <%= render partial: 'table', locals: {data: @transactions} %>
