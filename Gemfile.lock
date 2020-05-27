@@ -68,7 +68,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.7.1)
-    excon (0.62.0)
+    excon (0.73.0)
     execjs (2.7.0)
     ffi (1.12.2)
     ffi (1.12.2-x64-mingw32)
